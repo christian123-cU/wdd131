@@ -22,6 +22,15 @@ background: var(--light-bg);
 color: var(--text-main);
 min-height: 100vh;
 }
+body {
+  font-family: 'Lato', Arial, sans-serif; /* Arial is the fallback */
+}
+
+span#course-title,
+.hero-name h2,
+main h1 {
+  font-family: 'Playfair Display', Georgia, serif; /* Georgia is the fallback */
+}
 
 /* ── HEADER ── */
 header {
