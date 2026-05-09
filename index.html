@@ -1,12 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wdd131</title>
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="WDD 131 – Dynamic Web Fundamentals – David Oduor – Web development course landing page">
+  <meta name="author" content="David Oduor">
+  <title>WDD 131 – Dynamic Web Fundamentals – David Oduor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="styles/base.css" rel="stylesheet">
+  <script src="scripts/getdates.js" defer></script>
+    </head>
 <body>
-    <h1>wdd131 ochanda david</h1>
-    
+
+  <!-- HEADER -->
+  <header>
+    <span id="course-title">WDD 131 – Dynamic Web Fundamentals</span>
+    <nav>
+      <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+      <a href="https://byupw.instructure.com/" target="_blank">Canvas</a>
+      <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3?lang=eng&id=p7#p7" target="_blank">Scripture</a>
+      <a href="#final-project">Final Project</a>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT GRID -->
+  <main>
+    <h1>David Oduor</h1>
+
+    <!-- ABOUT ME CARD -->
+    <section class="card">
+      <div class="card-header">About Me</div>
+      <div class="card-body">
+
+        <div class="about-top">
+          <p>
+            My name is David Oduor. I was born and raised in Kenya and currently call
+            Nairobi home. I am passionate about technology, web development, and finding
+            creative solutions to everyday problems. I enjoy learning new things and
+            continuously improving my skills. When I'm not coding, I love exploring the
+            great outdoors, spending time with family, and following football.
+          </p>
+          <div class="profile-placeholder" title="David Oduor">👤</div>
+        </div>
+
+        <div class="hometown-title">Nairobi, Kenya</div>
+
+        <div class="hometown-grid">
+
+          <!-- KENYA FLAG — accurate SVG -->
+          <div class="flag-wrap">
+            <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg"
+                 style="width:135px;height:90px;border-radius:6px;border:1px solid #dde3ea;display:block;">
+
+              <!-- ── STRIPES ── -->
+              <!-- Green (bottom) -->
+              <rect width="300" height="200" fill="#006600"/>
+              <!-- Red (middle) -->
+              <rect width="300" height="142" fill="#BB0000"/>
+              <!-- Black (top) -->
+              <rect width="300" height="65"  fill="#000000"/>
+              <!-- White band: black / red border -->
+              <rect y="62"  width="300" height="9" fill="#FFFFFF"/>
+              <!-- White band: red / green border -->
+              <rect y="129" width="300" height="9" fill="#FFFFFF"/>
+
+              <!-- ── CROSSED SPEARS ── -->
+              <!-- Shaft 1 (top-left → bottom-right) -->
+              <line x1="124" y1="10" x2="176" y2="190" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+              <!-- Shaft 2 (top-right → bottom-left) -->
+              <line x1="176" y1="10" x2="124" y2="190" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+              <!-- Spear tips (top) -->
+              <polygon points="121,10 127,10 124,2"   fill="#FFFFFF"/>
+              <polygon points="173,10 179,10 176,2"   fill="#FFFFFF"/>
+              <!-- Spear tips (bottom) -->
+              <polygon points="121,190 127,190 124,198" fill="#FFFFFF"/>
+              <polygon points="173,190 179,190 176,198" fill="#FFFFFF"/>
+
+              <!-- ── MAASAI SHIELD ── -->
+              <!-- Shield outer shape (dark red base) -->
+              <ellipse cx="150" cy="100" rx="28" ry="46" fill="#8B0000"/>
+              <!-- White outline around shield -->
+              <ellipse cx="150" cy="100" rx="28" ry="46" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+
+              <!-- Top white section of shield -->
+              <ellipse cx="150" cy="68"  rx="16" ry="16" fill="#FFFFFF"/>
+              <!-- Bottom white section of shield -->
+              <ellipse cx="150" cy="132" rx="16" ry="16" fill="#FFFFFF"/>
+
+              <!-- Centre vertical white stripe -->
+              <rect x="147" y="56" width="6" height="88" fill="#FFFFFF"/>
+
+              <!-- Horizontal white divider across middle -->
+              <rect x="123" y="97" width="54" height="6" fill="#FFFFFF"/>
+
+              <!-- Top red inner oval -->
+              <ellipse cx="150" cy="68"  rx="10" ry="10" fill="#BB0000"/>
+              <!-- Bottom red inner oval -->
+              <ellipse cx="150" cy="132" rx="10" ry="10" fill="#BB0000"/>
+
+              <!-- Centre black oval (traditional shield pattern) -->
+              <ellipse cx="150" cy="100" rx="8" ry="13" fill="#000000"/>
+              <!-- Centre white oval highlight -->
+              <ellipse cx="150" cy="100" rx="4" ry="7"  fill="#FFFFFF"/>
+              <!-- Centre dot -->
+              <circle  cx="150" cy="100" r="2.5"         fill="#000000"/>
+            </svg>
+            <p class="flag-caption">Official Flag<br>of Kenya</p>
+          </div>
+
+          <p class="hometown-desc">
+            Nairobi is the capital and largest city of Kenya, situated in the south-central
+            part of the country at an elevation of 1,795 m (5,889 ft). It is the most
+            populous city in East Africa and serves as a major financial and commercial hub
+            for the region. Nairobi is home to the only national park located within a
+            major capital city in the world — Nairobi National Park — making it uniquely
+            rich in both urban culture and wildlife.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- WEB DEV RESOURCES CARD -->
+    <section class="card">
+      <div class="card-header">Web Dev Resources</div>
+      <div class="card-body">
+        <ul class="resources-list">
+          <li><a href="https://dev.to" target="_blank">Dev.to Community</a></li>
+          <li><a href="https://www.smashingmagazine.com" target="_blank">Smashing Magazine</a></li>
+          <li><a href="https://css-tricks.com" target="_blank">CSS Tricks</a></li>
+          <li><a href="https://www.w3schools.com" target="_blank">W3 Schools</a></li>
+          <li><a href="https://www.udemy.com" target="_blank">Udemy</a></li>
+          <li><a href="https://picsum.photos" target="_blank">Lorem Picsum Image Placeholder</a></li>
+          <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <!-- Footer paragraph 1 -->
+    <p>©<span id="currentyear"></span> David Oduor | Nairobi, Kenya</p>
+
+    <!-- Footer paragraph 2 -->
+    <p id="lastModified"></p>
+  </footer>
 </body>
 </html>
