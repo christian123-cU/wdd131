@@ -1,4 +1,7 @@
 
+/* Add at the very top of base.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+
 :root {
 --navy: #1e3a5f;
 --navy-dark: #162d4a;
@@ -52,7 +55,6 @@ rgba(201,168,76,0.04) 40px, rgba(201,168,76,0.04) 80px
 
 span#course-title {
     display: block;
-font-family: 'Playfair Display', serif;
 font-size: clamp(1.4rem, 3vw, 1.6rem);
 color: #ffffff;
 letter-spacing: 0.04em;
