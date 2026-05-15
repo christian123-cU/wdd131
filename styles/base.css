@@ -63,18 +63,20 @@ padding: 0;
 margin-top: 18px;
 }
 nav a {
-color: #d0d8e4;
-text-decoration: none;
-font-size: 0.9rem;
-font-weight: 400;
-letter-spacing: 0.06em;
-padding: 14px 20px;
-transition: color 0.2s, background 0.2s;
-display: block;
-}
+  color: #d0d8e4;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  padding: 14px 20px;
+  transition: color 0.2s, background 0.2s;
+  display: block;
+  border-bottom: 2px solid transparent;
+
 nav a:hover {
-color: var(--gold-light);
-background: rgba(255,255,255,0.05);
+  color: var(--gold-light);
+  background: rgba(255,255,255,0.05);
+  border-bottom: 2px solid var(--gold-light); 
 }
 
 /* ── MAIN GRID ── */
