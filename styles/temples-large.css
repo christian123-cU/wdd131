@@ -1,0 +1,40 @@
+@media (min-width: 640px) {
+  #menu {
+    display: none;
+  }
+
+  .header-top {
+    justify-content: flex-start;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+  }
+
+  .header-top {
+    padding: 1rem 0;
+  }
+
+  nav {
+    background: transparent;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .nav-links a {
+    border-top: none;
+    padding: 1rem 0.8rem;
+  }
+
+  /* GALLERY - desktop: 3 columns */
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
