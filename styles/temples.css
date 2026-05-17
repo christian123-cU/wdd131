@@ -1,3 +1,14 @@
+:root {
+  --primary: #4a0080;
+  --white: #ffffff;
+  --text: #222222;
+  --gold: #f0d080;
+  --bg-light: #f5f5f5;
+  --nav-border: rgba(255, 255, 255, 0.2);
+  --nav-hover: rgba(255, 255, 255, 0.15);
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,14 +17,14 @@
 
 body {
   font-family: 'Lato', sans-serif;
-  background: #f5f5f5;
-  color: #222;
+  background: var(--bg-light);
+  color: var(--text);
 }
 
 /* HEADER */
 header {
-  background-color: #4a0080;
-  color: #fff;
+  background-color: var(--primary);
+  color: var(--white);
 }
 
 .header-top {
@@ -26,7 +37,7 @@ header {
 h1 {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
-  color: #fff;
+  color: var(--white);
 }
 
 /* HAMBURGER */
@@ -34,7 +45,7 @@ h1 {
   font-size: 1.5rem;
   background: none;
   border: none;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
 }
 
@@ -44,7 +55,7 @@ h1 {
 
 /* NAV */
 nav {
-  background-color: #4a0080;
+  background-color: var(--primary);
 }
 
 .nav-links {
@@ -59,16 +70,16 @@ nav {
 
 .nav-links a {
   display: block;
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   padding: 0.8rem 1rem;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  border-top: 1px solid var(--nav-border);
   font-weight: 700;
 }
 
 .nav-links a:hover {
-  background-color: rgba(255,255,255,0.15);
-  color: #f0d080;
+  background-color: var(--nav-hover);
+  color: var(--gold);
 }
 
 /* MAIN */
@@ -82,7 +93,7 @@ main h2 {
   text-align: center;
   font-size: 1.5rem;
   margin: 1rem 0;
-  color: #222;
+  color: var(--text);
 }
 
 /* GALLERY - mobile: 1 column */
@@ -93,31 +104,31 @@ main h2 {
 }
 
 figure {
-  background: #fff;
+  background: var(--white);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px var(--shadow);
   text-align: center;
 }
 
 figure img {
   width: 100%;
-  height: 200px;        /* fixed height so all cards are equal */
-  object-fit: cover;    /* crops to fill without stretching */
+  height: 200px;
+  object-fit: cover;
   display: block;
 }
 
 figcaption {
   padding: 0.5rem;
   font-size: 0.9rem;
-  color: #4a0080;
+  color: var(--primary);
   font-weight: 700;
 }
 
 /* FOOTER */
 footer {
-  background-color: #4a0080;
-  color: #fff;
+  background-color: var(--primary);
+  color: var(--white);
   text-align: center;
   padding: 1rem;
   margin-top: 2rem;
