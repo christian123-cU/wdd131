@@ -1,0 +1,317 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.app{font-family:var(--font-sans);max-width:100%;padding:0 4px}
+.hdr{background:#27500A;color:#C0DD97;padding:12px 14px;border-radius:var(--border-radius-lg);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.hdr-logo{width:38px;height:38px;border-radius:50%;background:#97C459;display:flex;align-items:center;justify-content:center;font-size:18px;color:#27500A;flex-shrink:0}
+.hdr-title{font-size:15px;font-weight:500;color:#C0DD97}
+.hdr-sub{font-size:11px;color:#97C459;margin-top:2px}
+.role-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px}
+.role-btn{padding:10px 6px;border:1.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);background:var(--color-background-primary);cursor:pointer;text-align:center;font-size:11px;color:var(--color-text-secondary);font-weight:500;font-family:var(--font-sans)}
+.role-btn i{display:block;font-size:22px;margin-bottom:4px}
+.role-btn.active{border-color:#3B6D11;background:#EAF3DE;color:#27500A}
+.tabs{display:flex;gap:2px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:12px;overflow-x:auto}
+.tab{padding:8px 10px;font-size:12px;cursor:pointer;border:none;background:transparent;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;font-family:var(--font-sans)}
+.tab.active{color:#27500A;border-bottom-color:#3B6D11;font-weight:500}
+.sec-lbl{font-size:10px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin:14px 0 8px}
+.sec-lbl:first-child{margin-top:0}
+.card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:10px}
+.m-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px;cursor:pointer}
+.m-card i.mc-i{font-size:22px;display:block;margin-bottom:8px;color:var(--color-text-secondary)}
+.m-card .mc-t{font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px}
+.m-card .mc-s{font-size:11px;color:var(--color-text-secondary)}
+.badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:99px;margin-top:6px;font-weight:500}
+.bg{background:#EAF3DE;color:#27500A}
+.bt{background:#E1F5EE;color:#085041}
+.ba{background:#FAEEDA;color:#633806}
+.bp{background:#EEEDFE;color:#3C3489}
+.bb{background:#E6F1FB;color:#0C447C}
+.bc{background:#FAECE7;color:#712B13}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.stat{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px;text-align:center}
+.stat-n{font-size:22px;font-weight:500;color:var(--color-text-primary)}
+.stat-l{font-size:10px;color:var(--color-text-secondary);margin-top:2px}
+.a-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px;margin-bottom:8px;cursor:pointer}
+.a-card-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.a-card-t{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.a-card-b{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+.rrow{display:flex;align-items:center;gap:10px;padding:10px 12px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);margin-bottom:7px;cursor:pointer}
+.rrow i.ri{font-size:18px;color:var(--color-text-secondary);flex-shrink:0}
+.rrow .rt{font-size:12px;font-weight:500;color:var(--color-text-primary)}
+.rrow .rs{font-size:11px;color:var(--color-text-secondary)}
+.rrow i.ra{margin-left:auto;font-size:14px;color:var(--color-text-tertiary)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.chip{padding:5px 12px;border-radius:99px;font-size:11px;font-weight:500;border:1px solid var(--color-border-tertiary);cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary);font-family:var(--font-sans)}
+.chip.active{background:#E1F5EE;border-color:#0F6E56;color:#085041}
+.lbtn{padding:5px 12px;border-radius:99px;font-size:11px;font-weight:500;border:1px solid var(--color-border-secondary);cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary);font-family:var(--font-sans)}
+.lbtn.active{background:#FAEEDA;border-color:#854F0B;color:#633806}
+.lang-row{display:flex;gap:6px;margin-bottom:10px}
+.lesson-box{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px;margin-bottom:10px}
+.l-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.back-b{background:none;border:none;cursor:pointer;color:var(--color-text-secondary);font-size:18px;padding:2px;font-family:var(--font-sans)}
+.l-title{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.prog-bar{height:4px;background:var(--color-background-secondary);border-radius:99px;margin-bottom:14px;overflow:hidden}
+.prog-fill{height:100%;background:#3B6D11;border-radius:99px;transition:width 0.3s}
+.q-text{font-size:14px;color:var(--color-text-primary);margin-bottom:12px;line-height:1.6}
+.choices{display:flex;flex-direction:column;gap:7px}
+.ch-btn{padding:10px 12px;border:1px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);text-align:left;cursor:pointer;font-size:12px;color:var(--color-text-primary);font-family:var(--font-sans)}
+.ch-btn.correct{background:#EAF3DE;border-color:#3B6D11;color:#27500A}
+.ch-btn.wrong{background:#FAECE7;border-color:#993C1D;color:#712B13}
+.fb{padding:10px 12px;border-radius:var(--border-radius-md);font-size:12px;margin-top:10px;display:none}
+.fb.show{display:block}
+.fb.ok{background:#EAF3DE;color:#27500A}
+.fb.bad{background:#FAECE7;color:#712B13}
+.nav-row{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+.done-wrap{text-align:center;padding:1.5rem 1rem}
+</style>
+
+<h2 class="sr-only">YouthRise Changemakers FLN App — foundational literacy and numeracy learning for teachers, young learners, and adults</h2>
+<div class="app" id="app">
+<div class="hdr">
+  <div class="hdr-logo"><i class="ti ti-plant-2" aria-hidden="true"></i></div>
+  <div><div class="hdr-title">YouthRise Changemakers</div><div class="hdr-sub">Foundational Literacy & Numeracy</div></div>
+</div>
+<div class="role-row" id="role-row">
+  <button class="role-btn active" data-role="teacher"><i class="ti ti-school" aria-hidden="true"></i>Teacher</button>
+  <button class="role-btn" data-role="learner"><i class="ti ti-abc" aria-hidden="true"></i>Young Learner</button>
+  <button class="role-btn" data-role="adult"><i class="ti ti-users" aria-hidden="true"></i>Adult</button>
+</div>
+<div class="tabs" id="tabs-bar"></div>
+<div id="main-panel"></div>
+</div>
+
+<script>
+var state = {role:'teacher',tab:0,lesson:null,step:0,score:0,answered:false,lang:'sw',level:'emerging'};
+
+var ROLES = {
+  teacher:{tabs:['Dashboard','PD Modules','Lesson Plans','Resources']},
+  learner:{tabs:['My Level','Learn','Practice','Progress']},
+  adult:{tabs:['Dashboard','Literacy','Numeracy','Digital Skills']}
+};
+
+var QUIZ = {
+  emerging:[
+    {q:'Read this word: C-A-T. What is it?',ch:['Car','Cup','Cat','Can'],a:2,fb:'Cat! Paka in Swahili 🐱'},
+    {q:'What is 2 + 3?',ch:['4','5','6','7'],a:1,fb:'2 + 3 = 5. Mbili na tatu ni tano!'},
+    {q:'Which is a vowel?',ch:['B','C','A','D'],a:2,fb:'A is a vowel! Vowels: A E I O U'}
+  ],
+  beginners:[
+    {q:'What letter is this? → A',ch:['A','B','C','D'],a:0,fb:'This is the letter A. A kama Asubuhi!'},
+    {q:'How many dots? ● ● ●',ch:['2','3','4','5'],a:1,fb:'3 dots. Tatu in Swahili!'},
+    {q:'Which word starts with B?',ch:['Cat','Ball','Apple','Dog'],a:1,fb:'Ball starts with B! Mpira in Swahili.'}
+  ],
+  developing:[
+    {q:'"The dog runs fast." What does the dog do?',ch:['Sleeps','Eats','Runs','Jumps'],a:2,fb:'Runs! Great reading.'},
+    {q:'Mama has 10 mangoes, gives 4 away. How many left?',ch:['4','5','6','7'],a:2,fb:'10 - 4 = 6 mangoes!'},
+    {q:'Which word rhymes with BAT?',ch:['Box','Hat','Bun','Hop'],a:1,fb:'Bat and Hat rhyme — both end in -AT!'}
+  ],
+  advancing:[
+    {q:'"The children _____ to school every day."',ch:['goes','go','went','going'],a:1,fb:'"Go" is correct — children is plural.'},
+    {q:'50 oranges, sold 23. How many remain?',ch:['27','37','33','17'],a:0,fb:'50 - 23 = 27. Excellent!'},
+    {q:'Opposite of "happy"?',ch:['Sad','Fast','Tall','Loud'],a:0,fb:'Sad. Huzuni in Swahili.'}
+  ]
+};
+
+var ADULT_QUIZ = [
+  {q:'To check M-PESA balance you dial:',ch:['*100#','*334#','*111#','*200#'],a:1,fb:'Dial *334# then press call. Angalia salio kwa *334#'},
+  {q:'Mama gives 100 KES for 50 KES item. Change?',ch:['40','50','60','30'],a:1,fb:'100 - 50 = 50 shillings change!'},
+  {q:'Someone calls asking for your M-PESA PIN. You:',ch:['Tell them','Hang up — it is a scam','Send money','Give number'],a:1,fb:'NEVER share your PIN! Usimwambie mtu PIN yako.'}
+];
+
+function render() {
+  renderTabs();
+  renderPanel();
+}
+
+function renderTabs() {
+  var tabs = ROLES[state.role].tabs;
+  var html = tabs.map(function(t,i){
+    return '<button class="tab'+(i===state.tab?' active':'')+'" data-tab="'+i+'">'+t+'</button>';
+  }).join('');
+  document.getElementById('tabs-bar').innerHTML = html;
+  document.querySelectorAll('.tab').forEach(function(b){
+    b.addEventListener('click', function(){ state.tab=parseInt(this.dataset.tab); state.lesson=null; render(); });
+  });
+}
+
+function renderPanel() {
+  var p = document.getElementById('main-panel');
+  var key = state.role+'-'+state.tab;
+  var fns = {
+    'teacher-0':tDash,'teacher-1':tPD,'teacher-2':tLessons,'teacher-3':tResources,
+    'learner-0':lLevel,'learner-1':lLearn,'learner-2':lPractice,'learner-3':lProgress,
+    'adult-0':aDash,'adult-1':aLiteracy,'adult-2':aNumeracy,'adult-3':aDigital
+  };
+  p.innerHTML = (fns[key]||function(){return '';})();
+  bindPanel();
+}
+
+function bindPanel() {
+  document.querySelectorAll('[data-lesson]').forEach(function(el){
+    el.addEventListener('click', function(){ openLesson(this.dataset.lesson); });
+  });
+  document.querySelectorAll('[data-level]').forEach(function(el){
+    el.addEventListener('click', function(){ state.level=this.dataset.level; render(); });
+  });
+  document.querySelectorAll('[data-lang]').forEach(function(el){
+    el.addEventListener('click', function(){ state.lang=this.dataset.lang; render(); });
+  });
+  document.querySelectorAll('[data-start]').forEach(function(el){
+    el.addEventListener('click', function(){ openLesson(this.dataset.start); });
+  });
+  var back = document.getElementById('back-btn');
+  if(back) back.addEventListener('click', function(){ state.lesson=null; state.step=0; render(); });
+  var next = document.getElementById('next-btn');
+  if(next) next.addEventListener('click', function(){ advanceStep(); });
+  var retry = document.getElementById('retry-btn');
+  if(retry) retry.addEventListener('click', function(){ state.step=0; state.score=0; state.answered=false; render(); });
+  document.querySelectorAll('.ch-btn').forEach(function(b){
+    b.addEventListener('click', function(){ doAnswer(parseInt(this.dataset.idx)); });
+  });
+  document.querySelectorAll('[data-ext]').forEach(function(el){
+    el.addEventListener('click', function(){ openLink(this.dataset.ext); });
+  });
+}
+
+function openLesson(name) {
+  state.lesson=name; state.step=0; state.score=0; state.answered=false; render();
+}
+
+function advanceStep() {
+  var steps = getSteps();
+  state.step++;
+  state.answered=false;
+  if(state.step>=steps.length){ render(); return; }
+  render();
+}
+
+function getSteps() {
+  if(state.role==='adult') return ADULT_QUIZ;
+  return QUIZ[state.level]||QUIZ.emerging;
+}
+
+function doAnswer(idx) {
+  if(state.answered) return;
+  state.answered=true;
+  var steps=getSteps(), s=steps[state.step];
+  if(idx===s.a) state.score++;
+  document.querySelectorAll('.ch-btn').forEach(function(b,i){
+    b.disabled=true;
+    if(i===s.a) b.classList.add('correct');
+    else if(i===idx) b.classList.add('wrong');
+  });
+  var fb=document.getElementById('fb-box');
+  if(fb){ fb.className='fb show '+(idx===s.a?'ok':'bad'); fb.textContent=(idx===s.a?'✓ ':'✗ ')+s.fb; }
+  var nb=document.getElementById('next-btn');
+  if(nb) nb.style.display='inline-block';
+}
+
+function tDash(){return '<div class="stat-row"><div class="stat"><div class="stat-n">7</div><div class="stat-l">Modules done</div></div><div class="stat"><div class="stat-n">24</div><div class="stat-l">Learners</div></div><div class="stat"><div class="stat-n">82%</div><div class="stat-l">Avg score</div></div></div><div class="sec-lbl">Continue learning</div><div class="a-card" data-lesson="Language of Instruction"><div class="a-card-hdr"><div class="a-card-t">Language of Instruction — Module 3</div><span class="badge ba">In progress</span></div><div class="a-card-b">Using mother tongue in early grade classrooms: strategies for rural settings.</div></div><div class="sec-lbl">Upcoming</div><div class="a-card"><div class="a-card-hdr"><div class="a-card-t">Peer Learning Circle — Week 4</div><span class="badge bb">Scheduled</span></div><div class="a-card-b">Monthly refresher: classroom observation reflections and coaching debrief.</div></div>';}
+
+function tPD(){
+  var ms=[
+    {i:'ti-book-2',t:'FLN Pedagogy Foundations',s:'TaRL level-based approach',b:'bg'},
+    {i:'ti-language',t:'Language of Instruction',s:'Swahili, English & mother tongue',b:'ba'},
+    {i:'ti-target',t:'Assessment for Learning',s:'Simple diagnostic tools',b:'bt'},
+    {i:'ti-users',t:'Inclusive Teaching',s:'Reaching every learner',b:'bp'},
+    {i:'ti-layout-grid',t:'Classroom Management',s:'1:10 ratio strategies',b:'bb'},
+    {i:'ti-certificate',t:'Capstone Assessment',s:'YouthRise FLN cert',b:'bc'}
+  ];
+  return '<div class="sec-lbl">Professional development modules</div><div class="card-grid">'+ms.map(function(m){
+    return '<div class="m-card" data-lesson="'+m.t+'"><i class="ti '+m.i+' mc-i" aria-hidden="true"></i><div class="mc-t">'+m.t+'</div><div class="mc-s">'+m.s+'</div><span class="badge '+m.b+'">Start</span></div>';
+  }).join('')+'</div>';
+}
+
+function tLessons(){
+  var ls=[
+    {t:'Phonics — Letter A sounds',d:'30 min',lv:'Beginners'},
+    {t:'Number recognition 1–10',d:'25 min',lv:'Beginners'},
+    {t:'Simple word reading',d:'35 min',lv:'Emerging'},
+    {t:'Addition using objects',d:'30 min',lv:'Developing'},
+    {t:'Story time — comprehension',d:'40 min',lv:'Advancing'}
+  ];
+  return '<div class="lang-row"><button class="lbtn'+(state.lang==='en'?' active':'')+'" data-lang="en">English</button><button class="lbtn'+(state.lang==='sw'?' active':'')+'" data-lang="sw">Kiswahili</button><button class="lbtn'+(state.lang==='mt'?' active':'')+'" data-lang="mt">Mother tongue</button></div><div class="sec-lbl">Ready-to-use lesson plans</div>'+ls.map(function(r){return '<div class="rrow" data-lesson="'+r.t+'"><i class="ti ti-file-text ri" aria-hidden="true"></i><div><div class="rt">'+r.t+'</div><div class="rs">'+r.d+' · <span class="badge bt" style="font-size:10px">'+r.lv+'</span></div></div><i class="ti ti-chevron-right ra" aria-hidden="true"></i></div>';}).join('');
+}
+
+function tResources(){
+  var rs=[
+    {i:'ti-external-link',t:'TaRL Africa Toolkit',s:'Level-based assessment guides',u:'https://www.teachingattherightlevel.org'},
+    {i:'ti-external-link',t:'Uwezo Learning Assessments',s:'Annual measurement tools',u:'https://uwezo.net'},
+    {i:'ti-external-link',t:'PAL Network Standards',s:"People's Action for Learning",u:'https://www.palnetwork.org'},
+    {i:'ti-download',t:'YouthRise Teacher Manual',s:'Full PD handbook',u:'#'},
+    {i:'ti-download',t:'Porridge Program Guide',s:'Nutrition + attendance tracking',u:'#'}
+  ];
+  return '<div class="sec-lbl">Partner resources</div>'+rs.map(function(r){return '<div class="rrow" data-ext="'+r.u+'"><i class="ti '+r.i+' ri" aria-hidden="true"></i><div><div class="rt">'+r.t+'</div><div class="rs">'+r.s+'</div></div><i class="ti ti-chevron-right ra" aria-hidden="true"></i></div>';}).join('');
+}
+
+function lLevel(){
+  var lvls=['beginners','emerging','developing','advancing'];
+  var desc={beginners:'Learn letters and numbers through songs and pictures.',emerging:'We can name letters. Now we make words!',developing:'We read simple words. Now short sentences!',advancing:'Almost ready for Grade 1!'};
+  return '<div class="sec-lbl">My level</div><div class="chips">'+lvls.map(function(l){return '<button class="chip'+(state.level===l?' active':'')+'" data-level="'+l+'">'+l.charAt(0).toUpperCase()+l.slice(1)+'</button>';}).join('')+'</div><div class="a-card"><div class="a-card-hdr"><div class="a-card-t">Level: '+state.level.charAt(0).toUpperCase()+state.level.slice(1)+'</div><span class="badge bt">Active</span></div><div class="a-card-b">'+desc[state.level]+'</div><div style="margin-top:8px"><span class="badge bg">Uwezo aligned</span> <span class="badge ba">Max 10 learners</span></div></div><div class="sec-lbl">Today</div><div class="a-card"><div class="a-card-hdr"><div class="a-card-t">Good morning! Learning time.</div></div><div class="a-card-b">Get your porridge first, then find your group!</div></div>';
+}
+
+function lLearn(){
+  if(state.lesson) return lessonView();
+  var ms=[{i:'ti-alphabet-latin',t:'Reading & Letters',s:'Phonics & words',b:'bg'},{i:'ti-123',t:'Numbers & Counting',s:'Numeracy basics',b:'bt'},{i:'ti-palette',t:'Stories & Songs',s:'In Swahili & English',b:'ba'},{i:'ti-puzzle',t:'Fun Activities',s:'Games & challenges',b:'bp'}];
+  return '<div class="sec-lbl">Choose a topic</div><div class="card-grid">'+ms.map(function(m){return '<div class="m-card" data-lesson="'+m.t+'"><i class="ti '+m.i+' mc-i" aria-hidden="true"></i><div class="mc-t">'+m.t+'</div><div class="mc-s">'+m.s+'</div><span class="badge '+m.b+'">Start</span></div>';}).join('')+'</div>';
+}
+
+function lPractice(){
+  if(state.lesson) return lessonView();
+  return '<div class="sec-lbl">Practice — '+state.level+'</div><div class="a-card" data-start="Practice Quiz"><div class="a-card-hdr"><div class="a-card-t">Start practice quiz</div><span class="badge bg">3 questions</span></div><div class="a-card-b">Short quiz for your '+state.level+' level. About 5 minutes.</div></div><div class="a-card"><div class="a-card-hdr"><div class="a-card-t">Flashcard drill</div><span class="badge bt">Letters & Numbers</span></div><div class="a-card-b">Tap through letter-sound and number flashcards.</div></div>';
+}
+
+function lProgress(){
+  return '<div class="stat-row"><div class="stat"><div class="stat-n">12</div><div class="stat-l">Sessions</div></div><div class="stat"><div class="stat-n">75%</div><div class="stat-l">Quiz avg</div></div><div class="stat"><div class="stat-n">3</div><div class="stat-l">Stars</div></div></div><div class="sec-lbl">Achievements</div><div class="a-card"><div class="a-card-hdr"><div class="a-card-t">First quiz complete!</div><span class="badge ba">Earned</span></div></div><div class="a-card"><div class="a-card-hdr"><div class="a-card-t">Read 5 words in a row</div><span class="badge bg">Earned</span></div></div><div class="a-card"><div class="a-card-hdr"><div class="a-card-t">Counted to 20</div><span class="badge bt">Earned</span></div></div>';
+}
+
+function aDash(){return '<div class="stat-row"><div class="stat"><div class="stat-n">5</div><div class="stat-l">Sessions</div></div><div class="stat"><div class="stat-n">3</div><div class="stat-l">Modules</div></div><div class="stat"><div class="stat-n">2</div><div class="stat-l">Skills</div></div></div><div class="sec-lbl">Next session</div><div class="a-card"><div class="a-card-hdr"><div class="a-card-t">Wednesday evening</div><span class="badge bg">Upcoming</span></div><div class="a-card-b">Topic: Checking your M-PESA balance and reading transaction messages.</div></div><div class="sec-lbl">Tip of the day</div><div class="a-card"><div class="a-card-b">Always check your M-PESA balance before and after a transaction. Angalia salio lako kila wakati.</div></div>';}
+
+function aLiteracy(){
+  if(state.lesson) return lessonView();
+  var rs=[{i:'ti-writing',t:'Write your name',s:'Start with your signature'},{i:'ti-road-sign',t:'Read signs & labels',s:'Common signs around you'},{i:'ti-message',t:'Read SMS messages',s:'Phone texts step by step'},{i:'ti-file-invoice',t:'Read receipts & prices',s:'Market and shop literacy'}];
+  return '<div class="lang-row"><button class="lbtn'+(state.lang==='en'?' active':'')+'" data-lang="en">English</button><button class="lbtn'+(state.lang==='sw'?' active':'')+'" data-lang="sw">Kiswahili</button></div><div class="sec-lbl">Literacy skills</div>'+rs.map(function(r){return '<div class="rrow" data-lesson="'+r.t+'"><i class="ti '+r.i+' ri" aria-hidden="true"></i><div><div class="rt">'+r.t+'</div><div class="rs">'+r.s+'</div></div><i class="ti ti-chevron-right ra" aria-hidden="true"></i></div>';}).join('');
+}
+
+function aNumeracy(){
+  if(state.lesson) return lessonView();
+  var rs=[{i:'ti-currency-dollar',t:'Counting money',s:'Notes, coins, and change'},{i:'ti-receipt',t:'Checking prices & receipts',s:'Avoid being overcharged'},{i:'ti-building-store',t:'Business record keeping',s:'Simple daily records'},{i:'ti-plus',t:'Addition & subtraction',s:'Daily life calculations'}];
+  return '<div class="sec-lbl">Numeracy for everyday life</div>'+rs.map(function(r){return '<div class="rrow" data-lesson="'+r.t+'"><i class="ti '+r.i+' ri" aria-hidden="true"></i><div><div class="rt">'+r.t+'</div><div class="rs">'+r.s+'</div></div><i class="ti ti-chevron-right ra" aria-hidden="true"></i></div>';}).join('');
+}
+
+function aDigital(){
+  if(state.lesson) return lessonView();
+  var ms=[{i:'ti-phone-call',t:'Make & receive a call',s:'Step by step',b:'bg'},{i:'ti-search',t:'Find a contact',s:'Search the phonebook',b:'bt'},{i:'ti-device-mobile',t:'Check M-PESA balance',s:'*334# explained',b:'ba'},{i:'ti-transfer',t:'Send M-PESA safely',s:'Confirm before sending',b:'bb'},{i:'ti-shield-check',t:'Avoid M-PESA scams',s:'Common fraud to watch',b:'bc'},{i:'ti-message-circle',t:'Read & send SMS',s:'Basic text messaging',b:'bp'}];
+  return '<div class="sec-lbl">Digital & mobile literacy</div><div class="card-grid">'+ms.map(function(m){return '<div class="m-card" data-lesson="'+m.t+'"><i class="ti '+m.i+' mc-i" aria-hidden="true"></i><div class="mc-t">'+m.t+'</div><div class="mc-s">'+m.s+'</div><span class="badge '+m.b+'">Learn</span></div>';}).join('')+'</div>';
+}
+
+function lessonView(){
+  var steps=getSteps();
+  if(state.step>=steps.length) return doneView(steps.length);
+  var s=steps[state.step], pct=Math.round((state.step/steps.length)*100);
+  var choices=s.ch.map(function(c,i){return '<button class="ch-btn" data-idx="'+i+'">'+c+'</button>';}).join('');
+  return '<div class="lesson-box"><div class="l-hdr"><button class="back-b" id="back-btn" aria-label="Back"><i class="ti ti-arrow-left" aria-hidden="true"></i></button><div class="l-title">'+state.lesson+'</div></div><div class="prog-bar"><div class="prog-fill" style="width:'+pct+'%"></div></div><div class="q-text">'+s.q+'</div><div class="choices">'+choices+'</div><div class="fb" id="fb-box"></div><div class="nav-row"><button id="next-btn" style="display:none">'+(state.step+1<steps.length?'Next →':'Finish ✓')+'</button></div></div>';
+}
+
+function doneView(total){
+  var pct=Math.round((state.score/total)*100);
+  var msg=pct>=67?'Great work! Keep going!':'Good try! Let\'s practice more.';
+  return '<div class="lesson-box"><div class="l-hdr"><button class="back-b" id="back-btn" aria-label="Back"><i class="ti ti-arrow-left" aria-hidden="true"></i></button><div class="l-title">Session complete!</div></div><div class="done-wrap"><i class="ti ti-trophy" style="font-size:40px;color:#BA7517;display:block;margin-bottom:10px" aria-hidden="true"></i><div style="font-size:26px;font-weight:500;margin-bottom:6px">'+state.score+' / '+total+'</div><div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:14px">'+msg+'</div><span class="badge bg" style="font-size:12px;padding:5px 14px">'+pct+'%</span></div><div class="nav-row"><button id="back-btn-2">Back to modules</button> <button id="retry-btn">Try again</button></div></div>';
+}
+
+document.getElementById('role-row').addEventListener('click', function(e){
+  var b = e.target.closest('[data-role]');
+  if(!b) return;
+  state.role=b.dataset.role; state.tab=0; state.lesson=null;
+  document.querySelectorAll('.role-btn').forEach(function(x){x.classList.remove('active');});
+  b.classList.add('active');
+  render();
+});
+
+document.getElementById('main-panel').addEventListener('click', function(e){
+  var bb2 = e.target.closest('#back-btn-2');
+  if(bb2){ state.lesson=null; state.step=0; render(); return; }
+});
+
+render();
+</script>

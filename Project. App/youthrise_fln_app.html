@@ -1,0 +1,616 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green-50: #EAF3DE; --green-100: #C0DD97; --green-200: #97C459;
+    --green-600: #3B6D11; --green-800: #27500A; --green-900: #173404;
+    --teal-50: #E1F5EE; --teal-200: #5DCAA5; --teal-600: #0F6E56; --teal-800: #085041;
+    --amber-50: #FAEEDA; --amber-200: #EF9F27; --amber-600: #854F0B; --amber-800: #633806;
+    --coral-50: #FAECE7; --coral-200: #F0997B; --coral-600: #993C1D; --coral-800: #712B13;
+    --purple-50: #EEEDFE; --purple-200: #AFA9EC; --purple-600: #534AB7; --purple-800: #3C3489;
+    --blue-50: #E6F1FB; --blue-200: #85B7EB; --blue-600: #185FA5; --blue-800: #0C447C;
+  }
+  body { font-family: var(--font-sans); background: transparent; }
+
+  .app { max-width: 680px; margin: 0 auto; }
+
+  .app-header {
+    background: var(--green-800);
+    color: var(--green-50);
+    padding: 1rem 1.25rem;
+    border-radius: var(--border-radius-lg);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .app-logo {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--green-200); display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: var(--green-800); font-weight: 500; flex-shrink: 0;
+  }
+  .app-title { font-size: 16px; font-weight: 500; color: var(--green-50); }
+  .app-sub { font-size: 12px; color: var(--green-100); margin-top: 2px; }
+
+  .role-bar {
+    display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap;
+  }
+  .role-btn {
+    flex: 1; min-width: 130px; padding: 8px 10px;
+    border: 1.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    background: var(--color-background-primary);
+    cursor: pointer; text-align: center; transition: all 0.15s;
+    font-size: 12px; color: var(--color-text-secondary); font-weight: 500;
+  }
+  .role-btn.active { border-color: var(--green-600); background: var(--green-50); color: var(--green-800); }
+  .role-btn i { display: block; font-size: 20px; margin-bottom: 4px; }
+
+  .nav-tabs {
+    display: flex; gap: 4px; margin-bottom: 1rem;
+    border-bottom: 0.5px solid var(--color-border-tertiary); padding-bottom: 0;
+  }
+  .nav-tab {
+    padding: 8px 14px; font-size: 13px; cursor: pointer; border: none;
+    background: transparent; color: var(--color-text-secondary); border-bottom: 2px solid transparent;
+    margin-bottom: -1px; transition: all 0.15s; font-family: var(--font-sans);
+  }
+  .nav-tab.active { color: var(--green-800); border-bottom-color: var(--green-600); font-weight: 500; }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; color: var(--color-text-tertiary);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; margin-top: 1.25rem;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 1rem; }
+  .module-card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 1rem;
+    cursor: pointer; transition: border-color 0.15s;
+  }
+  .module-card:hover { border-color: var(--color-border-secondary); }
+  .module-card.locked { opacity: 0.5; cursor: default; }
+  .mc-icon { width: 36px; height: 36px; border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 10px; }
+  .mc-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+  .mc-sub { font-size: 11px; color: var(--color-text-secondary); }
+  .mc-badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 99px; margin-top: 6px; font-weight: 500; }
+  .badge-green { background: var(--green-50); color: var(--green-800); }
+  .badge-amber { background: var(--amber-50); color: var(--amber-800); }
+  .badge-teal { background: var(--teal-50); color: var(--teal-800); }
+  .badge-purple { background: var(--purple-50); color: var(--purple-800); }
+  .badge-blue { background: var(--blue-50); color: var(--blue-800); }
+  .badge-coral { background: var(--coral-50); color: var(--coral-800); }
+
+  .lesson-view { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
+  .lesson-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+  .back-btn { background: none; border: none; cursor: pointer; color: var(--color-text-secondary); font-size: 18px; padding: 2px; }
+  .lesson-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
+
+  .progress-bar { height: 5px; background: var(--color-background-secondary); border-radius: 99px; margin-bottom: 1rem; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--green-600); border-radius: 99px; transition: width 0.4s; }
+
+  .step-content { min-height: 140px; }
+  .step-q { font-size: 15px; color: var(--color-text-primary); margin-bottom: 1rem; line-height: 1.6; }
+  .choices { display: flex; flex-direction: column; gap: 8px; }
+  .choice-btn {
+    padding: 10px 14px; border: 1px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md); background: var(--color-background-primary);
+    text-align: left; cursor: pointer; font-size: 13px; color: var(--color-text-primary);
+    transition: all 0.15s; font-family: var(--font-sans);
+  }
+  .choice-btn:hover { background: var(--color-background-secondary); }
+  .choice-btn.correct { background: var(--green-50); border-color: var(--green-600); color: var(--green-800); }
+  .choice-btn.wrong { background: var(--coral-50); border-color: var(--coral-600); color: var(--coral-800); }
+
+  .feedback-box { padding: 10px 14px; border-radius: var(--border-radius-md); font-size: 13px; margin-top: 10px; display: none; }
+  .feedback-box.show { display: block; }
+  .feedback-box.ok { background: var(--green-50); color: var(--green-800); }
+  .feedback-box.bad { background: var(--coral-50); color: var(--coral-800); }
+
+  .nav-btns { display: flex; justify-content: flex-end; gap: 8px; margin-top: 1rem; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1rem; }
+  .stat-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px; text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 500; color: var(--color-text-primary); }
+  .stat-lbl { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
+
+  .resource-row {
+    display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+    border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md);
+    margin-bottom: 8px; cursor: pointer; transition: background 0.12s;
+  }
+  .resource-row:hover { background: var(--color-background-secondary); }
+  .rr-icon { font-size: 20px; color: var(--color-text-secondary); flex-shrink: 0; }
+  .rr-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+  .rr-sub { font-size: 11px; color: var(--color-text-secondary); }
+  .rr-arrow { margin-left: auto; color: var(--color-text-tertiary); font-size: 16px; }
+
+  .level-selector { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; }
+  .level-chip {
+    padding: 5px 12px; border-radius: 99px; font-size: 12px; font-weight: 500;
+    border: 1px solid var(--color-border-tertiary); cursor: pointer;
+    background: var(--color-background-primary); color: var(--color-text-secondary);
+    transition: all 0.15s;
+  }
+  .level-chip.active { background: var(--teal-50); border-color: var(--teal-600); color: var(--teal-800); }
+
+  .activity-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem; margin-bottom: 10px; }
+  .ac-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .ac-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .ac-body { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+  .ac-meta { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+
+  .lang-toggle { display: flex; gap: 6px; margin-bottom: 1rem; }
+  .lang-btn { padding: 5px 14px; border-radius: 99px; font-size: 12px; font-weight: 500; border: 1px solid var(--color-border-secondary); cursor: pointer; background: var(--color-background-primary); color: var(--color-text-secondary); transition: all 0.15s; }
+  .lang-btn.active { background: var(--amber-50); border-color: var(--amber-600); color: var(--amber-800); }
+
+  .empty-state { text-align: center; padding: 2rem 1rem; color: var(--color-text-secondary); font-size: 13px; }
+  .empty-state i { font-size: 32px; display: block; margin-bottom: 8px; color: var(--color-text-tertiary); }
+</style>
+
+<h2 class="sr-only">YouthRise Changemakers FLN App — foundational literacy and numeracy learning platform for teachers, children, and adults</h2>
+
+<div class="app">
+
+  <div class="app-header">
+    <div class="app-logo"><i class="ti ti-plant-2" aria-hidden="true"></i></div>
+    <div>
+      <div class="app-title">YouthRise Changemakers</div>
+      <div class="app-sub">Foundational Literacy & Numeracy Platform</div>
+    </div>
+  </div>
+
+  <div class="role-bar">
+    <button class="role-btn active" onclick="setRole('teacher')" id="role-teacher">
+      <i class="ti ti-school" aria-hidden="true"></i>Teacher / Trainer
+    </button>
+    <button class="role-btn" onclick="setRole('learner')" id="role-learner">
+      <i class="ti ti-abc" aria-hidden="true"></i>Young Learner
+    </button>
+    <button class="role-btn" onclick="setRole('adult')" id="role-adult">
+      <i class="ti ti-users" aria-hidden="true"></i>Adult Learner
+    </button>
+  </div>
+
+  <div class="nav-tabs" id="nav-tabs"></div>
+
+  <div id="panels"></div>
+
+</div>
+
+<script>
+const ROLES = {
+  teacher: {
+    tabs: ['Dashboard','PD Modules','Lesson Plans','Resources'],
+    panels: ['tDash','tPD','tLessons','tResources']
+  },
+  learner: {
+    tabs: ['My Level','Learn','Practice','Progress'],
+    panels: ['lLevel','lLearn','lPractice','lProgress']
+  },
+  adult: {
+    tabs: ['Dashboard','Literacy','Numeracy','Digital Skills'],
+    panels: ['aDash','aLiteracy','aNumeracy','aDigital']
+  }
+};
+
+let currentRole = 'teacher';
+let currentTab = 0;
+let currentLesson = null;
+let currentStep = 0;
+let score = 0;
+let answered = false;
+let currentLang = 'en';
+let currentLevel = 'emerging';
+
+function setRole(role) {
+  currentRole = role;
+  currentTab = 0;
+  document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('role-' + role).classList.add('active');
+  renderTabs();
+  renderPanel();
+}
+
+function setTab(i) {
+  currentTab = i;
+  renderTabs();
+  renderPanel();
+}
+
+function renderTabs() {
+  const tabs = ROLES[currentRole].tabs;
+  document.getElementById('nav-tabs').innerHTML = tabs.map((t,i) =>
+    `<button class="nav-tab ${i===currentTab?'active':''}" onclick="setTab(${i})">${t}</button>`
+  ).join('');
+}
+
+function renderPanel() {
+  const key = ROLES[currentRole].panels[currentTab];
+  const p = document.getElementById('panels');
+  p.innerHTML = '';
+  const fns = {
+    tDash, tPD, tLessons, tResources,
+    lLevel, lLearn, lPractice, lProgress,
+    aDash, aLiteracy, aNumeracy, aDigital
+  };
+  if (fns[key]) p.innerHTML = fns[key]();
+}
+
+function tDash() {
+  return `
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num">7</div><div class="stat-lbl">Modules completed</div></div>
+    <div class="stat-card"><div class="stat-num">24</div><div class="stat-lbl">Learners tracked</div></div>
+    <div class="stat-card"><div class="stat-num">82%</div><div class="stat-lbl">Avg. score</div></div>
+  </div>
+  <div class="section-label">Continue learning</div>
+  <div class="activity-card">
+    <div class="ac-header">
+      <div class="ac-title">Language of Instruction — Module 3</div>
+      <span class="mc-badge badge-amber">In progress</span>
+    </div>
+    <div class="ac-body">Using mother tongue in early grade classrooms: strategies for rural settings.</div>
+    <div class="ac-meta"><span class="mc-badge badge-green">TaRL certified</span><span class="mc-badge badge-teal">45 min</span></div>
+  </div>
+  <div class="section-label">Upcoming sessions</div>
+  <div class="activity-card">
+    <div class="ac-header"><div class="ac-title">Peer Learning Circle — Week 4</div><span class="mc-badge badge-blue">Scheduled</span></div>
+    <div class="ac-body">Monthly refresher: classroom observation reflections and coaching debrief.</div>
+  </div>
+  `;
+}
+
+function tPD() {
+  const modules = [
+    {icon:'ti-book-2',color:'badge-green',title:'FLN Pedagogy Foundations',sub:'TaRL level-based approach',badge:'Start',bc:'badge-green'},
+    {icon:'ti-language',color:'badge-amber',title:'Language of Instruction',sub:'Swahili, English & mother tongue',badge:'Start',bc:'badge-amber'},
+    {icon:'ti-target',color:'badge-teal',title:'Assessment for Learning',sub:'Simple diagnostic tools',badge:'Start',bc:'badge-teal'},
+    {icon:'ti-users',color:'badge-purple',title:'Inclusive Teaching',sub:'Reaching every learner',badge:'Start',bc:'badge-purple'},
+    {icon:'ti-layout-grid',color:'badge-blue',title:'Classroom Management',sub:'1:10 ratio strategies',badge:'Start',bc:'badge-blue'},
+    {icon:'ti-certificate',color:'badge-coral',title:'Capstone Assessment',sub:'YouthRise FLN Educator cert',badge:'Locked',bc:'badge-coral'},
+  ];
+  return `
+  <div class="section-label">Professional development modules</div>
+  <div class="card-grid">
+    ${modules.map(m => `
+      <div class="module-card ${m.badge==='Locked'?'locked':''}" onclick="${m.badge!=='Locked'?`openLesson('${m.title}','teacher')`:''}">
+        <div class="mc-icon" style="background:var(--color-background-secondary)"><i class="ti ${m.icon}" aria-hidden="true"></i></div>
+        <div class="mc-title">${m.title}</div>
+        <div class="mc-sub">${m.sub}</div>
+        <span class="mc-badge ${m.bc}">${m.badge}</span>
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+function tLessons() {
+  return `
+  <div class="lang-toggle">
+    <button class="lang-btn ${currentLang==='en'?'active':''}" onclick="setLang('en')">English</button>
+    <button class="lang-btn ${currentLang==='sw'?'active':''}" onclick="setLang('sw')">Kiswahili</button>
+    <button class="lang-btn ${currentLang==='mt'?'active':''}" onclick="setLang('mt')">Mother tongue</button>
+  </div>
+  <div class="section-label">Ready-to-use lesson plans</div>
+  ${[
+    {t:'Phonics — Letter A sounds',lang:'Swahili/English',d:'30 min',level:'Beginners'},
+    {t:'Number recognition 1–10',lang:'Swahili',d:'25 min',level:'Beginners'},
+    {t:'Simple word reading',lang:'English',d:'35 min',level:'Emerging'},
+    {t:'Addition using objects',lang:'Swahili',d:'30 min',level:'Developing'},
+    {t:'Story time — comprehension',lang:'Mother tongue',d:'40 min',level:'Advancing'},
+  ].map(r => `
+    <div class="resource-row" onclick="sendPrompt('Show me the full lesson plan for: ${r.t}')">
+      <i class="ti ti-file-text rr-icon" aria-hidden="true"></i>
+      <div><div class="rr-title">${r.t}</div><div class="rr-sub">${r.lang} · ${r.d} · <span class="mc-badge badge-teal" style="font-size:10px">${r.level}</span></div></div>
+      <i class="ti ti-chevron-right rr-arrow" aria-hidden="true"></i>
+    </div>`).join('')}
+  `;
+}
+
+function tResources() {
+  return `
+  <div class="section-label">Partner resources</div>
+  ${[
+    {icon:'ti-external-link',title:'TaRL Africa Toolkit',sub:'Level-based assessment guides','link':'https://www.teachingattherightlevel.org'},
+    {icon:'ti-external-link',title:'Uwezo Learning Assessments',sub:'Annual measurement tools','link':'https://uwezo.net'},
+    {icon:'ti-external-link',title:'PAL Network Standards',sub:'People\'s Action for Learning','link':'https://www.palnetwork.org'},
+    {icon:'ti-download',title:'YouthRise Teacher Manual',sub:'Full PD handbook (PDF)','link':'#'},
+    {icon:'ti-download',title:'Porridge Program Guide',sub:'Nutrition + attendance tracking','link':'#'},
+  ].map(r => `
+    <div class="resource-row" onclick="openLink('${r.link}')">
+      <i class="ti ${r.icon} rr-icon" aria-hidden="true"></i>
+      <div><div class="rr-title">${r.title}</div><div class="rr-sub">${r.sub}</div></div>
+      <i class="ti ti-chevron-right rr-arrow" aria-hidden="true"></i>
+    </div>`).join('')}
+  `;
+}
+
+function lLevel() {
+  const levels = ['beginners','emerging','developing','advancing'];
+  return `
+  <div class="section-label">My current level</div>
+  <div class="level-selector">
+    ${levels.map(l => `<button class="level-chip ${currentLevel===l?'active':''}" onclick="setLevel('${l}')">${l.charAt(0).toUpperCase()+l.slice(1)}</button>`).join('')}
+  </div>
+  <div class="activity-card">
+    <div class="ac-header"><div class="ac-title">Level: ${currentLevel.charAt(0).toUpperCase()+currentLevel.slice(1)}</div><span class="mc-badge badge-teal">Active</span></div>
+    <div class="ac-body">${{
+      beginners:'We will learn letters and numbers together using songs and pictures.',
+      emerging:'We can name letters. Now we start putting sounds together to make words!',
+      developing:'We can read simple words. Now let us read short sentences and count fluently.',
+      advancing:'We are almost ready for Grade 1! Let us read stories and solve number problems.'
+    }[currentLevel]}</div>
+    <div class="ac-meta"><span class="mc-badge badge-green">Uwezo aligned</span><span class="mc-badge badge-amber">Group size: max 10</span></div>
+  </div>
+  <div class="section-label">Today's warm-up</div>
+  <div class="activity-card">
+    <div class="ac-header"><div class="ac-title">🌅 Good morning! It's learning time.</div></div>
+    <div class="ac-body">Remember to get your porridge first. Then find your group and let's begin!</div>
+  </div>`;
+}
+
+const LEARN_STEPS = {
+  beginners: [
+    {q:'What letter is this? 👉 A', choices:['A','B','C','D'], ans:0, fb:'Correct! This is the letter A. In Swahili: A kama Asubuhi!'},
+    {q:'How many dots? ● ● ●', choices:['2','3','4','5'], ans:1, fb:'Yes! There are 3 dots. Tatu in Swahili.'},
+    {q:'Which word starts with B?', choices:['Cat','Ball','Apple','Dog'], ans:1, fb:'Ball starts with B! Mpira in Swahili.'},
+  ],
+  emerging: [
+    {q:'Read this word: C-A-T. What is it?', choices:['Car','Cup','Cat','Can'], ans:2, fb:'Cat! Well done. Paka in Swahili 🐱'},
+    {q:'What is 2 + 3?', choices:['4','5','6','7'], ans:1, fb:'2 + 3 = 5. Mbili na tatu ni tano!'},
+    {q:'Which is a vowel?', choices:['B','C','A','D'], ans:2, fb:'A is a vowel! Vowels: A, E, I, O, U'},
+  ],
+  developing: [
+    {q:'Read and choose: "The dog runs fast." What does the dog do?', choices:['Sleeps','Eats','Runs','Jumps'], ans:2, fb:'Runs! Great reading comprehension.'},
+    {q:'Mama has 10 mangoes. She gives 4 away. How many left?', choices:['4','5','6','7'], ans:2, fb:'10 - 4 = 6 mangoes. Mbili zimesalia!'},
+    {q:'Which word rhymes with BAT?', choices:['Box','Hat','Bun','Hop'], ans:1, fb:'Bat and Hat rhyme — they end in -AT!'},
+  ],
+  advancing: [
+    {q:'Fill in: "The children _____ to school every day."', choices:['goes','go','went','going'], ans:1, fb:'Go is correct! "Children" is plural so we use "go".'},
+    {q:'A shopkeeper has 50 oranges. He sells 23. How many remain?', choices:['27','37','33','17'], ans:0, fb:'50 - 23 = 27. Excellent arithmetic!'},
+    {q:'What is the opposite of "happy"?', choices:['Sad','Fast','Tall','Loud'], ans:0, fb:'Opposite of happy is SAD. Huzuni in Swahili.'},
+  ]
+};
+
+function lLearn() {
+  if (currentLesson) return renderLessonStep();
+  return `
+  <div class="section-label">Choose a topic</div>
+  <div class="card-grid">
+    ${[
+      {icon:'ti-alphabet-latin',color:'badge-green',title:'Reading & Letters',sub:'Phonics & words'},
+      {icon:'ti-123',color:'badge-teal',title:'Numbers & Counting',sub:'Numeracy basics'},
+      {icon:'ti-palette',color:'badge-amber',title:'Stories & Songs',sub:'In Swahili & English'},
+      {icon:'ti-puzzle',color:'badge-purple',title:'Fun Activities',sub:'Games & challenges'},
+    ].map(m => `
+      <div class="module-card" onclick="openLesson('${m.title}','learner')">
+        <div class="mc-icon" style="background:var(--color-background-secondary)"><i class="ti ${m.icon}" aria-hidden="true"></i></div>
+        <div class="mc-title">${m.title}</div>
+        <div class="mc-sub">${m.sub}</div>
+        <span class="mc-badge ${m.color}">Start</span>
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+function lPractice() {
+  if (currentLesson) return renderLessonStep();
+  return `
+  <div class="section-label">Practice by level — ${currentLevel}</div>
+  <div class="activity-card" onclick="startPractice()" style="cursor:pointer">
+    <div class="ac-header"><div class="ac-title"><i class="ti ti-player-play" style="margin-right:6px" aria-hidden="true"></i>Start practice quiz</div><span class="mc-badge badge-green">3 questions</span></div>
+    <div class="ac-body">Short quiz matched to your ${currentLevel} level. Takes about 5 minutes.</div>
+  </div>
+  <div class="activity-card">
+    <div class="ac-header"><div class="ac-title">Flashcard drill</div><span class="mc-badge badge-teal">Letters & Numbers</span></div>
+    <div class="ac-body">Tap through letter-sound and number flashcards at your own pace.</div>
+  </div>`;
+}
+
+function lProgress() {
+  return `
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num">12</div><div class="stat-lbl">Sessions done</div></div>
+    <div class="stat-card"><div class="stat-num">75%</div><div class="stat-lbl">Quiz average</div></div>
+    <div class="stat-card"><div class="stat-num">3</div><div class="stat-lbl">Stars earned</div></div>
+  </div>
+  <div class="section-label">My achievements</div>
+  ${[
+    {icon:'ti-star',title:'First quiz complete!',bc:'badge-amber'},
+    {icon:'ti-book',title:'Read 5 words in a row',bc:'badge-green'},
+    {icon:'ti-123',title:'Counted to 20',bc:'badge-teal'},
+  ].map(a => `
+    <div class="activity-card">
+      <div class="ac-header">
+        <div style="display:flex;align-items:center;gap:8px">
+          <i class="ti ${a.icon}" style="font-size:18px" aria-hidden="true"></i>
+          <div class="ac-title">${a.title}</div>
+        </div>
+        <span class="mc-badge ${a.bc}">Earned</span>
+      </div>
+    </div>`).join('')}
+  `;
+}
+
+function aDash() {
+  return `
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num">5</div><div class="stat-lbl">Sessions attended</div></div>
+    <div class="stat-card"><div class="stat-num">3</div><div class="stat-lbl">Modules done</div></div>
+    <div class="stat-card"><div class="stat-num">2</div><div class="stat-lbl">Skills unlocked</div></div>
+  </div>
+  <div class="section-label">Your learning journey</div>
+  <div class="activity-card">
+    <div class="ac-header"><div class="ac-title">Next session: Wednesday evening</div><span class="mc-badge badge-green">Upcoming</span></div>
+    <div class="ac-body">Topic: Checking your M-PESA balance and reading transaction messages.</div>
+  </div>
+  <div class="activity-card">
+    <div class="ac-header"><div class="ac-title">Community tip of the day</div></div>
+    <div class="ac-body">"Always check your M-PESA balance before and after a transaction. Angalia salio lako kila wakati."</div>
+  </div>`;
+}
+
+function aLiteracy() {
+  if (currentLesson) return renderLessonStep();
+  return `
+  <div class="section-label">Literacy skills for adults</div>
+  <div class="lang-toggle">
+    <button class="lang-btn ${currentLang==='en'?'active':''}" onclick="setLang('en')">English</button>
+    <button class="lang-btn ${currentLang==='sw'?'active':''}" onclick="setLang('sw')">Kiswahili</button>
+  </div>
+  ${[
+    {icon:'ti-writing',title:'Write your name',sub:'Start with your own signature'},
+    {icon:'ti-road-sign',title:'Read signs & labels',sub:'Common signs in your area'},
+    {icon:'ti-message',title:'Read SMS messages',sub:'Phone texts step by step'},
+    {icon:'ti-file-invoice',title:'Read receipts & prices',sub:'Market and shop literacy'},
+  ].map(r => `
+    <div class="resource-row" onclick="openLesson('${r.title}','adult')">
+      <i class="ti ${r.icon} rr-icon" aria-hidden="true"></i>
+      <div><div class="rr-title">${r.title}</div><div class="rr-sub">${r.sub}</div></div>
+      <i class="ti ti-chevron-right rr-arrow" aria-hidden="true"></i>
+    </div>`).join('')}`;
+}
+
+function aNumeracy() {
+  if (currentLesson) return renderLessonStep();
+  return `
+  <div class="section-label">Numeracy for everyday life</div>
+  ${[
+    {icon:'ti-currency-dollar',title:'Counting money',sub:'Notes, coins, and change'},
+    {icon:'ti-receipt',title:'Checking prices & receipts',sub:'Avoid being overcharged'},
+    {icon:'ti-building-store',title:'Business record keeping',sub:'Simple daily records'},
+    {icon:'ti-plus',title:'Addition & subtraction',sub:'Daily life calculations'},
+  ].map(r => `
+    <div class="resource-row" onclick="openLesson('${r.title}','adult')">
+      <i class="ti ${r.icon} rr-icon" aria-hidden="true"></i>
+      <div><div class="rr-title">${r.title}</div><div class="rr-sub">${r.sub}</div></div>
+      <i class="ti ti-chevron-right rr-arrow" aria-hidden="true"></i>
+    </div>`).join('')}`;
+}
+
+function aDigital() {
+  if (currentLesson) return renderLessonStep();
+  const lessons = [
+    {icon:'ti-phone-call',title:'Make & receive a phone call',sub:'Step by step guide',badge:'badge-green'},
+    {icon:'ti-search',title:'Find a contact by name',sub:'Search the phonebook',badge:'badge-teal'},
+    {icon:'ti-device-mobile',title:'Check M-PESA balance',sub:'*334# and what it means',badge:'badge-amber'},
+    {icon:'ti-transfer',title:'Send M-PESA safely',sub:'Confirm number before sending',badge:'badge-blue'},
+    {icon:'ti-shield-check',title:'Avoid M-PESA scams',sub:'Common fraud to watch out for',badge:'badge-coral'},
+    {icon:'ti-message-circle',title:'Read & send an SMS',sub:'Basic text messaging',badge:'badge-purple'},
+  ];
+  return `
+  <div class="section-label">Digital & mobile literacy</div>
+  <div class="card-grid">
+    ${lessons.map(m => `
+      <div class="module-card" onclick="openLesson('${m.title}','adult')">
+        <div class="mc-icon" style="background:var(--color-background-secondary)"><i class="ti ${m.icon}" aria-hidden="true"></i></div>
+        <div class="mc-title">${m.title}</div>
+        <div class="mc-sub">${m.sub}</div>
+        <span class="mc-badge ${m.badge}">Learn</span>
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+const ADULT_STEPS = [
+  {q:'To check your M-PESA balance, you dial:', choices:['*100#','*334#','*111#','*200#'], ans:1, fb:'Dial *334# then press call. Angalia salio lako kwa kupiga *334#'},
+  {q:'A shopkeeper says mangoes cost 50 shillings. You give 100 shillings. How much change?', choices:['40','50','60','30'], ans:1, fb:'100 - 50 = 50 shillings change. Chenji yako ni shilingi 50.'},
+  {q:'Someone calls and asks for your M-PESA PIN. You should:', choices:['Tell them','Hang up — it is a scam','Send them money','Give your number'], ans:1, fb:'NEVER share your PIN! Hang up. Usimwambie mtu PIN yako kamwe.'},
+];
+
+function openLesson(title, role) {
+  currentLesson = title;
+  currentStep = 0;
+  score = 0;
+  answered = false;
+  renderPanel();
+}
+
+function startPractice() {
+  currentLesson = 'Practice Quiz';
+  currentStep = 0;
+  score = 0;
+  answered = false;
+  renderPanel();
+}
+
+function renderLessonStep() {
+  const steps = (currentRole === 'adult') ? ADULT_STEPS : LEARN_STEPS[currentLevel] || LEARN_STEPS.emerging;
+  if (currentStep >= steps.length) return renderComplete(steps.length);
+  const s = steps[currentStep];
+  const pct = Math.round((currentStep / steps.length) * 100);
+  return `
+  <div class="lesson-view">
+    <div class="lesson-header">
+      <button class="back-btn" onclick="closeLesson()" aria-label="Back"><i class="ti ti-arrow-left" aria-hidden="true"></i></button>
+      <div class="lesson-title">${currentLesson}</div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+    <div class="step-content">
+      <div class="step-q">${s.q}</div>
+      <div class="choices" id="choices">
+        ${s.choices.map((c,i) => `<button class="choice-btn" id="ch${i}" onclick="answer(${i},${s.ans},'${s.fb.replace(/'/g,"&#39;")}')">${c}</button>`).join('')}
+      </div>
+      <div class="feedback-box" id="fb-box"></div>
+    </div>
+    <div class="nav-btns">
+      <button onclick="nextStep(${steps.length})" id="next-btn" style="display:none">
+        ${currentStep+1 < steps.length ? 'Next <i class="ti ti-arrow-right" aria-hidden="true"></i>' : 'Finish <i class="ti ti-check" aria-hidden="true"></i>'}
+      </button>
+    </div>
+  </div>`;
+}
+
+function answer(chosen, correct, fb) {
+  if (answered) return;
+  answered = true;
+  if (chosen === correct) score++;
+  const btns = document.querySelectorAll('.choice-btn');
+  btns.forEach((b,i) => { b.disabled = true; if(i===correct) b.classList.add('correct'); else if(i===chosen) b.classList.add('wrong'); });
+  const fbBox = document.getElementById('fb-box');
+  fbBox.className = 'feedback-box show ' + (chosen===correct?'ok':'bad');
+  fbBox.innerHTML = (chosen===correct ? '<i class="ti ti-check" style="margin-right:6px" aria-hidden="true"></i>' : '<i class="ti ti-x" style="margin-right:6px" aria-hidden="true"></i>') + fb;
+  document.getElementById('next-btn').style.display = 'inline-flex';
+}
+
+function nextStep(total) {
+  currentStep++;
+  answered = false;
+  if (currentStep >= total) { renderPanel(); return; }
+  renderPanel();
+}
+
+function renderComplete(total) {
+  const pct = Math.round((score/total)*100);
+  const msg = pct >= 67 ? 'Great work! Keep going!' : 'Good try! Let\'s practice more.';
+  return `
+  <div class="lesson-view">
+    <div class="lesson-header">
+      <button class="back-btn" onclick="closeLesson()" aria-label="Back"><i class="ti ti-arrow-left" aria-hidden="true"></i></button>
+      <div class="lesson-title">Session complete!</div>
+    </div>
+    <div style="text-align:center;padding:2rem 1rem">
+      <i class="ti ti-trophy" style="font-size:40px;color:var(--amber-600);display:block;margin-bottom:12px" aria-hidden="true"></i>
+      <div style="font-size:28px;font-weight:500;margin-bottom:6px">${score} / ${total}</div>
+      <div style="color:var(--color-text-secondary);font-size:14px;margin-bottom:1.5rem">${msg}</div>
+      <span class="mc-badge badge-green" style="font-size:13px;padding:6px 16px">${pct}% score</span>
+    </div>
+    <div class="nav-btns">
+      <button onclick="closeLesson()">Back to modules</button>
+      <button onclick="retryLesson()">Try again ↗</button>
+    </div>
+  </div>`;
+}
+
+function closeLesson() { currentLesson = null; currentStep = 0; renderPanel(); }
+function retryLesson() { currentStep = 0; score = 0; answered = false; renderPanel(); }
+function setLang(l) { currentLang = l; renderPanel(); }
+function setLevel(l) { currentLevel = l; renderPanel(); }
+
+renderTabs();
+renderPanel();
+</script>
