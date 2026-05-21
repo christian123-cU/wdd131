@@ -1,0 +1,224 @@
+/* ============================================================
+   GLOBAL CSS VARIABLES  (Kenya flag palette)
+   ============================================================ */
+:root {
+  --color-black:   #000000;
+  --color-red:     #BB0000;
+  --color-green:   #006600;
+  --color-white:   #FFFFFF;
+  --color-cream:   #F5F0E8;
+  --color-card-bg: rgba(255, 255, 255, 0.88);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Lora', Georgia, serif;
+
+  --spacing-sm:  0.5rem;
+  --spacing-md:  1rem;
+  --spacing-lg:  2rem;
+  --spacing-xl:  3rem;
+
+  --radius: 6px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-black);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header {
+  background-color: var(--color-red);
+  text-align: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  color: var(--color-white);
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
+   FLAG STRIPE (green bar under header, like Kenya's flag)
+   ============================================================ */
+.flag-stripe {
+  height: 10px;
+  background-color: var(--color-green);
+}
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+main {
+  flex: 1;
+  position: relative;
+}
+
+/* ============================================================
+   HERO IMAGE  — mobile default: stacked small image
+   ============================================================ */
+.hero-picture {
+  display: block;
+  width: 100%;
+  line-height: 0; /* remove inline gap */
+}
+
+.hero-img {
+  width: 100%;
+  height: 55vw;       /* roughly portrait on mobile */
+  max-height: 420px;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+}
+
+/* ============================================================
+   INFO WRAPPER — stacked on mobile
+   ============================================================ */
+.info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-md);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   CARDS (Data & Weather)
+   ============================================================ */
+.card {
+  background-color: var(--color-card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.card h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-white);
+  background-color: var(--color-green);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.card dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.6rem 1.2rem;
+  padding: var(--spacing-md);
+}
+
+.card dt {
+  font-weight: 600;
+  text-align: right;
+  color: var(--color-black);
+}
+
+.card dd {
+  color: #222;
+}
+
+/* ============================================================
+   WEATHER CARD — mobile SVG icon visible
+   ============================================================ */
+.weather-icon-svg {
+  display: block;
+  margin: var(--spacing-md) auto var(--spacing-sm);
+  width: 80px;
+  height: 80px;
+}
+
+/* Weather heading — no pseudo-element on mobile */
+.weather-heading {
+  /* pseudo-element only on desktop — see media query below */
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background-color: var(--color-red);
+  color: var(--color-white);
+  text-align: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ============================================================
+   MEDIA QUERY — wider / desktop view  (≥ 768px)
+   ============================================================ */
+@media (min-width: 768px) {
+
+  /* Hero image taller on desktop */
+  .hero-img {
+    height: 75vh;
+    max-height: 700px;
+  }
+
+  /* Info wrapper overlaps the hero image, side by side */
+  .info-wrapper {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    padding: var(--spacing-xl) var(--spacing-xl);
+    pointer-events: none; /* let clicks pass through to image */
+  }
+
+  .card {
+    pointer-events: all;
+    min-width: 220px;
+    max-width: 300px;
+  }
+
+  /* Weather card aligns to the right */
+  .weather-card {
+    margin-left: auto;
+  }
+
+  /* Hide SVG icon on desktop — pseudo-element used instead */
+  .weather-icon-svg {
+    display: none;
+  }
+
+  /* Weather heading gets emoji via pseudo-element on desktop */
+  .weather-heading::after {
+    content: " ☀️";
+    font-size: 1.1em;
+  }
+}
