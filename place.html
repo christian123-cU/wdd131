@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="A informational page about Kenya, covering key data, geography, and current weather conditions." />
-  <meta name="author" content="David Oduor" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="description" content="A informational page about Kenya, covering key data, geography, and current weather conditions.">
+  <meta name="author" content="David Oduor">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kenya</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles/place.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/place.css">
   <script src="scripts/place.js" defer></script>
 </head>
 <body>
@@ -26,23 +26,23 @@
   <main>
     <!-- Hero image (mobile: small, desktop: large — via srcset / picture) -->
     <picture class="hero-picture">
-        <!-- Large image for wider screens -->
-        <source
-            srcset="images/kenya-large.webp"
-            sizes="(min-width: 768px) 100vw"
-            media="(min-width: 768px)"
-        />
-        <!-- Small image for mobile -->
-        <img
-            src="images/kenya-small.webp"
-            srcset="images/kenya-small.webp 600w,
-                    images/kenya-small.webp 400w"
-            sizes="(max-width: 767px) 100vw"
-            alt="Majestic lion on the Kenyan savanna"
-            class="hero-img"
-            width="1400"
-            height="700"
-        />
+      <!-- Large image for wider screens -->
+      <source
+        srcset="images/kenya-large.webp 900w"
+        sizes="(min-width: 768px) 100vw"
+        media="(min-width: 768px)"
+      >
+      <!-- Small image for mobile -->
+      <img
+        src="images/kenya-small.webp"
+        srcset="images/kenya-small.webp 600w,
+                images/kenya-small.webp 400w"
+        sizes="(max-width: 767px) 100vw"
+        alt="Majestic lion on the Kenyan savanna"
+        class="hero-img"
+        width="600"
+        height="400"
+      >
     </picture>
 
     <!-- DATA + WEATHER overlay / stack -->
@@ -52,12 +52,12 @@
       <section class="card data-card">
         <h2>Data</h2>
         <dl>
-          <dt>Area:</dt>       <dd>580,367 sq km</dd>
-          <dt>Population:</dt> <dd>54,985,698</dd>
-          <dt>Capital:</dt>    <dd>Nairobi</dd>
-          <dt>Languages:</dt>  <dd>Swahili, English</dd>
-          <dt>Currency:</dt>   <dd>Kenyan Shilling</dd>
-          <dt>Time Zone:</dt>  <dd>UTC+3</dd>
+          <dt>Area:</dt>        <dd>580,367 sq km</dd>
+          <dt>Population:</dt>  <dd>54,985,698</dd>
+          <dt>Capital:</dt>     <dd>Nairobi</dd>
+          <dt>Languages:</dt>   <dd>Swahili, English</dd>
+          <dt>Currency:</dt>    <dd>Kenyan Shilling</dd>
+          <dt>Time Zone:</dt>   <dd>UTC+3</dd>
           <dt>Calling Code:</dt><dd>+254</dd>
           <dt>Internet TLD:</dt><dd>.ke</dd>
         </dl>
@@ -65,13 +65,13 @@
 
       <!-- WEATHER section -->
       <section class="card weather-card">
-        <!-- Mobile: SVG icon (img tag) | Wide: pseudo-element emoji -->
+        <!-- Mobile: SVG icon | Wide: pseudo-element emoji -->
         <h2 class="weather-heading">Weather</h2>
 
         <!-- SVG icon shown only on mobile -->
         <svg class="weather-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="80" height="80" aria-label="Sunny weather icon" role="img">
-        <circle cx="50" cy="50" r="22" fill="#F5A623" stroke="#E08C00" stroke-width="2"/>
-        <g stroke="#F5A623" stroke-width="4" stroke-linecap="round">
+          <circle cx="50" cy="50" r="22" fill="#F5A623" stroke="#E08C00" stroke-width="2"/>
+          <g stroke="#F5A623" stroke-width="4" stroke-linecap="round">
             <line x1="50" y1="10" x2="50" y2="20"/>
             <line x1="50" y1="80" x2="50" y2="90"/>
             <line x1="10" y1="50" x2="20" y2="50"/>
@@ -80,14 +80,14 @@
             <line x1="72" y1="72" x2="79" y2="79"/>
             <line x1="79" y1="21" x2="72" y2="28"/>
             <line x1="28" y1="72" x2="21" y2="79"/>
-        </g>
+          </g>
         </svg>
 
         <dl>
-          <dt>Temperature:</dt>  <dd>24 °C</dd>
-          <dt>Conditions:</dt>   <dd>Sunny</dd>
-          <dt>Wind:</dt>         <dd>12 km/h</dd>
-          <dt>Wind Chill:</dt>   <dd id="wind-chill">--</dd>
+          <dt>Temperature:</dt> <dd>24 °C</dd>
+          <dt>Conditions:</dt>  <dd>Sunny</dd>
+          <dt>Wind:</dt>        <dd>12 km/h</dd>
+          <dt>Wind Chill:</dt>  <dd id="wind-chill">--</dd>
         </dl>
       </section>
 
