@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lazy Loading Images – WDD 131</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Serif+4:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/lazyload.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <span class="tag">WDD 131 · Week 04</span>
+      <h1>The Art of<br><em>Patient Loading</em></h1>
+      <p class="subtitle">Scroll down to witness lazy loading in action.<br>Watch the Network tab in DevTools.</p>
+      <div class="scroll-hint">
+        <span>scroll</span>
+        <div class="arrow"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="intro-bar">
+      <p>Each image below loads <strong>only when it enters your viewport</strong> — saving bandwidth and speeding up initial page load.</p>
+    </div>
+
+    <div class="gallery">
+
+      <figure class="photo-card">
+        <img
+          src="https://picsum.photos/seed/forest1/400/650"
+          alt="Dense forest with tall pine trees and soft morning light"
+          loading="lazy"
+          width="400"
+          height="650">
+        <figcaption>
+          <span class="photo-num">01</span>
+          <span class="photo-label">Forest Dawn</span>
+        </figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img
+          src="https://picsum.photos/seed/ocean2/400/650"
+          alt="Ocean waves crashing on a rocky shoreline at dusk"
+          loading="lazy"
+          width="400"
+          height="650">
+        <figcaption>
+          <span class="photo-num">02</span>
+          <span class="photo-label">Ocean Dusk</span>
+        </figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img
+          src="https://picsum.photos/seed/mountain3/400/650"
+          alt="Snow-capped mountain peak under a clear blue sky"
+          loading="lazy"
+          width="400"
+          height="650">
+        <figcaption>
+          <span class="photo-num">03</span>
+          <span class="photo-label">Mountain Peak</span>
+        </figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img
+          src="https://picsum.photos/seed/desert4/400/650"
+          alt="Vast desert landscape with sand dunes and golden light"
+          loading="lazy"
+          width="400"
+          height="650">
+        <figcaption>
+          <span class="photo-num">04</span>
+          <span class="photo-label">Desert Gold</span>
+        </figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img
+          src="https://picsum.photos/seed/waterfall5/400/650"
+          alt="Waterfall cascading down mossy green rocks into a pool"
+          loading="lazy"
+          width="400"
+          height="650">
+        <figcaption>
+          <span class="photo-num">05</span>
+          <span class="photo-label">Hidden Falls</span>
+        </figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img
+          src="https://picsum.photos/seed/canyon6/400/650"
+          alt="Deep canyon with layered red rock formations at sunset"
+          loading="lazy"
+          width="400"
+          height="650">
+        <figcaption>
+          <span class="photo-num">06</span>
+          <span class="photo-label">Red Canyon</span>
+        </figcaption>
+      </figure>
+
+    </div><!-- /.gallery -->
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-course">WDD 131 · Dynamic Web Fundamentals · BYU-Idaho</p>
+      <p id="last-modified" class="footer-modified"></p>
+    </div>
+  </footer>
+
+  <script src="scripts/lazyload.js"></script>
+</body>
+</html>

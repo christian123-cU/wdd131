@@ -1,0 +1,61 @@
+
+    table {
+      border-collapse: collapse;
+      width: 420px;
+      font-family: 'Times New Roman', Times, serif;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    caption {
+      caption-side: bottom;
+      padding: 8px;
+      font-size: 0.9em;
+      color: #555;
+      text-align: center;
+    }
+
+    thead tr:first-child th {
+      background-color: #111;
+      color: white;
+      text-align: center;
+      font-size: 1.2em;
+      padding: 16px;
+    }
+
+    thead tr:last-child {
+      background-color: #333;
+    }
+
+    thead tr:last-child th {
+      color: white;
+      text-align: center;
+      padding: 12px 20px;
+    }
+
+    thead tr:last-child th:first-child {
+      background-color: #111;
+    }
+
+    tbody tr {
+      background-color: #fff;
+    }
+
+    /* Zebra striping using nth-child */
+    tbody tr:nth-child(even) {
+      background-color: #f0f0f0;
+    }
+
+    tbody td {
+      padding: 12px 20px;
+      text-align: center;
+      font-size: 1.1em;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tbody td:first-child {
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .check { color: #5b4fcf; }
+    .cross { color: #e84057; }

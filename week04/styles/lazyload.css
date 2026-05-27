@@ -1,0 +1,253 @@
+/* ============================================
+   WDD 131 – Lazy Loading Activity
+   styles.css
+   ============================================ */
+
+/* ── CSS Variables ── */
+:root {
+  --bg:         #0d0d0d;
+  --surface:    #161616;
+  --border:     #2a2a2a;
+  --text:       #e8e2d9;
+  --muted:      #6b6560;
+  --accent:     #c9a96e;
+  --accent-dim: #7a5f38;
+  --white:      #ffffff;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Source Serif 4', Georgia, serif;
+
+  --radius: 4px;
+  --max-w:  480px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+header {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 100%, #1a1208 0%, transparent 70%),
+    var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  max-width: 640px;
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+  padding: 0.3em 1em;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+header h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+/* Scroll hint */
+.scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+.arrow {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50%       { transform: translateY(6px); opacity: 1; }
+}
+
+/* ── Intro Bar ── */
+.intro-bar {
+  max-width: var(--max-w);
+  margin: 4rem auto 3rem;
+  padding: 0 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.intro-bar strong {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+/* ── Gallery ── */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.5rem 6rem;
+  gap: 5rem;
+}
+
+/* ── Photo Card ── */
+.photo-card {
+  width: 100%;
+  max-width: var(--max-w);
+  position: relative;
+}
+
+/* The image fade-from-black animation */
+.photo-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 400 / 650;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+
+  /* Fade-from-black animation */
+  animation: fadeFromBlack 1.2s ease-out both;
+}
+
+@keyframes fadeFromBlack {
+  0% {
+    opacity: 0;
+    filter: brightness(0);
+  }
+  60% {
+    filter: brightness(0.6);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+/* Figcaption */
+.photo-card figcaption {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 0 0.25rem;
+  border-left: 2px solid var(--accent-dim);
+  padding-left: 0.75rem;
+}
+
+.photo-num {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.photo-label {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* Alternating layout — offset every other card */
+.photo-card:nth-child(even) {
+  align-self: flex-end;
+  margin-right: max(0px, calc(50% - var(--max-w) / 2 - 1rem));
+}
+
+.photo-card:nth-child(odd) {
+  align-self: flex-start;
+  margin-left: max(0px, calc(50% - var(--max-w) / 2 - 1rem));
+}
+
+/* On small screens — always center */
+@media (max-width: 680px) {
+  .photo-card:nth-child(even),
+  .photo-card:nth-child(odd) {
+    align-self: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* ── Footer ── */
+footer {
+  background-color: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-course {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.footer-modified {
+  font-size: 0.8rem;
+  color: var(--accent-dim);
+  font-style: italic;
+}
