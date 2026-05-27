@@ -9,9 +9,9 @@
   --surface:    #161616;
   --border:     #2a2a2a;
   --text:       #e8e2d9;
-  --muted:      #6b6560;
+  --muted:      #a89f96;   /* was #6b6560 — lightened for 4.5:1 contrast */
   --accent:     #c9a96e;
-  --accent-dim: #7a5f38;
+  --accent-dim: #b8935a;   /* was #7a5f38 — lightened for footer text */
   --white:      #ffffff;
 
   --font-display: 'Playfair Display', Georgia, serif;
@@ -86,7 +86,7 @@ header h1 em {
 
 .subtitle {
   font-size: 1rem;
-  color: var(--muted);
+  color: var(--text);   /* was --muted; use full text color on dark bg */
   line-height: 1.8;
   margin-bottom: 3rem;
 }
@@ -122,7 +122,7 @@ header h1 em {
   padding: 0 1.5rem;
   text-align: center;
   font-size: 0.9rem;
-  color: var(--muted);
+  color: var(--text);   /* was --muted — improved contrast */
   line-height: 1.8;
 }
 
@@ -198,7 +198,7 @@ header h1 em {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1rem;
-  color: var(--muted);
+  color: var(--text);   /* was --muted — improved contrast */
   font-weight: 400;
 }
 
@@ -243,11 +243,11 @@ footer {
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--text);   /* was --muted — improved contrast */
 }
 
 .footer-modified {
   font-size: 0.8rem;
-  color: var(--accent-dim);
+  color: var(--accent);   /* was --accent-dim — improved contrast */
   font-style: italic;
 }
