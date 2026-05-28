@@ -53,8 +53,7 @@ const temples = [
     location: "Mexico City, Mexico",
     dedicated: "1983, December, 2",
     area: 116642,
-    imageUrl:
-      "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/mexico-city-mexico/400x250/mexico-city-temple-exterior-1518361-wallpaper.jpg"
+    imageUrl: "images/mexico.jpg"
   },
   // ===== THREE ADDITIONAL TEMPLES =====
   {
@@ -62,8 +61,7 @@ const temples = [
     location: "Salt Lake City, Utah, United States",
     dedicated: "1893, April, 6",
     area: 253015,
-    imageUrl:
-      "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/salt-lake-city-utah/2018/400x250/slctemple7.jpg"
+    imageUrl: "images/saltlake.jpg"
   },
   {
     templeName: "Nairobi Kenya",
