@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Temple Album - A collection of Latter Day Saints Temple images">
+  <meta name="author" content="David Oduor">
+  <title>Temple Album</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/filtered-temples.css">
+  <link rel="stylesheet" href="styles/temples-large.css">
+  <script src="scripts/filtered-temples.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <div class="brand">
+        <span class="brand-icon">✦</span>
+        <h1>Temple Album</h1>
+      </div>
+      <button type="button" id="menu" aria-label="Toggle navigation">&#9776;</button>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#" data-filter="home" class="active">Home</a></li>
+        <li><a href="#" data-filter="old">Old</a></li>
+        <li><a href="#" data-filter="new">New</a></li>
+        <li><a href="#" data-filter="large">Large</a></li>
+        <li><a href="#" data-filter="small">Small</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-banner">
+      <h2 id="filter-title">All Temples</h2>
+      <p id="filter-subtitle">A sacred collection from around the world</p>
+    </div>
+    <div class="gallery" id="gallery">
+      <!-- Cards injected by JS -->
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-brand">✦ Temple Album</div>
+    <p>&copy;<span id="currentyear"></span> David Oduor &nbsp;|&nbsp; Nairobi, Kenya</p>
+    <p id="lastModified"></p>
+  </footer>
+
+</body>
+</html>

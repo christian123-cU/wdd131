@@ -1,0 +1,303 @@
+/* ===== CSS VARIABLES ===== */
+:root {
+  --primary:       #2c1a4e;
+  --primary-light: #3d2568;
+  --gold:          #c9a84c;
+  --gold-light:    #e8cc80;
+  --cream:         #faf7f2;
+  --white:         #ffffff;
+  --text:          #1a1a2e;
+  --text-muted:    #6b6880;
+  --bg:            #f4f1eb;
+  --card-bg:       #ffffff;
+  --shadow-sm:     0 2px 12px rgba(44,26,78,0.08);
+  --shadow-md:     0 8px 32px rgba(44,26,78,0.14);
+  --shadow-lg:     0 20px 60px rgba(44,26,78,0.18);
+  --border:        rgba(44,26,78,0.1);
+  --radius:        12px;
+  --nav-border:    rgba(255,255,255,0.18);
+  --nav-hover:     rgba(255,255,255,0.12);
+  --transition:    0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BASE ===== */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 24px rgba(44,26,78,0.3);
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand-icon {
+  color: var(--gold);
+  font-size: 1.1rem;
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+
+/* ===== HAMBURGER ===== */
+#menu {
+  font-size: 1.4rem;
+  background: none;
+  border: 1.5px solid var(--nav-border);
+  color: var(--white);
+  cursor: pointer;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  transition: background var(--transition);
+  line-height: 1;
+}
+
+#menu:hover {
+  background: var(--nav-hover);
+}
+
+#menu.open {
+  background: var(--nav-hover);
+}
+
+/* ===== NAV ===== */
+nav {
+  background: transparent;
+  border-top: 1px solid var(--nav-border);
+}
+
+.nav-links {
+  list-style: none;
+  display: none;
+  flex-direction: column;
+}
+
+.nav-links.open {
+  display: flex;
+}
+
+.nav-links li {
+  border-bottom: 1px solid var(--nav-border);
+}
+
+.nav-links li:last-child {
+  border-bottom: none;
+}
+
+.nav-links a {
+  display: block;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color var(--transition), background var(--transition), padding-left var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold-light);
+  background: var(--nav-hover);
+  padding-left: 1.75rem;
+}
+
+.nav-links a.active {
+  border-left: 3px solid var(--gold);
+}
+
+/* ===== PAGE BANNER ===== */
+.page-banner {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+}
+
+.page-banner h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.01em;
+}
+
+.page-banner p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+/* ===== MAIN ===== */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+/* ===== GALLERY — mobile: 1 column ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* ===== TEMPLE CARD ===== */
+.temple-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: transform var(--transition), box-shadow var(--transition);
+  animation: fadeInUp 0.5s ease both;
+}
+
+.temple-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.temple-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.temple-card:hover img {
+  transform: scale(1.04);
+}
+
+.card-body {
+  padding: 1.2rem 1.25rem 1.4rem;
+}
+
+.card-body h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.83rem;
+}
+
+.detail-label {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-size: 0.72rem;
+  min-width: 68px;
+  flex-shrink: 0;
+}
+
+.detail-value {
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+
+.empty-state .empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.3;
+}
+
+.empty-state p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.06em;
+}
+
+footer p {
+  margin-bottom: 0.3rem;
+  color: rgba(255,255,255,0.65);
+}
