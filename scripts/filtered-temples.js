@@ -70,16 +70,14 @@ const temples = [
     location: "Nairobi, Kenya",
     dedicated: "2024, February, 18",
     area: 19124,
-    imageUrl:
-      "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/nairobi-kenya/400x250/nairobi-kenya-temple-exterior.jpg"
+    imageUrl: "images/nairobi.jpg"
   },
   {
     templeName: "Rome Italy",
     location: "Rome, Italy",
     dedicated: "2019, March, 10",
     area: 40000,
-    imageUrl:
-      "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/rome-italy/400x250/rome-italy-temple-2.jpeg"
+    imageUrl: "images/rome.jpg"
   }
 ];
 
