@@ -1,5 +1,4 @@
 /* ===== CSS VARIABLES ===== */
-
 :root {
   --primary:       #2c1a4e;
   --primary-light: #3d2568;
@@ -20,7 +19,6 @@
   --nav-hover:     rgba(255,255,255,0.12);
   --transition:    0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 
 /* ===== RESET ===== */
 *, *::before, *::after {
