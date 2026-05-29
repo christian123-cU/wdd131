@@ -5,21 +5,21 @@ const temples = [
     location: "Aba, Nigeria",
     dedicated: "2005, August, 7",
     area: 11500,
-    imageUrl: "images/aba.webp"
+    imageUrl: "images/aba-nigeria.webp"
   },
   {
     templeName: "Manti Utah",
     location: "Manti, Utah, United States",
     dedicated: "1888, May, 21",
     area: 74792,
-    imageUrl: "images/manti.webp"
+    imageUrl: "images/manti-utah.webp"
   },
   {
     templeName: "Payson Utah",
     location: "Payson, Utah, United States",
     dedicated: "2015, June, 7",
     area: 96630,
-    imageUrl: "images/payson.webp"
+    imageUrl: "images/payson-utah.webp"
   },
   {
     templeName: "Yigo Guam",
