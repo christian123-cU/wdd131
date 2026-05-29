@@ -8,7 +8,7 @@
   --cream:          #faf7f2;
   --white:          #ffffff;
   --text:           #1a1a2e;
-  --text-muted:     #3a3750;  
+  --text-muted:     #3a3750;   /* FIXED: darkened further for detail values */   /* FIXED: was #6b6880 — darkened for contrast on white */
   --bg:             #f4f1eb;
   --card-bg:        #ffffff;
   --shadow-sm:      0 2px 12px rgba(44,26,78,0.08);
@@ -167,7 +167,7 @@ nav {
 .page-banner p {
   color: var(--text-muted);
   font-size: 0.95rem;
-  font-weight: 300;
+  font-weight: 400; /* FIXED: was 300 — too thin/faint */
   letter-spacing: 0.04em;
 }
 
