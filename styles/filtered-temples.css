@@ -1,23 +1,24 @@
 /* ===== CSS VARIABLES ===== */
 :root {
-  --primary:       #2c1a4e;
-  --primary-light: #3d2568;
-  --gold:          #c9a84c;
-  --gold-light:    #e8cc80;
-  --cream:         #faf7f2;
-  --white:         #ffffff;
-  --text:          #1a1a2e;
-  --text-muted:    #6b6880;
-  --bg:            #f4f1eb;
-  --card-bg:       #ffffff;
-  --shadow-sm:     0 2px 12px rgba(44,26,78,0.08);
-  --shadow-md:     0 8px 32px rgba(44,26,78,0.14);
-  --shadow-lg:     0 20px 60px rgba(44,26,78,0.18);
-  --border:        rgba(44,26,78,0.1);
-  --radius:        12px;
-  --nav-border:    rgba(255,255,255,0.18);
-  --nav-hover:     rgba(255,255,255,0.12);
-  --transition:    0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --primary:        #2c1a4e;
+  --primary-light:  #3d2568;
+  --gold:           #c9a84c;   /* decorative only: icons, borders, underlines */
+  --gold-light:     #e8cc80;
+  --gold-accessible:#7a5c1e;   /* ADDED: gold text on white — passes WCAG AA 4.5:1 */
+  --cream:          #faf7f2;
+  --white:          #ffffff;
+  --text:           #1a1a2e;
+  --text-muted:     #3a3750;  
+  --bg:             #f4f1eb;
+  --card-bg:        #ffffff;
+  --shadow-sm:      0 2px 12px rgba(44,26,78,0.08);
+  --shadow-md:      0 8px 32px rgba(44,26,78,0.14);
+  --shadow-lg:      0 20px 60px rgba(44,26,78,0.18);
+  --border:         rgba(44,26,78,0.1);
+  --radius:         12px;
+  --nav-border:     rgba(255,255,255,0.18);
+  --nav-hover:      rgba(255,255,255,0.12);
+  --transition:     0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ===== RESET ===== */
@@ -248,15 +249,15 @@ main {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-accessible); /* FIXED: was var(--gold) #c9a84c — now #7a5c1e for WCAG AA */
   font-size: 0.72rem;
   min-width: 68px;
   flex-shrink: 0;
 }
 
 .detail-value {
-  color: var(--text-muted);
-  font-weight: 300;
+  color: var(--text-muted); /* FIXED: #3a3750 — dark enough for WCAG AA */
+  font-weight: 400; /* FIXED: was 300 — thin weight reduces perceived contrast */
 }
 
 /* ===== EMPTY STATE ===== */
@@ -279,7 +280,6 @@ main {
 }
 
 /* ===== FOOTER ===== */
-/* FIXED: Added min-height to prevent layout shift (CLS) caused by font loading */
 footer {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   color: rgba(255,255,255,0.8);
