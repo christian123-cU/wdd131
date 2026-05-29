@@ -1,40 +1,121 @@
+/* ===== LARGE SCREEN OVERRIDES (min-width: 640px) ===== */
 @media (min-width: 640px) {
+
+  /* Hide hamburger, show full nav */
   #menu {
     display: none;
   }
 
-  .header-top {
-    justify-content: flex-start;
-  }
-
+  /* Header becomes a single flex row */
   header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     padding: 0 2rem;
   }
 
   .header-top {
-    padding: 1rem 0;
+    padding: 0;
+    border-bottom: none;
+    flex-shrink: 0;
   }
 
+  /* Nav sits beside the brand */
   nav {
-    background: transparent;
+    border-top: none;
+    border-left: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
   }
 
   .nav-links {
-    display: flex;
+    display: flex !important;
     flex-direction: row;
-    gap: 0.5rem;
+    gap: 0;
+  }
+
+  .nav-links li {
+    border-bottom: none;
   }
 
   .nav-links a {
-    border-top: none;
-    padding: 1rem 0.8rem;
+    padding: 1.4rem 1.1rem;
+    font-size: 0.78rem;
+    border-left: none;
+    position: relative;
   }
 
-  /* GALLERY - desktop: 3 columns */
+  /* Animated underline on hover / active */
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover::after,
+  .nav-links a.active::after {
+    width: 60%;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--gold-light);
+    background: transparent;
+    padding-left: 1.1rem; /* override mobile indent */
+    border-left: none;
+  }
+
+  /* Gallery: 2 columns on medium screens */
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+
+  .page-banner h2 {
+    font-size: 2.6rem;
+  }
+}
+
+/* ===== LARGE SCREEN (min-width: 900px) ===== */
+@media (min-width: 900px) {
+
+  /* Gallery: 3 columns on large screens */
   .gallery {
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
+
+  .temple-card img {
+    height: 220px;
+  }
+
+  .page-banner {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .page-banner h2 {
+    font-size: 3rem;
+  }
+
+  .page-banner p {
+    font-size: 1.05rem;
+  }
+
+  /* Stagger card animations on load */
+  .temple-card:nth-child(1)  { animation-delay: 0.05s; }
+  .temple-card:nth-child(2)  { animation-delay: 0.10s; }
+  .temple-card:nth-child(3)  { animation-delay: 0.15s; }
+  .temple-card:nth-child(4)  { animation-delay: 0.20s; }
+  .temple-card:nth-child(5)  { animation-delay: 0.25s; }
+  .temple-card:nth-child(6)  { animation-delay: 0.30s; }
+  .temple-card:nth-child(7)  { animation-delay: 0.35s; }
+  .temple-card:nth-child(8)  { animation-delay: 0.40s; }
+  .temple-card:nth-child(9)  { animation-delay: 0.45s; }
+  .temple-card:nth-child(10) { animation-delay: 0.50s; }
 }

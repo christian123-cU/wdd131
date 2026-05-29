@@ -84,16 +84,27 @@ const filterConfig = {
 };
 
 
+// FIXED: Track whether the first card has been rendered to apply fetchpriority
+let isFirstCard = true;
+
+
 // ===== CREATE A TEMPLE CARD =====
 function createTempleCard(temple) {
   const card = document.createElement('div');
   card.classList.add('temple-card');
 
+  // FIXED: First card gets fetchpriority="high" and eager loading for LCP optimisation.
+  // All subsequent cards keep lazy loading.
+  const imgAttrs = isFirstCard
+    ? 'fetchpriority="high" loading="eager"'
+    : 'loading="lazy"';
+  isFirstCard = false;
+
   card.innerHTML = `
     <img
       src="${temple.imageUrl}"
       alt="${temple.templeName} Temple"
-      loading="lazy"
+      ${imgAttrs}
     >
     <div class="card-body">
       <h3>${temple.templeName}</h3>
@@ -118,6 +129,10 @@ function createTempleCard(temple) {
 
 // ===== RENDER GALLERY =====
 function renderGallery(filter = 'home') {
+  // FIXED: Reset isFirstCard each time gallery renders so the first
+  // visible card always gets fetchpriority="high"
+  isFirstCard = true;
+
   const gallery     = document.getElementById('gallery');
   const titleEl     = document.getElementById('filter-title');
   const subtitleEl  = document.getElementById('filter-subtitle');

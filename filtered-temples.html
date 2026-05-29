@@ -6,12 +6,23 @@
   <meta name="description" content="Temple Album - A collection of Latter Day Saints Temple images">
   <meta name="author" content="David Oduor">
   <title>Temple Album</title>
+
+  <!-- Preconnect to Google Fonts origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=YourFont&display=swap" rel="stylesheet">
+
+  <!-- FIXED: Removed broken placeholder "YourFont" link -->
+  <!-- FIXED: Single correct Google Fonts request with display=swap -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/filtered-temples.css">
-  <link rel="stylesheet" href="styles/temples-large.css">
+
+  <!-- FIXED: Non-render-blocking CSS via preload -->
+  <link rel="preload" href="styles/filtered-temples.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="styles/temples-large.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="styles/filtered-temples.css">
+    <link rel="stylesheet" href="styles/temples-large.css">
+  </noscript>
+
   <script src="scripts/filtered-temples.js" defer></script>
 </head>
 <body>
