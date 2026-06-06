@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Product Review Form — Share your experience with our products">
+  <meta name="author" content="David Oduor">
+  <title>Product Review | Share Your Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/form.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <span class="brand-tag">⬡ Product Insights</span>
+      <h1>Share Your<br><em>Experience</em></h1>
+      <p class="header-sub">Your honest review helps others make better decisions. Takes less than 2 minutes.</p>
+    </div>
+    <div class="header-deco" aria-hidden="true">
+      <span class="deco-circle c1"></span>
+      <span class="deco-circle c2"></span>
+      <span class="deco-circle c3"></span>
+    </div>
+  </header>
+
+  <main>
+    <div class="form-wrapper">
+      <form method="get" action="review.html" id="reviewForm" novalidate>
+
+        <!-- Product Name -->
+        <div class="field-group">
+          <label for="productName">Product Name</label>
+          <div class="select-wrapper">
+            <select id="productName" name="productName" required>
+              <option value="" disabled selected>Select a Product ...</option>
+            </select>
+            <span class="select-arrow" aria-hidden="true">↓</span>
+          </div>
+        </div>
+
+        <!-- Overall Rating -->
+        <div class="field-group">
+          <fieldset class="rating-fieldset">
+            <legend>Overall Rating</legend>
+            <div class="star-rating" role="group" aria-label="Select a star rating">
+              <input type="radio" id="star1" name="rating" value="1" required>
+              <label for="star1" title="1 star">★</label>
+
+              <input type="radio" id="star2" name="rating" value="2">
+              <label for="star2" title="2 stars">★★</label>
+
+              <input type="radio" id="star3" name="rating" value="3">
+              <label for="star3" title="3 stars">★★★</label>
+
+              <input type="radio" id="star4" name="rating" value="4">
+              <label for="star4" title="4 stars">★★★★</label>
+
+              <input type="radio" id="star5" name="rating" value="5">
+              <label for="star5" title="5 stars">★★★★★</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Date of Installation -->
+        <div class="field-group">
+          <label for="installDate">Date of Installation</label>
+          <input type="date" id="installDate" name="installDate" required>
+        </div>
+
+        <!-- Useful Features -->
+        <div class="field-group">
+          <fieldset class="check-fieldset">
+            <legend>Which features did you find useful? <span class="legend-note">(Check all that apply)</span></legend>
+            <div class="checkbox-grid">
+              <label class="checkbox-label">
+                <input type="checkbox" id="durability" name="features" value="Durability">
+                <span class="checkmark"></span>
+                Durability
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="easeOfUse" name="features" value="Ease of Use">
+                <span class="checkmark"></span>
+                Ease of Use
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="performance" name="features" value="Performance">
+                <span class="checkmark"></span>
+                Performance
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="design" name="features" value="Design">
+                <span class="checkmark"></span>
+                Design
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="value" name="features" value="Value for Money">
+                <span class="checkmark"></span>
+                Value for Money
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="support" name="features" value="Customer Support">
+                <span class="checkmark"></span>
+                Customer Support
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Written Review -->
+        <div class="field-group">
+          <label for="writtenReview">Written Review <span class="optional-tag">Optional</span></label>
+          <textarea id="writtenReview" name="writtenReview" rows="5"
+            placeholder="Tell us what you loved, what could be better, and who you'd recommend this to..."></textarea>
+        </div>
+
+        <!-- User Name -->
+        <div class="field-group">
+          <label for="userName">Your Name <span class="optional-tag">Optional</span></label>
+          <input type="text" id="userName" name="userName"
+            placeholder="e.g. David O.">
+        </div>
+
+        <!-- Submit -->
+        <div class="field-group submit-group">
+          <input type="submit" value="Post Review →" id="submitBtn">
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      &copy; <span id="currentYear"></span>
+      🌸 David Oduor 🌸<br>
+      Kenya<br>
+      Last Modified: <span id="lastModified"></span>
+    </p>
+  </footer>
+
+  <script src="scripts/form.js"></script>
+</body>
+</html>
