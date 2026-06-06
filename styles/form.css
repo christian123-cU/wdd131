@@ -556,6 +556,45 @@ footer {
   margin-top: auto;
 }
 
+/* ── Validation Error Styles ───────────────────────────────────── */
+.input-error,
+select.input-error,
+input.input-error {
+  border-color: #c0392b !important;
+  box-shadow: 0 0 0 3px rgba(192,57,43,0.15) !important;
+}
+
+.star-rating.input-error {
+  outline: 2px dashed #c0392b;
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+#errorBox {
+  background: #fdf0ee;
+  border: 2px solid #c0392b;
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.2rem;
+  color: #c0392b;
+  font-size: 0.9rem;
+}
+
+#errorBox strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.93rem;
+}
+
+#errorBox ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+#errorBox li {
+  margin-bottom: 0.2rem;
+}
+
 /* ── Responsive ────────────────────────────────────────────────── */
 @media (max-width: 500px) {
   .form-wrapper { padding: 1.5rem 1rem; }
