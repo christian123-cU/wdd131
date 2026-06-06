@@ -49,16 +49,16 @@
               <input type="radio" id="star1" name="rating" value="1" required>
               <label for="star1" title="1 star">★</label>
 
-              <input type="radio" id="star2" name="rating" value="2">
+              <input type="radio" id="star2" name="rating" value="2" required>
               <label for="star2" title="2 stars">★★</label>
 
-              <input type="radio" id="star3" name="rating" value="3">
+              <input type="radio" id="star3" name="rating" value="3" required>
               <label for="star3" title="3 stars">★★★</label>
 
-              <input type="radio" id="star4" name="rating" value="4">
+              <input type="radio" id="star4" name="rating" value="4" required>
               <label for="star4" title="4 stars">★★★★</label>
 
-              <input type="radio" id="star5" name="rating" value="5">
+              <input type="radio" id="star5" name="rating" value="5" required>
               <label for="star5" title="5 stars">★★★★★</label>
             </div>
           </fieldset>
@@ -75,36 +75,48 @@
           <fieldset class="check-fieldset">
             <legend>Which features did you find useful? <span class="legend-note">(Check all that apply)</span></legend>
             <div class="checkbox-grid">
-              <label class="checkbox-label">
+              <div class="checkbox-item">
                 <input type="checkbox" id="durability" name="features" value="Durability">
-                <span class="checkmark"></span>
-                Durability
-              </label>
-              <label class="checkbox-label">
+                <label for="durability" class="checkbox-label">
+                  <span class="checkmark"></span>
+                  Durability
+                </label>
+              </div>
+              <div class="checkbox-item">
                 <input type="checkbox" id="easeOfUse" name="features" value="Ease of Use">
-                <span class="checkmark"></span>
-                Ease of Use
-              </label>
-              <label class="checkbox-label">
+                <label for="easeOfUse" class="checkbox-label">
+                  <span class="checkmark"></span>
+                  Ease of Use
+                </label>
+              </div>
+              <div class="checkbox-item">
                 <input type="checkbox" id="performance" name="features" value="Performance">
-                <span class="checkmark"></span>
-                Performance
-              </label>
-              <label class="checkbox-label">
+                <label for="performance" class="checkbox-label">
+                  <span class="checkmark"></span>
+                  Performance
+                </label>
+              </div>
+              <div class="checkbox-item">
                 <input type="checkbox" id="design" name="features" value="Design">
-                <span class="checkmark"></span>
-                Design
-              </label>
-              <label class="checkbox-label">
+                <label for="design" class="checkbox-label">
+                  <span class="checkmark"></span>
+                  Design
+                </label>
+              </div>
+              <div class="checkbox-item">
                 <input type="checkbox" id="value" name="features" value="Value for Money">
-                <span class="checkmark"></span>
-                Value for Money
-              </label>
-              <label class="checkbox-label">
+                <label for="value" class="checkbox-label">
+                  <span class="checkmark"></span>
+                  Value for Money
+                </label>
+              </div>
+              <div class="checkbox-item">
                 <input type="checkbox" id="support" name="features" value="Customer Support">
-                <span class="checkmark"></span>
-                Customer Support
-              </label>
+                <label for="support" class="checkbox-label">
+                  <span class="checkmark"></span>
+                  Customer Support
+                </label>
+              </div>
             </div>
           </fieldset>
         </div>
