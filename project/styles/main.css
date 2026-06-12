@@ -148,9 +148,6 @@ ul { list-style: none; padding: 0; }
 .brand-mark {
   background: var(--yellow);
   color: var(--dark);
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 1rem;
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -158,7 +155,6 @@ ul { list-style: none; padding: 0; }
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  letter-spacing: -.03em;
 }
 .brand-text { display: flex; flex-direction: column; }
 .brand-name {
@@ -983,8 +979,6 @@ ul { list-style: none; padding: 0; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 900;
   font-size: .9rem;
   flex-shrink: 0;
 }
