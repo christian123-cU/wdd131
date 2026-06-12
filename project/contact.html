@@ -18,7 +18,7 @@
   <header class="site-nav" id="top">
     <div class="nav-inner">
       <a href="index.html" class="nav-brand" aria-label="Roots and Rise home">
-        <span class="brand-mark">R&amp;R</span>
+        <img src="images/logo.webp" alt="Roots and Rise logo" class="brand-mark">
         <div class="brand-text">
           <span class="brand-name">Roots &amp; Rise</span>
           <span class="brand-sub">YouthRise Changemakers</span>
@@ -110,69 +110,85 @@
             </div>
 
             <form id="contact-form" class="contact-form" novalidate>
-              <div class="form-row form-row-split">
-                <div class="form-group">
-                  <label for="first-name" class="form-label">First name <span class="required" aria-label="required">*</span></label>
-                  <input type="text" id="first-name" name="first-name" class="form-input" autocomplete="given-name" required>
-                  <span class="form-error" id="first-name-error" aria-live="polite"></span>
-                </div>
-                <div class="form-group">
-                  <label for="last-name" class="form-label">Last name <span class="required" aria-label="required">*</span></label>
-                  <input type="text" id="last-name" name="last-name" class="form-input" autocomplete="family-name" required>
-                  <span class="form-error" id="last-name-error" aria-live="polite"></span>
-                </div>
-              </div>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="email" class="form-label">Email address <span class="required" aria-label="required">*</span></label>
-                  <input type="email" id="email" name="email" class="form-input" autocomplete="email" required>
-                  <span class="form-error" id="email-error" aria-live="polite"></span>
+              <!-- Name fields -->
+              <fieldset class="form-fieldset">
+                <legend class="form-legend">Your name</legend>
+                <div class="form-row form-row-split">
+                  <div class="form-group">
+                    <label for="first-name" class="form-label">First name <span class="required" aria-label="required">*</span></label>
+                    <input type="text" id="first-name" name="first-name" class="form-input" autocomplete="given-name" required>
+                    <span class="form-error" id="first-name-error" aria-live="polite"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="last-name" class="form-label">Last name <span class="required" aria-label="required">*</span></label>
+                    <input type="text" id="last-name" name="last-name" class="form-input" autocomplete="family-name" required>
+                    <span class="form-error" id="last-name-error" aria-live="polite"></span>
+                  </div>
                 </div>
-              </div>
+              </fieldset>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="organisation" class="form-label">Organisation <span class="optional">(optional)</span></label>
-                  <input type="text" id="organisation" name="organisation" class="form-input" autocomplete="organization">
+              <!-- Contact details -->
+              <fieldset class="form-fieldset">
+                <legend class="form-legend">Contact details</legend>
+                <div class="form-row">
+                  <div class="form-group" style="max-width: 360px;">
+                    <label for="email" class="form-label">Email address <span class="required" aria-label="required">*</span></label>
+                    <input type="email" id="email" name="email" class="form-input" autocomplete="email" required>
+                    <span class="form-error" id="email-error" aria-live="polite"></span>
+                  </div>
                 </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="role" class="form-label">How would you like to get involved? <span class="required" aria-label="required">*</span></label>
-                  <select id="role" name="role" class="form-input form-select" required>
-                    <option value="">Select a role…</option>
-                    <option value="volunteer-teacher">Volunteer teacher</option>
-                    <option value="funder">Individual donor / funder</option>
-                    <option value="institutional-partner">Institutional partner / NGO</option>
-                    <option value="community-member">Community member</option>
-                    <option value="researcher">Researcher / journalist</option>
-                    <option value="other">Other</option>
-                  </select>
-                  <span class="form-error" id="role-error" aria-live="polite"></span>
+                <div class="form-row">
+                  <div class="form-group" style="max-width: 360px;">
+                    <label for="organisation" class="form-label">Organisation <span class="optional">(optional)</span></label>
+                    <input type="text" id="organisation" name="organisation" class="form-input" autocomplete="organization">
+                  </div>
                 </div>
-              </div>
+              </fieldset>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="message" class="form-label">Your message <span class="required" aria-label="required">*</span></label>
-                  <textarea id="message" name="message" class="form-input form-textarea" rows="5" placeholder="Tell us a bit about yourself and how you'd like to support the programme…" required></textarea>
-                  <span class="form-error" id="message-error" aria-live="polite"></span>
-                  <span class="char-count" id="char-count" aria-live="polite">0 / 500 characters</span>
+              <!-- Involvement -->
+              <fieldset class="form-fieldset">
+                <legend class="form-legend">How you'd like to help</legend>
+                <div class="form-row">
+                  <div class="form-group" style="max-width: 360px;">
+                    <label for="role" class="form-label">How would you like to get involved? <span class="required" aria-label="required">*</span></label>
+                    <select id="role" name="role" class="form-input form-select" autocomplete="off" required>
+                      <option value="">Select a role…</option>
+                      <option value="volunteer-teacher">Volunteer teacher</option>
+                      <option value="funder">Individual donor / funder</option>
+                      <option value="institutional-partner">Institutional partner / NGO</option>
+                      <option value="community-member">Community member</option>
+                      <option value="researcher">Researcher / journalist</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <span class="form-error" id="role-error" aria-live="polite"></span>
+                  </div>
                 </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group form-check">
-                  <input type="checkbox" id="newsletter" name="newsletter" class="form-checkbox">
-                  <label for="newsletter" class="form-check-label">Subscribe to programme updates (quarterly)</label>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="message" class="form-label">Your message <span class="required" aria-label="required">*</span></label>
+                    <textarea id="message" name="message" class="form-input form-textarea" rows="5" placeholder="Tell us a bit about yourself and how you'd like to support the programme…" required></textarea>
+                    <span class="form-error" id="message-error" aria-live="polite"></span>
+                    <span class="char-count" id="char-count" aria-live="polite">0 / 500 characters</span>
+                  </div>
                 </div>
-              </div>
+              </fieldset>
 
-              <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
+              <!-- Preferences -->
+              <fieldset class="form-fieldset">
+                <legend class="form-legend">Preferences</legend>
+                <div class="form-row">
+                  <div class="form-group form-check">
+                    <input type="checkbox" id="newsletter" name="newsletter" class="form-checkbox">
+                    <label for="newsletter" class="form-check-label">Subscribe to programme updates (quarterly)</label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <button type="submit" class="btn btn-primary btn-full" id="submit-btn" name="send-message">
                 Send Message
               </button>
+
             </form>
           </div>
 
@@ -197,7 +213,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <span class="brand-mark">R&amp;R</span>
+        <img src="images/logo.webp" alt="Roots and Rise logo" class="brand-mark">
         <div>
           <p class="footer-name">Roots &amp; Rise</p>
           <p class="footer-org">YouthRise Changemakers · Mathare, Nairobi</p>
