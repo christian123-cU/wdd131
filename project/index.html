@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Roots and Rise — Foundational Literacy and Numeracy Programme by YouthRise Changemakers, serving Mathare, Nairobi.">
+  <meta name="author" content="YouthRise Changemakers">
+  <title>Roots & Rise — YouthRise Changemakers</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="scripts/main.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ░░ NAVIGATION ░░ -->
+  <header class="site-nav" id="top">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand" aria-label="Roots and Rise home">
+        <span class="brand-mark">R&amp;R</span>
+        <div class="brand-text">
+          <span class="brand-name">Roots &amp; Rise</span>
+          <span class="brand-sub">YouthRise Changemakers</span>
+        </div>
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="programme.html" class="nav-link">Our Programme</a>
+        <a href="contact.html" class="nav-link">Get Involved</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ░░ HERO ░░ -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="hero-eyebrow">Mathare, Nairobi · Kenya</p>
+          <h1 id="hero-heading" class="hero-heading">
+            Leaving No<br>
+            <em>Learner</em> Behind
+          </h1>
+          <p class="hero-body">
+            From the settlement to the village — YouthRise Changemakers builds foundational literacy and numeracy for children, teachers, and adults in Kenya's most excluded communities.
+          </p>
+          <div class="hero-actions">
+            <a href="contact.html" class="btn btn-primary">Join the Movement</a>
+            <a href="programme.html" class="btn btn-ghost">See Our Programme</a>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80"
+            alt="Children learning in a classroom in Nairobi"
+            class="hero-img"
+            loading="eager"
+            width="800"
+            height="600"
+          >
+          <div class="hero-badge">
+            <span class="badge-num" id="children-count">0</span>
+            <span class="badge-label">children reached</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ STATS BAR ░░ -->
+    <div class="stats-bar" aria-label="Key statistics">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <span class="stat-num" data-target="5000000">0</span>
+          <span class="stat-label">children in school but not learning</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="60" data-suffix="%">0</span>
+          <span class="stat-label">Grade 4 learners can't read Grade 3 text</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="3000000">0</span>
+          <span class="stat-label">children without ECDE access</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="1000000">0</span>
+          <span class="stat-label">children completely out of school</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ░░ PROBLEM STRIP ░░ -->
+    <section class="problem-strip" aria-labelledby="problem-heading">
+      <div class="container">
+        <div class="problem-inner">
+          <div class="problem-text">
+            <p class="section-eyebrow">The Crisis</p>
+            <h2 id="problem-heading" class="section-heading">A system built on assumptions, not realities</h2>
+            <p>Millions of children in Kenya's informal settlements and rural areas enter and exit primary school without mastering basic reading, writing, and numeracy. This is not a child's failure — it is a <strong>systemic failure</strong>.</p>
+            <p>The numeracy proficiency rate among Grade 3 learners dropped from <strong>68.8% in 2019</strong> to <strong>54.2% in 2022</strong> — despite curriculum reforms and billions in government spending. Business as usual is failing.</p>
+            <a href="programme.html#problem" class="btn btn-outline">Understand the Root Causes</a>
+          </div>
+          <div class="problem-visual" aria-hidden="true">
+            <div class="root-cause-list" id="root-cause-list">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ THREE PILLARS ░░ -->
+    <section class="pillars-section" aria-labelledby="pillars-heading">
+      <div class="container">
+        <div class="pillars-header">
+          <p class="section-eyebrow">Our Programme</p>
+          <h2 id="pillars-heading" class="section-heading">Three interlocking pillars</h2>
+          <p class="section-lead">We simultaneously address the learner, the teacher, the parent, and the home environment — because partial solutions produce partial results.</p>
+        </div>
+        <div class="pillars-grid">
+          <article class="pillar-card" data-pillar="1">
+            <div class="pillar-icon-wrap" aria-hidden="true">🏫</div>
+            <div class="pillar-number" aria-hidden="true">01</div>
+            <h3 class="pillar-title">Teacher Professional Development</h3>
+            <p class="pillar-body">Structured, ongoing training for early grade and community teachers — co-designed with TaRL Africa, Uwezo Kenya, and the PAL Network. Every teacher earns a certified YouthRise FLN Educator credential.</p>
+            <ul class="pillar-details">
+              <li>5-day intensive bootcamp</li>
+              <li>Monthly peer learning circles</li>
+              <li>Quarterly classroom coaching</li>
+            </ul>
+          </article>
+          <article class="pillar-card featured" data-pillar="2">
+            <div class="pillar-icon-wrap" aria-hidden="true">👶</div>
+            <div class="pillar-number" aria-hidden="true">02</div>
+            <h3 class="pillar-title">Child-Centred Learning Sessions</h3>
+            <p class="pillar-body">Level-based grouping using TaRL methodology, maximum 1:10 teacher-to-student ratio, daily porridge for every child — because a hungry child cannot learn.</p>
+            <ul class="pillar-details">
+              <li>Ability-based, not age-based groups</li>
+              <li>Daily uji (porridge) programme</li>
+              <li>ECDE gap-bridging for out-of-school children</li>
+            </ul>
+          </article>
+          <article class="pillar-card" data-pillar="3">
+            <div class="pillar-icon-wrap" aria-hidden="true">👩‍👩‍👧</div>
+            <div class="pillar-number" aria-hidden="true">03</div>
+            <h3 class="pillar-title">Adult Literacy &amp; Digital Inclusion</h3>
+            <p class="pillar-body">A child who goes home to a parent who cannot read cannot be fully supported. Adults gain literacy, numeracy, and mobile money skills that protect them from exploitation.</p>
+            <ul class="pillar-details">
+              <li>Basic literacy &amp; functional numeracy</li>
+              <li>M-PESA &amp; digital safety skills</li>
+              <li>Evening &amp; weekend sessions</li>
+            </ul>
+          </article>
+        </div>
+        <div class="pillars-cta">
+          <a href="programme.html" class="btn btn-primary">Explore the Full Programme</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ THEORY OF CHANGE ░░ -->
+    <section class="toc-section" aria-labelledby="toc-heading">
+      <div class="container">
+        <div class="toc-inner">
+          <div class="toc-text">
+            <p class="section-eyebrow">Theory of Change</p>
+            <h2 id="toc-heading" class="section-heading toc-heading-light">The root determines the fruit</h2>
+            <p class="toc-body">
+              <em>If</em> teachers are professionally equipped, <em>and</em> children learn at their own level in a language they understand, <em>and</em> they are nourished, <em>and</em> adults in the home are also growing in literacy and financial confidence — <em>then</em> foundational literacy and numeracy will improve, school readiness will increase, economic vulnerability will reduce, and an intergenerational cycle of exclusion will begin to break.
+            </p>
+          </div>
+          <div class="toc-chain" aria-label="Change pathway">
+            <div class="chain-step" id="chain-1">
+              <span class="chain-icon">🎓</span>
+              <span class="chain-label">Equipped Teachers</span>
+            </div>
+            <div class="chain-arrow" aria-hidden="true">→</div>
+            <div class="chain-step" id="chain-2">
+              <span class="chain-icon">📖</span>
+              <span class="chain-label">Children Learning</span>
+            </div>
+            <div class="chain-arrow" aria-hidden="true">→</div>
+            <div class="chain-step" id="chain-3">
+              <span class="chain-icon">🏠</span>
+              <span class="chain-label">Literate Homes</span>
+            </div>
+            <div class="chain-arrow" aria-hidden="true">→</div>
+            <div class="chain-step" id="chain-4">
+              <span class="chain-icon">🌱</span>
+              <span class="chain-label">Cycle Broken</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ PARTNERS ░░ -->
+    <section class="partners-section" aria-labelledby="partners-heading">
+      <div class="container">
+        <p class="section-eyebrow centered">Our Partners</p>
+        <h2 id="partners-heading" class="section-heading centered">Built with the best in the field</h2>
+        <div class="partners-grid" id="partners-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ QUOTE BAND ░░ -->
+    <section class="quote-band" aria-label="Programme philosophy">
+      <div class="container">
+        <blockquote class="programme-quote">
+          <p>"Meet the learner where they are,<br>not where the curriculum expects them to be."</p>
+          <footer>— <cite>YouthRise Changemakers Programme Philosophy</cite></footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ░░ CTA BAND ░░ -->
+    <section class="cta-band" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="cta-inner">
+          <div>
+            <h2 id="cta-heading" class="cta-heading">Ready to make a difference?</h2>
+            <p class="cta-body">Volunteer as a teacher, become a funding partner, or simply spread the word. Every action moves a child closer to a life of possibility.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="contact.html" class="btn btn-primary btn-large">Get Involved</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark">R&amp;R</span>
+        <div>
+          <p class="footer-name">Roots &amp; Rise</p>
+          <p class="footer-org">YouthRise Changemakers · Mathare, Nairobi</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <p class="footer-links-heading">Pages</p>
+        <nav aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="programme.html">Our Programme</a>
+          <a href="contact.html">Get Involved</a>
+          <a href="references.html">References</a>
+        </nav>
+      </div>
+      <div class="footer-contact">
+        <p class="footer-links-heading">Contact</p>
+        <p>Mathare, Nairobi, Kenya</p>
+        <p>youthrisechangemakers@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> YouthRise Changemakers · <a href="references.html">References</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
