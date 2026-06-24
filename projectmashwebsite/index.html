@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mashimoni CBO empowers children in Mathare, Nairobi through education, mentorship, and safe learning spaces.">
+<meta name="author" content="Mashimoni CBO">
+<title>Mashimoni CBO — Empowering Children Through Education in Mathare</title>
+<link rel="stylesheet" href="styles/main.css">
+<script src="scripts/main.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="site-nav" id="top">
+  <a href="index.html" class="nav-logo" aria-label="Mashimoni CBO home">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2L4 7v5c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V7L12 2z" fill="rgba(200,146,42,0.4)" stroke="#C8922A" stroke-width="1.5"/>
+        <path d="M9 12l2 2 4-4" stroke="#FAF8F3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="nav-logo-name">
+      Mashimoni <span class="accent">CBO</span>
+      <span>Mathare, Nairobi</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="about.html" class="nav-link">About Us</a>
+    <a href="blogs.html" class="nav-link">Stories</a>
+    <a href="partner.html" class="nav-link">Partner</a>
+    <a href="partner.html#contact" class="nav-link">Contact</a>
+  </div>
+  <a href="partner.html" class="nav-cta">Sponsor a Child →</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" class="mobile-link active">Home</a>
+  <a href="about.html" class="mobile-link">About Us</a>
+  <a href="blogs.html" class="mobile-link">Stories &amp; Blogs</a>
+  <a href="partner.html" class="mobile-link">Partner With Us</a>
+  <a href="partner.html#contact" class="mobile-link">Contact Us</a>
+  <a href="partner.html" class="mobile-cta">Sponsor a Child →</a>
+</div>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-texture" aria-hidden="true"></div>
+    <div class="hero-left">
+      <div class="hero-tag anim-up">
+        <span class="hero-tag-dot"></span>
+        Mathare, Nairobi · Est. 2019
+      </div>
+      <h1 class="hero-h1 anim-up">
+        Where the<br><em>Future</em><br><span class="break">Begins.</span>
+      </h1>
+      <p class="hero-desc anim-up">
+        In the heart of Mathare, children gather to read, learn, and dream. We nurture creativity, critical thinking, and life skills — giving every child the confidence to shape their own future.
+      </p>
+      <div class="hero-actions anim-up">
+        <a href="partner.html" class="btn btn-gold">Sponsor a Child →</a>
+        <a href="about.html" class="btn btn-ghost">Our Story</a>
+      </div>
+      <div class="hero-stats anim-up">
+        <div class="hero-stat">
+          <div class="hero-stat-num">500+</div>
+          <div class="hero-stat-label">Children Reached</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">6+</div>
+          <div class="hero-stat-label">Years of Service</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">12+</div>
+          <div class="hero-stat-label">Programs &amp; Clubs</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-inner">
+        <div class="hero-visual">
+          <svg viewBox="0 0 480 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;" role="img" aria-label="Illustration of an open book, an award star, and cards celebrating debate and chess club achievements">
+            <defs>
+              <radialGradient id="hg" cx="50%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#C8922A" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#C8922A" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="480" height="560" fill="url(#hg)"/>
+            <rect x="80" y="80" width="320" height="400" rx="4" fill="none" stroke="rgba(200,146,42,0.12)" stroke-width="1"/>
+            <rect x="100" y="100" width="280" height="360" rx="4" fill="none" stroke="rgba(200,146,42,0.08)" stroke-width="1"/>
+            <g transform="translate(140,150)">
+              <rect x="0" y="20" width="90" height="130" rx="4" fill="rgba(200,146,42,0.18)" stroke="rgba(200,146,42,0.5)" stroke-width="1.5"/>
+              <rect x="110" y="20" width="90" height="130" rx="4" fill="rgba(200,146,42,0.18)" stroke="rgba(200,146,42,0.5)" stroke-width="1.5"/>
+              <line x1="100" y1="20" x2="100" y2="150" stroke="rgba(200,146,42,0.6)" stroke-width="2"/>
+              <line x1="15" y1="45" x2="78" y2="45" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+              <line x1="15" y1="60" x2="78" y2="60" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+              <line x1="15" y1="75" x2="65" y2="75" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+              <line x1="15" y1="90" x2="78" y2="90" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+              <line x1="125" y1="45" x2="188" y2="45" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+              <line x1="125" y1="60" x2="188" y2="60" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+              <line x1="125" y1="75" x2="175" y2="75" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+            </g>
+            <g transform="translate(240,320)">
+              <circle cx="0" cy="0" r="32" fill="rgba(200,146,42,0.18)" stroke="rgba(200,146,42,0.5)" stroke-width="1.5"/>
+              <text x="0" y="10" text-anchor="middle" font-size="28" fill="rgba(232,184,75,0.95)">★</text>
+            </g>
+            <rect x="50" y="380" width="150" height="60" rx="6" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+            <text x="75" y="406" font-family="'Outfit',sans-serif" font-size="9" fill="rgba(232,184,75,0.95)" letter-spacing="1">DEBATE CHAMPIONS</text>
+            <text x="75" y="424" font-family="'Outfit',sans-serif" font-size="11" fill="rgba(255,255,255,0.85)" font-weight="500">YouthRise 2026 ★</text>
+            <rect x="280" y="380" width="150" height="60" rx="6" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+            <text x="305" y="406" font-family="'Outfit',sans-serif" font-size="9" fill="rgba(232,184,75,0.95)" letter-spacing="1">CHESS CLUB</text>
+            <text x="305" y="424" font-family="'Outfit',sans-serif" font-size="11" fill="rgba(255,255,255,0.85)" font-weight="500">Boardlords 2026 ♟</text>
+            <circle cx="240" cy="100" r="3" fill="rgba(200,146,42,0.6)"/>
+            <circle cx="120" cy="480" r="3" fill="rgba(200,146,42,0.4)"/>
+            <circle cx="360" cy="480" r="3" fill="rgba(200,146,42,0.4)"/>
+            <line x1="240" y1="100" x2="120" y2="480" stroke="rgba(200,146,42,0.1)" stroke-width="1"/>
+            <line x1="240" y1="100" x2="360" y2="480" stroke="rgba(200,146,42,0.1)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="hero-img-overlay">
+          <div class="hero-img-card">
+            <div class="hero-img-card-icon" aria-hidden="true">🏆</div>
+            <div class="hero-img-card-text">
+              <strong>Debate Champions 2026</strong>
+              Top 5 orators out of 2,000+ students across Mathare
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- Partners Strip -->
+  <div class="partners-strip">
+    <div class="partners-inner">
+      <div class="partners-label">Our Partners</div>
+      <div class="partners-logos">
+        <div class="partner-logo-item">ChallengeAid</div>
+        <div class="partner-logo-item">Education in a Suitcase</div>
+        <div class="partner-logo-item">RelibAfrica</div>
+        <div class="partner-logo-item">Boardlords Chess Club</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Who We Are -->
+  <section class="who-section" aria-labelledby="who-heading">
+    <div class="container">
+      <div class="who-grid">
+        <div class="who-visual">
+          <div class="who-visual-main">
+            <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style="width:85%;" role="img" aria-label="Illustration of three children standing together with books, symbolising community learning">
+              <defs>
+                <radialGradient id="wg" cx="50%" cy="50%" r="55%">
+                  <stop offset="0%" stop-color="rgba(200,146,42,0.15)"/>
+                  <stop offset="100%" stop-color="rgba(200,146,42,0)"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="520" fill="url(#wg)"/>
+              <g opacity="0.6">
+                <circle cx="120" cy="200" r="22" fill="rgba(200,146,42,0.4)" stroke="rgba(200,146,42,0.6)" stroke-width="1"/>
+                <rect x="104" y="228" width="32" height="55" rx="6" fill="rgba(200,146,42,0.3)" stroke="rgba(200,146,42,0.5)" stroke-width="1"/>
+                <circle cx="200" cy="170" r="26" fill="rgba(245,217,138,0.35)" stroke="rgba(245,217,138,0.55)" stroke-width="1"/>
+                <rect x="181" y="200" width="38" height="65" rx="6" fill="rgba(245,217,138,0.25)" stroke="rgba(245,217,138,0.4)" stroke-width="1"/>
+                <circle cx="280" cy="200" r="22" fill="rgba(200,146,42,0.4)" stroke="rgba(200,146,42,0.6)" stroke-width="1"/>
+                <rect x="264" y="228" width="32" height="55" rx="6" fill="rgba(200,146,42,0.3)" stroke="rgba(200,146,42,0.5)" stroke-width="1"/>
+              </g>
+              <g transform="translate(110, 330)">
+                <rect x="0" y="30" width="180" height="22" rx="3" fill="rgba(200,146,42,0.35)" stroke="rgba(200,146,42,0.55)" stroke-width="1"/>
+                <rect x="10" y="12" width="160" height="22" rx="3" fill="rgba(245,217,138,0.3)" stroke="rgba(245,217,138,0.45)" stroke-width="1"/>
+                <rect x="20" y="0" width="140" height="16" rx="3" fill="rgba(200,146,42,0.25)" stroke="rgba(200,146,42,0.45)" stroke-width="1"/>
+              </g>
+              <text x="200" y="440" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" fill="rgba(245,217,138,0.85)" font-style="italic">"Every child deserves a chance"</text>
+              <text x="200" y="460" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="9" fill="rgba(255,255,255,0.45)" letter-spacing="2">MASHIMONI CBO</text>
+            </svg>
+          </div>
+          <div class="who-visual-badge">
+            <div class="who-visual-badge-num">2019</div>
+            <div class="who-visual-badge-txt">Founded</div>
+          </div>
+        </div>
+        <div class="who-text">
+          <div class="eyebrow">Our Journey</div>
+          <h2 id="who-heading" class="section-title">Who <em>We Are</em></h2>
+          <div class="divider-gold"></div>
+          <p><strong>Mashimoni CBO</strong> was born out of a simple observation: too many children in Mathare were missing school due to financial challenges, unsafe spaces, and limited opportunities.</p>
+          <p>What began as a small library where children could read and study has grown into a lifeline for families — combining education, mentorship, and extracurricular activities that transform lives.</p>
+          <p>With the incredible support of <strong>ChallengeAid</strong>, <strong>Education in a Suitcase</strong>, and our growing network of partners, learners have been able to thrive — building confidence through digital lessons, mentorship, and hands-on learning tools.</p>
+          <p>Today, we proudly serve hundreds of children and families, proving that when a community invests in its young people — transformation follows.</p>
+          <div class="who-actions">
+            <a href="about.html" class="btn btn-primary">Read Our Story</a>
+            <a href="partner.html" class="btn btn-outline-forest">Partner With Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why We Exist -->
+  <section class="why-section" aria-labelledby="why-heading">
+    <div class="why-bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="why-layout">
+        <div class="why-text-col">
+          <div class="eyebrow on-dark">Our Core Purpose</div>
+          <h2 id="why-heading" class="section-title light" style="margin-bottom:1.5rem;">Why <em>We Exist</em></h2>
+          <div class="divider-gold"></div>
+          <p>In Mathare, dreams often collide with reality — a reality where poverty, hunger, and lack of opportunity make it hard for children to stay in school or believe in a better tomorrow.</p>
+          <p><strong>Mashimoni CBO exists to change that story.</strong></p>
+          <p>We believe every child deserves a chance to succeed — whether through education, sports, or creative expression. When a child learns, plays, or discovers their talent, something powerful happens: confidence grows, potential unfolds, and a brighter future begins.</p>
+          <div style="margin-top:2rem;">
+            <a href="partner.html" class="btn btn-gold">Join Our Mission →</a>
+          </div>
+        </div>
+        <div class="why-features">
+          <div class="why-feat">
+            <div class="why-feat-icon" aria-hidden="true">📚</div>
+            <div>
+              <div class="why-feat-title">Breaking the Cycle</div>
+              <div class="why-feat-desc">Education is the most powerful tool to escape poverty. We make sure no child in Mathare is denied access to it.</div>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon" aria-hidden="true">🌱</div>
+            <div>
+              <div class="why-feat-title">Building Resilience</div>
+              <div class="why-feat-desc">Beyond grades — we build resilience, purpose, and hope in every child who walks through our doors.</div>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon" aria-hidden="true">🤝</div>
+            <div>
+              <div class="why-feat-title">Community First</div>
+              <div class="why-feat-desc">We work hand-in-hand with parents, teachers, and local partners to create sustainable, community-owned change.</div>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon" aria-hidden="true">🏆</div>
+            <div>
+              <div class="why-feat-title">Celebrating Excellence</div>
+              <div class="why-feat-desc">From debate champions to chess pioneers — we create platforms for every kind of genius to shine.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs -->
+  <section class="programs-section" aria-labelledby="programs-heading">
+    <div class="container">
+      <div class="programs-header">
+        <div class="eyebrow">What We Do</div>
+        <h2 id="programs-heading" class="section-title">Our Core <em>Programs</em></h2>
+      </div>
+    </div>
+    <div class="container">
+      <div class="programs-grid">
+        <div class="program-card">
+          <div class="program-num" aria-hidden="true">01</div>
+          <div class="program-icon" aria-hidden="true">📖</div>
+          <h3 class="program-title">Library &amp; Learning Spaces</h3>
+          <p class="program-desc">A safe, quiet place where children can read, study, and explore their potential. Our community library is more than shelves of books — it's a home of ideas where curiosity comes alive.</p>
+        </div>
+        <div class="program-card">
+          <div class="program-num" aria-hidden="true">02</div>
+          <div class="program-icon" aria-hidden="true">🌟</div>
+          <h3 class="program-title">Mentorship &amp; Life Skills</h3>
+          <p class="program-desc">Through personal mentorship, leadership training, and guidance programs, we help children and youth develop confidence, discipline, and resilience to face life's challenges.</p>
+        </div>
+        <div class="program-card">
+          <div class="program-num" aria-hidden="true">03</div>
+          <div class="program-icon" aria-hidden="true">⚽</div>
+          <h3 class="program-title">Sports &amp; Extracurriculars</h3>
+          <p class="program-desc">From football to creative arts to debate and chess, we use play as a tool for growth — giving every child a reason to dream big and stay in school.</p>
+        </div>
+        <div class="program-card">
+          <div class="program-num" aria-hidden="true">04</div>
+          <div class="program-icon" aria-hidden="true">🌍</div>
+          <h3 class="program-title">Community Empowerment</h3>
+          <p class="program-desc">We work hand in hand with parents, teachers, and local partners to create long-term change — ensuring education, safety, and opportunity for every child in Mathare.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blogs Preview -->
+  <section class="blogs-preview-section" aria-labelledby="stories-heading">
+    <div class="container">
+      <div class="blogs-preview-header">
+        <div>
+          <div class="eyebrow">From the Field</div>
+          <h2 id="stories-heading" class="section-title">Stories &amp; <em>Insights</em></h2>
+        </div>
+        <a href="blogs.html" class="btn btn-outline-forest">View All Stories →</a>
+      </div>
+      <div class="blogs-grid">
+        <a href="blogs.html" class="blog-card featured">
+          <div class="blog-card-img">
+            <div class="blog-card-img-inner" aria-hidden="true">🏆</div>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-cat">Youth Empowerment · April 2026</div>
+            <h3 class="blog-card-title">From Mathare to the Podium: YouthRise ChangeMakers Redefine What's Possible</h3>
+            <p class="blog-card-excerpt">Out of 24 Schools of Hope across Nairobi's Mathare cluster, Mashimoni SOH showed up and stood out — crowning a formidable squad of champions.</p>
+            <span class="blog-read-link">Read Story →</span>
+          </div>
+        </a>
+        <a href="blogs.html" class="blog-card">
+          <div class="blog-card-img">
+            <div class="blog-card-img-inner" aria-hidden="true">♟</div>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-cat">Chess &amp; Talent · 2026</div>
+            <h3 class="blog-card-title">The Unlikely Birth of Boardlords Chess Club</h3>
+            <p class="blog-card-excerpt">A story of passion, strategy, and what happens when you give young minds a challenge.</p>
+            <span class="blog-read-link">Read Story →</span>
+          </div>
+        </a>
+        <a href="blogs.html" class="blog-card">
+          <div class="blog-card-img">
+            <div class="blog-card-img-inner" aria-hidden="true">📚</div>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-cat">Education · 2025</div>
+            <h3 class="blog-card-title">Breaking Poverty with Books: Literacy in Slums vs. Urban Averages</h3>
+            <p class="blog-card-excerpt">Walk into our library on a sunny afternoon and you'll hear it — pages turning, pencils scratching, quiet concentration.</p>
+            <span class="blog-read-link">Read Story →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact CTA -->
+  <section class="impact-cta" aria-labelledby="impact-cta-heading">
+    <div class="impact-cta-bg" aria-hidden="true"></div>
+    <div class="impact-cta-inner">
+      <div>
+        <h2 id="impact-cta-heading" class="impact-cta-h">Want to Help Us Grow?</h2>
+        <p class="impact-cta-p">Your support helps provide books, digital access, mentorship, and a safe space where young minds can learn, grow, and dream beyond their circumstances — one child at a time.</p>
+      </div>
+      <div class="impact-cta-btns">
+        <a href="partner.html" class="btn btn-white">Sponsor a Child</a>
+        <a href="partner.html" class="btn btn-ink">Partner With Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stories -->
+  <section class="stories-section" aria-labelledby="results-heading">
+    <div class="container">
+      <div class="eyebrow">Real Results</div>
+      <h2 id="results-heading" class="section-title">Access <em>Creates</em> Excellence</h2>
+      <div class="divider-gold"></div>
+      <p class="section-sub" style="margin-bottom:0;">Behind every great result is an environment that made focus possible. Real student journeys showing how opportunity transforms discipline, focus, and academic performance.</p>
+      <div class="stories-grid">
+        <article class="story-card">
+          <div class="story-card-eyebrow">Debate · 2026</div>
+          <h3 class="story-card-title">Sharlyn's Road to Outstanding Debater</h3>
+          <p class="story-card-text">From quiet student to the cluster's most formidable voice — Sharlyn Stacy (Grade 10) clinched Outstanding Debater among 2,000+ competitors with razor-sharp rebuttals that stunned judges across all rounds.</p>
+        </article>
+        <article class="story-card">
+          <div class="story-card-eyebrow">Chess · 2026</div>
+          <h3 class="story-card-title">How Boardlords Made History</h3>
+          <p class="story-card-text">Chess players from the informal settlements of Mathare, Kibera, Kawangware, and beyond made history — proving that strategy, intellect, and ambition know no postal code.</p>
+        </article>
+        <article class="story-card">
+          <div class="story-card-eyebrow">Girls Education · Ongoing</div>
+          <h3 class="story-card-title">Why Educating Girls Doubles Impact</h3>
+          <p class="story-card-text">In Mathare, 43% of girls don't attend school. Our girls and boys clubs, sanitary towel programs, and mentorship initiatives are changing that — one family at a time.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Mashimoni <span class="accent">CBO</span></div>
+        <div class="footer-brand-sub">Community Based Organization</div>
+        <p class="footer-brand-text">Dedicated to giving every child in Mathare equal access to education, mentorship, and safe learning spaces. Breaking cycles of poverty, one child at a time.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/groups/720879072797440" class="footer-social-btn" title="Facebook" target="_blank" rel="noopener">f</a>
+          <a href="https://wa.me/0771671502" class="footer-social-btn" title="WhatsApp" target="_blank" rel="noopener">w</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blogs.html">Stories &amp; Blogs</a></li>
+          <li><a href="partner.html">Partner With Us</a></li>
+          <li><a href="partner.html#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Our Programs</div>
+        <ul class="footer-links">
+          <li><a href="#">Library &amp; Learning Spaces</a></li>
+          <li><a href="#">Mentorship &amp; Life Skills</a></li>
+          <li><a href="#">Sports &amp; Extracurriculars</a></li>
+          <li><a href="#">Community Empowerment</a></li>
+          <li><a href="#">Girls &amp; Boys Club</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Get In Touch</div>
+        <ul class="footer-links">
+          <li><a href="tel:+254710852444">+254 710 852 444</a></li>
+          <li><a href="https://wa.me/0771671502" target="_blank" rel="noopener">WhatsApp Us</a></li>
+          <li><a href="#">Mathare, Nairobi, Kenya</a></li>
+          <li><a href="#">Mashimoni Community</a></li>
+        </ul>
+        <div style="margin-top:1.5rem;">
+          <a href="partner.html" class="btn btn-gold btn-sm">Sponsor a Child →</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© <span class="footer-year"></span> Mashimoni Community Based Organization · All Rights Reserved</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

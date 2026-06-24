@@ -1,0 +1,1945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mashimoni CBO — Empowering Children Through Education in Mathare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+:root {
+  --forest:   #1A3D2B;
+  --forest-d: #0F2419;
+  --forest-l: #2E6E4A;
+  --gold:     #C8922A;
+  --gold-l:   #E8B84B;
+  --gold-xl:  #F5D98A;
+  --gold-pale:#FDF8ED;
+  --cream:    #FAF8F3;
+  --cream-d:  #F0EAE0;
+  --cream-dd: #E4DBD0;
+  --ink:      #0D0B08;
+  --ink-m:    #3B3530;
+  --ink-f:    #7A7268;
+  --white:    #FFFFFF;
+  --red:      #A83228;
+  --serif:    'Cormorant Garamond', Georgia, serif;
+  --sans:     'Outfit', system-ui, sans-serif;
+  --nav-h:    72px;
+  --max:      1280px;
+  --trans:    0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════
+   PAGE SYSTEM
+═══════════════════════════════════════════ */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem;
+  background: rgba(250,248,243,0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(200,146,42,0.12);
+  transition: box-shadow var(--trans);
+}
+#nav.scrolled { box-shadow: 0 1px 32px rgba(0,0,0,0.08); }
+.nav-logo {
+  display: flex; align-items: center; gap: 0.8rem;
+  cursor: pointer; text-decoration: none;
+}
+.nav-logo-mark {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--forest);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-logo-mark svg { width: 18px; height: 18px; }
+.nav-logo-name {
+  font-family: var(--serif); font-size: 1.2rem; font-weight: 600;
+  color: var(--ink); letter-spacing: 0.01em; line-height: 1.1;
+}
+.nav-logo-name span { display: block; font-size: 0.6rem; font-family: var(--sans); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-f); }
+.nav-links { display: flex; align-items: center; gap: 0.25rem; }
+.nav-link {
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--ink-m);
+  padding: 0.5rem 0.85rem; border-radius: 4px; cursor: pointer;
+  border: none; background: none;
+  transition: color var(--trans), background var(--trans);
+}
+.nav-link:hover, .nav-link.active { color: var(--forest); background: rgba(26,61,43,0.07); }
+.nav-cta {
+  background: var(--forest); color: var(--white);
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; border: none; cursor: pointer;
+  padding: 0.65rem 1.5rem; border-radius: 3px;
+  margin-left: 0.75rem;
+  transition: background var(--trans), transform var(--trans);
+}
+.nav-cta:hover { background: var(--forest-l); transform: translateY(-1px); }
+.nav-mobile-btn {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-mobile-btn span { width: 22px; height: 1.5px; background: var(--ink); display: block; transition: var(--trans); }
+.mobile-menu {
+  display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; bottom: 0;
+  background: var(--cream); z-index: 999; flex-direction: column;
+  padding: 2rem 2rem; gap: 0.5rem; overflow-y: auto;
+}
+.mobile-menu.open { display: flex; }
+.mobile-link {
+  font-size: 1.1rem; font-weight: 500; color: var(--ink-m); cursor: pointer;
+  padding: 0.85rem 0; border-bottom: 1px solid var(--cream-dd);
+  background: none; border-left: none; border-right: none; border-top: none; text-align: left;
+  transition: color var(--trans);
+}
+.mobile-link:hover { color: var(--forest); }
+.mobile-cta {
+  margin-top: 1rem; background: var(--forest); color: var(--white);
+  padding: 1rem; border-radius: 4px; border: none; cursor: pointer;
+  font-size: 0.9rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  #nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-mobile-btn { display: flex; }
+}
+
+/* ═══════════════════════════════════════════
+   SHARED UTILITIES
+═══════════════════════════════════════════ */
+.pt-nav { padding-top: var(--nav-h); }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 3rem; }
+@media (max-width: 768px) { .container { padding: 0 1.5rem; } }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.65rem;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1rem;
+}
+.eyebrow::before { content: ''; width: 24px; height: 1.5px; background: var(--gold); flex-shrink: 0; }
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  font-weight: 600; line-height: 1.1; color: var(--ink);
+}
+.section-title em { font-style: italic; color: var(--forest); }
+.section-title.light { color: var(--white); }
+.section-title.light em { color: var(--gold-xl); }
+
+.section-sub {
+  font-size: 1.05rem; font-weight: 300; color: var(--ink-f); line-height: 1.8;
+  max-width: 580px;
+}
+.section-sub.light { color: rgba(255,255,255,0.6); }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--forest); color: var(--white);
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.85rem 2rem; border-radius: 3px; border: none; cursor: pointer;
+  text-decoration: none; transition: background var(--trans), transform var(--trans);
+}
+.btn-primary:hover { background: var(--forest-l); transform: translateY(-2px); }
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--white);
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.85rem 2rem; border-radius: 3px; border: none; cursor: pointer;
+  text-decoration: none; transition: background var(--trans), transform var(--trans);
+}
+.btn-gold:hover { background: #a77420; transform: translateY(-2px); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: var(--white);
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.85rem 2rem; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.3); cursor: pointer;
+  text-decoration: none; transition: border-color var(--trans), background var(--trans);
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.07); }
+.btn-outline-forest {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: var(--forest);
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.82rem 2rem; border-radius: 3px; border: 1.5px solid var(--forest); cursor: pointer;
+  text-decoration: none; transition: background var(--trans), color var(--trans);
+}
+.btn-outline-forest:hover { background: var(--forest); color: var(--white); }
+
+.divider-gold { width: 44px; height: 2px; background: var(--gold); margin: 1.5rem 0; }
+
+/* Animations */
+@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes slideRight { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+@keyframes countUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+.anim-up { opacity:0; animation: fadeUp 0.8s ease forwards; }
+.anim-up:nth-child(1) { animation-delay:0.05s; }
+.anim-up:nth-child(2) { animation-delay:0.15s; }
+.anim-up:nth-child(3) { animation-delay:0.25s; }
+.anim-up:nth-child(4) { animation-delay:0.35s; }
+.anim-up:nth-child(5) { animation-delay:0.45s; }
+
+/* ═══════════════════════════════════════════
+   HERO SECTION (HOME)
+═══════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  background: var(--forest-d);
+  display: grid; grid-template-columns: 1fr 1fr;
+  position: relative; overflow: hidden;
+}
+.hero-texture {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    radial-gradient(circle at 25% 50%, rgba(200,146,42,0.08) 0%, transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(46,110,74,0.15) 0%, transparent 45%);
+}
+.hero-grid-lines {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  opacity: 0.04;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: calc(var(--nav-h) + 4rem) 4rem 4rem;
+  position: relative; z-index: 2;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: rgba(200,146,42,0.15); border: 1px solid rgba(200,146,42,0.3);
+  padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 2rem;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold-l);
+  width: fit-content;
+}
+.hero-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(3.2rem, 5.5vw, 6rem);
+  font-weight: 600; line-height: 1.0; color: var(--white);
+  margin-bottom: 1.8rem;
+}
+.hero-h1 em { font-style: italic; color: var(--gold-xl); }
+.hero-h1 .break { display: block; }
+.hero-desc {
+  font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.65);
+  line-height: 1.85; max-width: 440px; margin-bottom: 2.5rem;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+.hero-stats {
+  display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;
+}
+.hero-stat { padding: 0 2.5rem 0 0; }
+.hero-stat:first-child { padding-left: 0; }
+.hero-stat + .hero-stat { border-left: 1px solid rgba(255,255,255,0.1); padding-left: 2.5rem; }
+.hero-stat-num {
+  font-family: var(--serif); font-size: 2.4rem; font-weight: 600;
+  color: var(--gold-xl); line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.67rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 0.3rem;
+}
+.hero-right {
+  position: relative; overflow: hidden;
+}
+.hero-right-inner {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #2E6E4A 0%, #1A3D2B 50%, #0F2419 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-visual {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  padding: 3rem;
+}
+.hero-img-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 3rem 2.5rem 2rem;
+  background: linear-gradient(transparent, rgba(10,20,14,0.85));
+}
+.hero-img-card {
+  background: rgba(200,146,42,0.15); backdrop-filter: blur(10px);
+  border: 1px solid rgba(200,146,42,0.3); border-radius: 6px;
+  padding: 1rem 1.4rem; display: inline-flex; align-items: center; gap: 1rem;
+}
+.hero-img-card-icon { font-size: 1.4rem; }
+.hero-img-card-text { font-size: 0.82rem; color: rgba(255,255,255,0.9); line-height: 1.4; }
+.hero-img-card-text strong { display: block; color: var(--gold-l); font-weight: 600; }
+.hero-scroll {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+.hero-scroll-line {
+  width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(200,146,42,0.6), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: calc(var(--nav-h) + 2.5rem) 1.5rem 3rem; }
+  .hero-right { height: 320px; }
+  .hero-right-inner { position: relative; height: 320px; }
+  .hero-stats { gap: 0; }
+  .hero-stat { padding: 0 1.5rem 0 0; }
+  .hero-stat + .hero-stat { padding-left: 1.5rem; }
+  .hero-scroll { display: none; }
+}
+
+/* ═══════════════════════════════════════════
+   PARTNERS STRIP
+═══════════════════════════════════════════ */
+.partners-strip {
+  background: var(--white); border-bottom: 1px solid var(--cream-dd);
+  padding: 2rem 3rem;
+}
+.partners-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;
+}
+.partners-label {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-f); white-space: nowrap;
+  padding-right: 2rem; border-right: 1px solid var(--cream-dd);
+}
+.partners-logos { display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; }
+.partner-logo-item {
+  font-family: var(--serif); font-size: 1.1rem; font-weight: 600;
+  color: var(--ink-f); transition: color var(--trans); cursor: default;
+}
+.partner-logo-item:hover { color: var(--forest); }
+@media (max-width: 768px) {
+  .partners-strip { padding: 1.5rem; }
+  .partners-inner { gap: 1.5rem; }
+  .partners-label { border-right: none; padding-right: 0; border-bottom: 1px solid var(--cream-dd); padding-bottom: 1rem; width: 100%; }
+}
+
+/* ═══════════════════════════════════════════
+   WHO WE ARE (HOME)
+═══════════════════════════════════════════ */
+.who-section { padding: 8rem 0; background: var(--cream); }
+.who-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: center;
+}
+.who-visual { position: relative; }
+.who-visual-main {
+  border-radius: 4px; overflow: hidden;
+  background: linear-gradient(145deg, var(--forest) 0%, var(--forest-d) 100%);
+  aspect-ratio: 4/5;
+  display: flex; align-items: center; justify-content: center;
+}
+.who-visual-badge {
+  position: absolute; bottom: -1.5rem; right: -1.5rem;
+  background: var(--gold); border-radius: 4px;
+  padding: 1.5rem; text-align: center; min-width: 140px;
+  box-shadow: 0 8px 40px rgba(200,146,42,0.35);
+}
+.who-visual-badge-num {
+  font-family: var(--serif); font-size: 2.8rem; font-weight: 700;
+  color: var(--white); line-height: 1;
+}
+.who-visual-badge-txt {
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255,255,255,0.8); margin-top: 0.3rem;
+}
+.who-text { padding-right: 2rem; }
+.who-text p { font-size: 1rem; font-weight: 300; color: var(--ink-m); line-height: 1.9; margin-bottom: 1.2rem; }
+.who-text p strong { font-weight: 600; color: var(--ink); }
+.who-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+@media (max-width: 900px) {
+  .who-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .who-text { padding-right: 0; }
+}
+
+/* ═══════════════════════════════════════════
+   WHY WE EXIST
+═══════════════════════════════════════════ */
+.why-section {
+  background: var(--forest-d); padding: 8rem 0; position: relative; overflow: hidden;
+}
+.why-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 70% 50%, rgba(200,146,42,0.07) 0%, transparent 60%);
+}
+.why-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.why-text-col p { font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.9; margin-bottom: 1.2rem; }
+.why-text-col p strong { font-weight: 600; color: rgba(255,255,255,0.9); }
+.why-features { display: flex; flex-direction: column; gap: 1.5rem; }
+.why-feat {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  padding: 1.5rem; border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  transition: background var(--trans), border-color var(--trans);
+}
+.why-feat:hover { background: rgba(255,255,255,0.06); border-color: rgba(200,146,42,0.25); }
+.why-feat-icon {
+  width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(200,146,42,0.15); border: 1px solid rgba(200,146,42,0.3);
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.why-feat-title {
+  font-family: var(--serif); font-size: 1.1rem; font-weight: 600;
+  color: var(--white); margin-bottom: 0.3rem;
+}
+.why-feat-desc { font-size: 0.88rem; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.7; }
+@media (max-width: 900px) {
+  .why-layout { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+/* ═══════════════════════════════════════════
+   PROGRAMS
+═══════════════════════════════════════════ */
+.programs-section { padding: 8rem 0; background: var(--cream); }
+.programs-header { margin-bottom: 4rem; }
+.programs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: var(--cream-dd); }
+.program-card {
+  background: var(--cream); padding: 2.8rem 2rem;
+  position: relative; overflow: hidden;
+  transition: background var(--trans);
+  cursor: default;
+}
+.program-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform var(--trans);
+}
+.program-card:hover { background: var(--white); }
+.program-card:hover::before { transform: scaleX(1); }
+.program-num {
+  font-family: var(--serif); font-size: 3.5rem; font-weight: 600;
+  color: var(--cream-dd); line-height: 1; margin-bottom: 1.5rem;
+  transition: color var(--trans);
+}
+.program-card:hover .program-num { color: var(--gold-xl); }
+.program-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+.program-title {
+  font-family: var(--serif); font-size: 1.3rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 0.8rem; line-height: 1.3;
+}
+.program-desc { font-size: 0.88rem; font-weight: 300; color: var(--ink-f); line-height: 1.75; }
+@media (max-width: 900px) { .programs-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .programs-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════════════════════════
+   BLOGS PREVIEW (HOME)
+═══════════════════════════════════════════ */
+.blogs-preview-section { padding: 8rem 0; background: var(--white); }
+.blogs-preview-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 3.5rem; gap: 2rem; flex-wrap: wrap;
+}
+.blogs-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2px; background: var(--cream-dd); }
+.blog-card {
+  background: var(--cream); overflow: hidden; cursor: pointer;
+  transition: background var(--trans);
+}
+.blog-card:hover { background: var(--white); }
+.blog-card-img {
+  width: 100%; overflow: hidden;
+  background: linear-gradient(135deg, var(--forest) 0%, var(--forest-d) 100%);
+}
+.blog-card-img-inner {
+  width: 100%; aspect-ratio: 16/10; object-fit: cover;
+  background: linear-gradient(145deg, #2E6E4A 0%, #0F2419 100%);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.5s ease; font-size: 2rem; color: rgba(255,255,255,0.2);
+}
+.blog-card:hover .blog-card-img-inner { transform: scale(1.03); }
+.blog-card.featured .blog-card-img-inner { aspect-ratio: 4/3; font-size: 3rem; }
+.blog-card-body { padding: 1.8rem; }
+.blog-cat {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;
+}
+.blog-card-title {
+  font-family: var(--serif); font-weight: 600; line-height: 1.25;
+  color: var(--ink); margin-bottom: 0.7rem;
+}
+.blog-card.featured .blog-card-title { font-size: 1.6rem; }
+.blog-card:not(.featured) .blog-card-title { font-size: 1.05rem; }
+.blog-card-excerpt {
+  font-size: 0.85rem; font-weight: 300; color: var(--ink-f); line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+.blog-card-meta { font-size: 0.7rem; color: var(--ink-f); }
+.blog-read-link {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--forest);
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  text-decoration: none; transition: gap var(--trans);
+}
+.blog-read-link:hover { gap: 0.7rem; }
+@media (max-width: 900px) {
+  .blogs-grid { grid-template-columns: 1fr; }
+  .blogs-preview-header { flex-direction: column; align-items: flex-start; }
+}
+
+/* ═══════════════════════════════════════════
+   IMPACT CTA BAND
+═══════════════════════════════════════════ */
+.impact-cta {
+  background: var(--gold); padding: 6rem 0;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.impact-cta-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(
+    -45deg, transparent, transparent 40px,
+    rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 80px
+  );
+}
+.impact-cta-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 3rem;
+  display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center;
+}
+.impact-cta-h {
+  font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 600; color: var(--ink); line-height: 1.2; margin-bottom: 0.8rem;
+}
+.impact-cta-p { font-size: 1rem; font-weight: 300; color: rgba(14,11,8,0.65); max-width: 540px; }
+.impact-cta-btns { display: flex; gap: 1rem; flex-shrink: 0; flex-wrap: wrap; }
+.btn-white {
+  background: var(--white); color: var(--gold);
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.85rem 2rem; border-radius: 3px; border: none; cursor: pointer;
+  text-decoration: none; transition: background var(--trans), transform var(--trans);
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-white:hover { background: var(--cream); transform: translateY(-2px); }
+.btn-ink {
+  background: var(--ink); color: var(--white);
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.85rem 2rem; border-radius: 3px; border: none; cursor: pointer;
+  text-decoration: none; transition: background var(--trans), transform var(--trans);
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-ink:hover { background: var(--ink-m); transform: translateY(-2px); }
+@media (max-width: 768px) {
+  .impact-cta-inner { grid-template-columns: 1fr; }
+  .impact-cta-inner { padding: 0 1.5rem; }
+}
+
+/* ═══════════════════════════════════════════
+   STORIES SECTION (HOME)
+═══════════════════════════════════════════ */
+.stories-section { padding: 8rem 0; background: var(--cream); }
+.stories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--cream-dd); margin-top: 3rem; }
+.story-card {
+  background: var(--cream); padding: 2.5rem;
+  border-top: 3px solid transparent;
+  transition: border-color var(--trans), background var(--trans);
+}
+.story-card:hover { border-color: var(--gold); background: var(--white); }
+.story-card-eyebrow {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+}
+.story-card-title {
+  font-family: var(--serif); font-size: 1.35rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 0.8rem; line-height: 1.3;
+}
+.story-card-text { font-size: 0.88rem; font-weight: 300; color: var(--ink-f); line-height: 1.75; }
+@media (max-width: 900px) { .stories-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════════════════════════
+   ─── ABOUT PAGE ───
+═══════════════════════════════════════════ */
+.page-hero {
+  background: var(--forest-d); padding: calc(var(--nav-h) + 6rem) 0 6rem;
+  position: relative; overflow: hidden;
+}
+.page-hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 60% 40%, rgba(200,146,42,0.08) 0%, transparent 55%);
+}
+.page-hero-content { position: relative; z-index: 2; }
+.page-hero-breadcrumb {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3);
+  margin-bottom: 1.5rem;
+}
+.page-hero-breadcrumb span { color: var(--gold); }
+.page-hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 600; line-height: 1.0; color: var(--white);
+  margin-bottom: 1.5rem;
+}
+.page-hero-h1 em { font-style: italic; color: var(--gold-xl); }
+.page-hero-desc {
+  font-size: 1.1rem; font-weight: 300; color: rgba(255,255,255,0.6);
+  max-width: 580px; line-height: 1.85;
+}
+
+.about-history { padding: 8rem 0; }
+.about-history-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: center; }
+.about-history-visual {
+  position: relative;
+  background: linear-gradient(145deg, var(--forest) 0%, var(--forest-d) 100%);
+  border-radius: 4px; aspect-ratio: 3/4;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.about-history-card {
+  position: absolute; bottom: -1rem; left: -1.5rem;
+  background: var(--white); border-radius: 4px; padding: 1.5rem 1.8rem;
+  box-shadow: 0 16px 60px rgba(0,0,0,0.12);
+  border-left: 3px solid var(--gold);
+}
+.about-history-card-year {
+  font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1;
+}
+.about-history-card-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-f); }
+.about-text p { font-size: 1rem; font-weight: 300; color: var(--ink-m); line-height: 1.9; margin-bottom: 1.2rem; }
+
+.mv-section { padding: 8rem 0; background: var(--forest-d); position: relative; overflow: hidden; }
+.mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: rgba(255,255,255,0.05); margin-top: 4rem; }
+.mv-card {
+  background: rgba(255,255,255,0.03); padding: 3.5rem;
+  position: relative; overflow: hidden;
+  transition: background var(--trans);
+}
+.mv-card:hover { background: rgba(255,255,255,0.06); }
+.mv-card-label {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;
+}
+.mv-card-title {
+  font-family: var(--serif); font-size: 2rem; font-weight: 600;
+  color: var(--white); margin-bottom: 1.5rem; line-height: 1.2;
+}
+.mv-card-text { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.85; }
+.mv-card-num {
+  position: absolute; bottom: 2rem; right: 2.5rem;
+  font-family: var(--serif); font-size: 7rem; font-weight: 700;
+  color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none;
+}
+
+.values-section { padding: 8rem 0; background: var(--cream); }
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--cream-dd); margin-top: 3rem; }
+.value-card {
+  background: var(--cream); padding: 2.8rem 2.2rem;
+  transition: background var(--trans);
+}
+.value-card:hover { background: var(--white); }
+.value-card-icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(26,61,43,0.08); border: 1.5px solid rgba(26,61,43,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 1.5rem;
+}
+.value-card-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: 0.7rem; }
+.value-card-desc { font-size: 0.88rem; font-weight: 300; color: var(--ink-f); line-height: 1.75; }
+@media (max-width: 900px) {
+  .about-history-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .mv-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════
+   ─── BLOGS PAGE ───
+═══════════════════════════════════════════ */
+.blogs-page-section { padding: 6rem 0 8rem; background: var(--cream); }
+.blogs-filter {
+  display: flex; gap: 0.5rem; margin-bottom: 3rem; flex-wrap: wrap;
+}
+.filter-btn {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.5rem 1.1rem; border-radius: 100px;
+  border: 1.5px solid var(--cream-dd); background: transparent; cursor: pointer;
+  color: var(--ink-f); transition: all var(--trans);
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--forest); color: var(--white); border-color: var(--forest);
+}
+.blogs-full-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--cream-dd); }
+.blog-full-card {
+  background: var(--cream); overflow: hidden; cursor: pointer;
+  transition: background var(--trans);
+}
+.blog-full-card:hover { background: var(--white); }
+.blog-full-img {
+  aspect-ratio: 16/9; overflow: hidden;
+  background: linear-gradient(145deg, var(--forest) 0%, var(--forest-d) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; color: rgba(255,255,255,0.15);
+  transition: transform 0.5s ease;
+}
+.blog-full-card:hover .blog-full-img { transform: scale(1.03); }
+.blog-full-body { padding: 1.8rem; }
+.blog-full-cat {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.65rem;
+}
+.blog-full-title {
+  font-family: var(--serif); font-size: 1.2rem; font-weight: 600;
+  color: var(--ink); line-height: 1.3; margin-bottom: 0.65rem;
+}
+.blog-full-excerpt { font-size: 0.85rem; font-weight: 300; color: var(--ink-f); line-height: 1.7; }
+.blog-full-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--cream-dd);
+}
+.blog-full-date { font-size: 0.68rem; color: var(--ink-f); }
+@media (max-width: 900px) { .blogs-full-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .blogs-full-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════════════════════════
+   ─── PARTNER PAGE ───
+═══════════════════════════════════════════ */
+.partner-intro { padding: 8rem 0; background: var(--cream); }
+.partner-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.partner-intro-text p { font-size: 1rem; font-weight: 300; color: var(--ink-m); line-height: 1.9; margin-bottom: 1.2rem; }
+.partner-trust-items { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+.partner-trust-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1.2rem 1.4rem; border-radius: 4px;
+  border: 1px solid var(--cream-dd); background: var(--white);
+}
+.partner-trust-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--gold);
+  margin-top: 0.4rem; flex-shrink: 0;
+}
+.partner-trust-title { font-weight: 600; font-size: 0.9rem; color: var(--ink); }
+.partner-trust-desc { font-size: 0.82rem; font-weight: 300; color: var(--ink-f); margin-top: 0.2rem; }
+
+.partner-tiers { padding: 8rem 0; background: var(--forest-d); }
+.partner-tiers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(255,255,255,0.05); margin-top: 4rem; }
+.tier-card {
+  background: rgba(255,255,255,0.03); padding: 3.5rem;
+  transition: background var(--trans);
+  position: relative;
+}
+.tier-card:hover { background: rgba(255,255,255,0.07); }
+.tier-card.featured-tier { background: rgba(200,146,42,0.1); }
+.tier-card.featured-tier:hover { background: rgba(200,146,42,0.15); }
+.tier-badge {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; background: var(--gold); color: var(--white);
+  padding: 0.3rem 0.8rem; border-radius: 100px;
+  position: absolute; top: 2rem; right: 2rem;
+}
+.tier-icon { font-size: 2rem; margin-bottom: 1.5rem; }
+.tier-title { font-family: var(--serif); font-size: 2rem; font-weight: 600; color: var(--white); margin-bottom: 0.8rem; }
+.tier-sub { font-size: 0.88rem; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 2rem; }
+.tier-features { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2.5rem; }
+.tier-features li {
+  font-size: 0.88rem; font-weight: 300; color: rgba(255,255,255,0.7);
+  display: flex; align-items: center; gap: 0.7rem;
+}
+.tier-features li::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0;
+}
+
+.partner-form-section { padding: 8rem 0; background: var(--cream); }
+.partner-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: flex-start; }
+.partner-form-info h3 { font-family: var(--serif); font-size: 2rem; font-weight: 600; color: var(--ink); margin-bottom: 1rem; }
+.partner-form-info p { font-size: 0.95rem; font-weight: 300; color: var(--ink-f); line-height: 1.8; margin-bottom: 2rem; }
+.contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.contact-detail-icon {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(26,61,43,0.08); border: 1px solid rgba(26,61,43,0.15);
+  display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+}
+.contact-detail-text { font-size: 0.88rem; color: var(--ink-m); }
+.contact-detail-text a { color: var(--forest); text-decoration: none; }
+.partner-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+.form-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-m); }
+.form-input, .form-textarea, .form-select {
+  padding: 0.85rem 1rem; border-radius: 4px;
+  border: 1.5px solid var(--cream-dd); background: var(--white);
+  font-family: var(--sans); font-size: 0.92rem; color: var(--ink);
+  transition: border-color var(--trans);
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--forest); }
+.form-textarea { resize: vertical; min-height: 130px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 900px) {
+  .partner-intro-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .partner-tiers-grid { grid-template-columns: 1fr; }
+  .partner-form-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+.footer {
+  background: var(--ink); padding: 5rem 0 0;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4rem; padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand-name {
+  font-family: var(--serif); font-size: 1.4rem; font-weight: 600;
+  color: var(--white); margin-bottom: 0.3rem;
+}
+.footer-brand-name span { color: var(--gold); }
+.footer-brand-sub {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-f); margin-bottom: 1.2rem;
+}
+.footer-brand-text { font-size: 0.88rem; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 1.8rem; }
+.footer-social { display: flex; gap: 0.7rem; }
+.footer-social-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12); background: transparent;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.4); font-size: 0.8rem; cursor: pointer;
+  transition: border-color var(--trans), color var(--trans), background var(--trans);
+  text-decoration: none;
+}
+.footer-social-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(200,146,42,0.1); }
+.footer-col-title {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-links li button, .footer-links li a {
+  font-size: 0.85rem; font-weight: 300; color: rgba(255,255,255,0.45);
+  text-decoration: none; background: none; border: none; cursor: pointer;
+  transition: color var(--trans); text-align: left; padding: 0;
+}
+.footer-links li button:hover, .footer-links li a:hover { color: var(--white); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.5rem 0; flex-wrap: wrap; gap: 1rem;
+}
+.footer-bottom-text { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+.footer-bottom-links { display: flex; gap: 1.5rem; }
+.footer-bottom-links a { font-size: 0.72rem; color: rgba(255,255,255,0.25); text-decoration: none; transition: color var(--trans); }
+.footer-bottom-links a:hover { color: rgba(255,255,255,0.5); }
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+}
+@media (max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+/* ═══════════════════════════════════════════
+   SVG ILLUSTRATIONS
+═══════════════════════════════════════════ */
+.illus-wrap {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav id="nav">
+  <div class="nav-logo" onclick="showPage('home')">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L4 7v5c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V7L12 2z" fill="rgba(200,146,42,0.4)" stroke="#C8922A" stroke-width="1.5"/>
+        <path d="M9 12l2 2 4-4" stroke="#FAF8F3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="nav-logo-name">
+      Mashimoni <span style="color:var(--gold)">CBO</span>
+      <span>Mathare, Nairobi</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="showPage('home')">Home</button>
+    <button class="nav-link" onclick="showPage('about')">About Us</button>
+    <button class="nav-link" onclick="showPage('blogs')">Stories</button>
+    <button class="nav-link" onclick="showPage('partner')">Partner</button>
+    <button class="nav-link" onclick="showPage('partner')">Contact</button>
+  </div>
+  <button class="nav-cta" onclick="showPage('partner')">Sponsor a Child →</button>
+  <button class="nav-mobile-btn" id="mobileMenuBtn" onclick="toggleMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-link" onclick="showPage('home');toggleMobile()">Home</button>
+  <button class="mobile-link" onclick="showPage('about');toggleMobile()">About Us</button>
+  <button class="mobile-link" onclick="showPage('blogs');toggleMobile()">Stories & Blogs</button>
+  <button class="mobile-link" onclick="showPage('partner');toggleMobile()">Partner With Us</button>
+  <button class="mobile-link" onclick="showPage('partner');toggleMobile()">Contact Us</button>
+  <button class="mobile-cta" onclick="showPage('partner');toggleMobile()">Sponsor a Child →</button>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-texture"></div>
+    <div class="hero-left">
+      <div class="hero-tag anim-up">
+        <span class="hero-tag-dot"></span>
+        Mathare, Nairobi · Est. 2019
+      </div>
+      <h1 class="hero-h1 anim-up">
+        Where the<br><em>Future</em><br><span class="break">Begins.</span>
+      </h1>
+      <p class="hero-desc anim-up">
+        In the heart of Mathare, children gather to read, learn, and dream. We nurture creativity, critical thinking, and life skills — giving every child the confidence to shape their own future.
+      </p>
+      <div class="hero-actions anim-up">
+        <button class="btn-gold" onclick="showPage('partner')">Sponsor a Child →</button>
+        <button class="btn-ghost" onclick="showPage('about')">Our Story</button>
+      </div>
+      <div class="hero-stats anim-up">
+        <div class="hero-stat">
+          <div class="hero-stat-num">500+</div>
+          <div class="hero-stat-label">Children Reached</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">6+</div>
+          <div class="hero-stat-label">Years of Service</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">12+</div>
+          <div class="hero-stat-label">Programs & Clubs</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-inner">
+        <div class="hero-visual">
+          <svg viewBox="0 0 480 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;">
+            <defs>
+              <radialGradient id="hg" cx="50%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#C8922A" stop-opacity="0.18"/>
+                <stop offset="100%" stop-color="#C8922A" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="480" height="560" fill="url(#hg)"/>
+            <!-- Geometric pattern -->
+            <rect x="80" y="80" width="320" height="400" rx="4" fill="none" stroke="rgba(200,146,42,0.1)" stroke-width="1"/>
+            <rect x="100" y="100" width="280" height="360" rx="4" fill="none" stroke="rgba(200,146,42,0.07)" stroke-width="1"/>
+            <!-- Open book -->
+            <g transform="translate(140,150)">
+              <rect x="0" y="20" width="90" height="130" rx="4" fill="rgba(200,146,42,0.15)" stroke="rgba(200,146,42,0.4)" stroke-width="1.5"/>
+              <rect x="110" y="20" width="90" height="130" rx="4" fill="rgba(200,146,42,0.15)" stroke="rgba(200,146,42,0.4)" stroke-width="1.5"/>
+              <line x1="100" y1="20" x2="100" y2="150" stroke="rgba(200,146,42,0.5)" stroke-width="2"/>
+              <!-- Lines (text) -->
+              <line x1="15" y1="45" x2="78" y2="45" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <line x1="15" y1="60" x2="78" y2="60" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+              <line x1="15" y1="75" x2="65" y2="75" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+              <line x1="15" y1="90" x2="78" y2="90" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+              <line x1="125" y1="45" x2="188" y2="45" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <line x1="125" y1="60" x2="188" y2="60" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+              <line x1="125" y1="75" x2="175" y2="75" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+            </g>
+            <!-- Star/award icon -->
+            <g transform="translate(240,320)">
+              <circle cx="0" cy="0" r="32" fill="rgba(200,146,42,0.15)" stroke="rgba(200,146,42,0.4)" stroke-width="1.5"/>
+              <text x="0" y="10" text-anchor="middle" font-size="28" fill="rgba(200,146,42,0.8)">★</text>
+            </g>
+            <!-- Floating cards -->
+            <rect x="50" y="380" width="150" height="60" rx="6" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <text x="75" y="406" font-family="'Outfit',sans-serif" font-size="9" fill="rgba(200,146,42,0.8)" letter-spacing="1">DEBATE CHAMPIONS</text>
+            <text x="75" y="424" font-family="'Outfit',sans-serif" font-size="11" fill="rgba(255,255,255,0.7)" font-weight="500">YouthRise 2026 ★</text>
+            <rect x="280" y="380" width="150" height="60" rx="6" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <text x="305" y="406" font-family="'Outfit',sans-serif" font-size="9" fill="rgba(200,146,42,0.8)" letter-spacing="1">CHESS CLUB</text>
+            <text x="305" y="424" font-family="'Outfit',sans-serif" font-size="11" fill="rgba(255,255,255,0.7)" font-weight="500">Boardlords 2026 ♟</text>
+            <!-- Connecting dots -->
+            <circle cx="240" cy="100" r="3" fill="rgba(200,146,42,0.5)"/>
+            <circle cx="120" cy="480" r="3" fill="rgba(200,146,42,0.3)"/>
+            <circle cx="360" cy="480" r="3" fill="rgba(200,146,42,0.3)"/>
+            <line x1="240" y1="100" x2="120" y2="480" stroke="rgba(200,146,42,0.08)" stroke-width="1"/>
+            <line x1="240" y1="100" x2="360" y2="480" stroke="rgba(200,146,42,0.08)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="hero-img-overlay">
+          <div class="hero-img-card">
+            <div class="hero-img-card-icon">🏆</div>
+            <div class="hero-img-card-text">
+              <strong>Debate Champions 2026</strong>
+              Top 5 orators out of 2,000+ students across Mathare
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- Partners Strip -->
+  <div class="partners-strip">
+    <div class="partners-inner">
+      <div class="partners-label">Our Partners</div>
+      <div class="partners-logos">
+        <div class="partner-logo-item">ChallengeAid</div>
+        <div class="partner-logo-item">Education in a Suitcase</div>
+        <div class="partner-logo-item">RelibAfrica</div>
+        <div class="partner-logo-item">Boardlords Chess Club</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Who We Are -->
+  <section class="who-section">
+    <div class="container">
+      <div class="who-grid">
+        <div class="who-visual">
+          <div class="who-visual-main">
+            <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style="width:85%;">
+              <defs>
+                <radialGradient id="wg" cx="50%" cy="50%" r="55%">
+                  <stop offset="0%" stop-color="rgba(200,146,42,0.12)"/>
+                  <stop offset="100%" stop-color="rgba(200,146,42,0)"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="520" fill="url(#wg)"/>
+              <!-- Children silhouettes (simplified) -->
+              <g opacity="0.5">
+                <!-- Child 1 -->
+                <circle cx="120" cy="200" r="22" fill="rgba(200,146,42,0.35)" stroke="rgba(200,146,42,0.5)" stroke-width="1"/>
+                <rect x="104" y="228" width="32" height="55" rx="6" fill="rgba(200,146,42,0.25)" stroke="rgba(200,146,42,0.4)" stroke-width="1"/>
+                <!-- Child 2 -->
+                <circle cx="200" cy="170" r="26" fill="rgba(245,217,138,0.3)" stroke="rgba(245,217,138,0.5)" stroke-width="1"/>
+                <rect x="181" y="200" width="38" height="65" rx="6" fill="rgba(245,217,138,0.2)" stroke="rgba(245,217,138,0.35)" stroke-width="1"/>
+                <!-- Child 3 -->
+                <circle cx="280" cy="200" r="22" fill="rgba(200,146,42,0.35)" stroke="rgba(200,146,42,0.5)" stroke-width="1"/>
+                <rect x="264" y="228" width="32" height="55" rx="6" fill="rgba(200,146,42,0.25)" stroke="rgba(200,146,42,0.4)" stroke-width="1"/>
+              </g>
+              <!-- Books stack -->
+              <g transform="translate(110, 330)">
+                <rect x="0" y="30" width="180" height="22" rx="3" fill="rgba(200,146,42,0.3)" stroke="rgba(200,146,42,0.5)" stroke-width="1"/>
+                <rect x="10" y="12" width="160" height="22" rx="3" fill="rgba(245,217,138,0.25)" stroke="rgba(245,217,138,0.4)" stroke-width="1"/>
+                <rect x="20" y="0" width="140" height="16" rx="3" fill="rgba(200,146,42,0.2)" stroke="rgba(200,146,42,0.4)" stroke-width="1"/>
+              </g>
+              <!-- Text: "Every child deserves..." -->
+              <text x="200" y="440" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" fill="rgba(245,217,138,0.7)" font-style="italic">"Every child deserves a chance"</text>
+              <text x="200" y="460" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="9" fill="rgba(255,255,255,0.3)" letter-spacing="2">MASHIMONI CBO</text>
+            </svg>
+          </div>
+          <div class="who-visual-badge">
+            <div class="who-visual-badge-num">2019</div>
+            <div class="who-visual-badge-txt">Founded</div>
+          </div>
+        </div>
+        <div class="who-text">
+          <div class="eyebrow">Our Journey</div>
+          <h2 class="section-title">Who <em>We Are</em></h2>
+          <div class="divider-gold"></div>
+          <p><strong>Mashimoni CBO</strong> was born out of a simple observation: too many children in Mathare were missing school due to financial challenges, unsafe spaces, and limited opportunities.</p>
+          <p>What began as a small library where children could read and study has grown into a lifeline for families — combining education, mentorship, and extracurricular activities that transform lives.</p>
+          <p>With the incredible support of <strong>ChallengeAid</strong>, <strong>Education in a Suitcase</strong>, and our growing network of partners, learners have been able to thrive — building confidence through digital lessons, mentorship, and hands-on learning tools.</p>
+          <p>Today, we proudly serve hundreds of children and families, proving that when a community invests in its young people — transformation follows.</p>
+          <div class="who-actions">
+            <button class="btn-primary" onclick="showPage('about')">Read Our Story</button>
+            <button class="btn-outline-forest" onclick="showPage('partner')">Partner With Us</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why We Exist -->
+  <section class="why-section">
+    <div class="why-bg"></div>
+    <div class="container">
+      <div class="why-layout">
+        <div class="why-text-col">
+          <div class="eyebrow" style="color:var(--gold-l);">Our Core Purpose</div>
+          <h2 class="section-title light" style="margin-bottom:1.5rem;">Why <em>We Exist</em></h2>
+          <div class="divider-gold"></div>
+          <p>In Mathare, dreams often collide with reality — a reality where poverty, hunger, and lack of opportunity make it hard for children to stay in school or believe in a better tomorrow.</p>
+          <p><strong>Mashimoni CBO exists to change that story.</strong></p>
+          <p>We believe every child deserves a chance to succeed — whether through education, sports, or creative expression. When a child learns, plays, or discovers their talent, something powerful happens: confidence grows, potential unfolds, and a brighter future begins.</p>
+          <div style="margin-top:2rem;">
+            <button class="btn-gold" onclick="showPage('partner')">Join Our Mission →</button>
+          </div>
+        </div>
+        <div class="why-features">
+          <div class="why-feat">
+            <div class="why-feat-icon">📚</div>
+            <div>
+              <div class="why-feat-title">Breaking the Cycle</div>
+              <div class="why-feat-desc">Education is the most powerful tool to escape poverty. We make sure no child in Mathare is denied access to it.</div>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">🌱</div>
+            <div>
+              <div class="why-feat-title">Building Resilience</div>
+              <div class="why-feat-desc">Beyond grades — we build resilience, purpose, and hope in every child who walks through our doors.</div>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">🤝</div>
+            <div>
+              <div class="why-feat-title">Community First</div>
+              <div class="why-feat-desc">We work hand-in-hand with parents, teachers, and local partners to create sustainable, community-owned change.</div>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">🏆</div>
+            <div>
+              <div class="why-feat-title">Celebrating Excellence</div>
+              <div class="why-feat-desc">From debate champions to chess pioneers — we create platforms for every kind of genius to shine.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs -->
+  <section class="programs-section">
+    <div class="container">
+      <div class="programs-header">
+        <div class="eyebrow">What We Do</div>
+        <h2 class="section-title">Our Core <em>Programs</em></h2>
+      </div>
+    </div>
+    <div style="max-width:var(--max);margin:0 auto;padding:0 3rem;">
+      <div class="programs-grid">
+        <div class="program-card">
+          <div class="program-num">01</div>
+          <div class="program-icon">📖</div>
+          <div class="program-title">Library & Learning Spaces</div>
+          <div class="program-desc">A safe, quiet place where children can read, study, and explore their potential. Our community library is more than shelves of books — it's a home of ideas where curiosity comes alive.</div>
+        </div>
+        <div class="program-card">
+          <div class="program-num">02</div>
+          <div class="program-icon">🌟</div>
+          <div class="program-title">Mentorship & Life Skills</div>
+          <div class="program-desc">Through personal mentorship, leadership training, and guidance programs, we help children and youth develop confidence, discipline, and resilience to face life's challenges.</div>
+        </div>
+        <div class="program-card">
+          <div class="program-num">03</div>
+          <div class="program-icon">⚽</div>
+          <div class="program-title">Sports & Extracurriculars</div>
+          <div class="program-desc">From football to creative arts to debate and chess, we use play as a tool for growth — giving every child a reason to dream big and stay in school.</div>
+        </div>
+        <div class="program-card">
+          <div class="program-num">04</div>
+          <div class="program-icon">🌍</div>
+          <div class="program-title">Community Empowerment</div>
+          <div class="program-desc">We work hand in hand with parents, teachers, and local partners to create long-term change — ensuring education, safety, and opportunity for every child in Mathare.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blogs Preview -->
+  <section class="blogs-preview-section">
+    <div class="container">
+      <div class="blogs-preview-header">
+        <div>
+          <div class="eyebrow">From the Field</div>
+          <h2 class="section-title">Stories & <em>Insights</em></h2>
+        </div>
+        <button class="btn-outline-forest" onclick="showPage('blogs')">View All Stories →</button>
+      </div>
+      <div class="blogs-grid">
+        <div class="blog-card featured" onclick="showPage('blogs')">
+          <div class="blog-card-img">
+            <div class="blog-card-img-inner">🏆</div>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-cat">Youth Empowerment · April 2026</div>
+            <div class="blog-card-title">From Mathare to the Podium: YouthRise ChangeMakers Redefine What's Possible</div>
+            <div class="blog-card-excerpt">Out of 24 Schools of Hope across Nairobi's Mathare cluster, Mashimoni SOH showed up and stood out — crowning a formidable squad of champions.</div>
+            <span class="blog-read-link">Read Story →</span>
+          </div>
+        </div>
+        <div class="blog-card" onclick="showPage('blogs')">
+          <div class="blog-card-img">
+            <div class="blog-card-img-inner">♟</div>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-cat">Chess & Talent · 2026</div>
+            <div class="blog-card-title">The Unlikely Birth of Boardlords Chess Club</div>
+            <div class="blog-card-excerpt">A story of passion, strategy, and what happens when you give young minds a challenge.</div>
+            <span class="blog-read-link">Read Story →</span>
+          </div>
+        </div>
+        <div class="blog-card" onclick="showPage('blogs')">
+          <div class="blog-card-img">
+            <div class="blog-card-img-inner">📚</div>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-cat">Education · 2025</div>
+            <div class="blog-card-title">Breaking Poverty with Books: Literacy in Slums vs. Urban Averages</div>
+            <div class="blog-card-excerpt">Walk into our library on a sunny afternoon and you'll hear it — pages turning, pencils scratching, quiet concentration.</div>
+            <span class="blog-read-link">Read Story →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact CTA -->
+  <div class="impact-cta">
+    <div class="impact-cta-bg"></div>
+    <div class="impact-cta-inner">
+      <div>
+        <div class="impact-cta-h">Want to Help Us Grow?</div>
+        <p class="impact-cta-p">Your support helps provide books, digital access, mentorship, and a safe space where young minds can learn, grow, and dream beyond their circumstances — one child at a time.</p>
+      </div>
+      <div class="impact-cta-btns">
+        <button class="btn-white" onclick="showPage('partner')">Sponsor a Child</button>
+        <button class="btn-ink" onclick="showPage('partner')">Partner With Us</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stories -->
+  <section class="stories-section">
+    <div class="container">
+      <div class="eyebrow">Real Results</div>
+      <h2 class="section-title">Access <em>Creates</em> Excellence</h2>
+      <div class="divider-gold"></div>
+      <p class="section-sub" style="margin-bottom:0;">Behind every great result is an environment that made focus possible. Real student journeys showing how opportunity transforms discipline, focus, and academic performance.</p>
+      <div class="stories-grid">
+        <div class="story-card">
+          <div class="story-card-eyebrow">Debate · 2026</div>
+          <div class="story-card-title">Sharlyn's Road to Outstanding Debater</div>
+          <div class="story-card-text">From quiet student to the cluster's most formidable voice — Sharlyn Stacy (Grade 10) clinched Outstanding Debater among 2,000+ competitors with razor-sharp rebuttals that stunned judges across all rounds.</div>
+        </div>
+        <div class="story-card">
+          <div class="story-card-eyebrow">Chess · 2026</div>
+          <div class="story-card-title">How Boardlords Made History</div>
+          <div class="story-card-text">Chess players from the informal settlements of Mathare, Kibera, Kawangware, and beyond made history — proving that strategy, intellect, and ambition know no postal code.</div>
+        </div>
+        <div class="story-card">
+          <div class="story-card-eyebrow">Girls Education · Ongoing</div>
+          <div class="story-card-title">Why Educating Girls Doubles Impact</div>
+          <div class="story-card-text">In Mathare, 43% of girls don't attend school. Our girls and boys clubs, sanitary towel programs, and mentorship initiatives are changing that — one family at a time.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">Mashimoni <span>CBO</span></div>
+          <div class="footer-brand-sub">Community Based Organization</div>
+          <p class="footer-brand-text">Dedicated to giving every child in Mathare equal access to education, mentorship, and safe learning spaces. Breaking cycles of poverty, one child at a time.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/groups/720879072797440" class="footer-social-btn" title="Facebook">f</a>
+            <a href="https://wa.me/0771671502" class="footer-social-btn" title="WhatsApp">w</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><button onclick="showPage('home')">Home</button></li>
+            <li><button onclick="showPage('about')">About Us</button></li>
+            <li><button onclick="showPage('blogs')">Stories & Blogs</button></li>
+            <li><button onclick="showPage('partner')">Partner With Us</button></li>
+            <li><button onclick="showPage('partner')">Contact Us</button></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Our Programs</div>
+          <ul class="footer-links">
+            <li><a href="#">Library & Learning Spaces</a></li>
+            <li><a href="#">Mentorship & Life Skills</a></li>
+            <li><a href="#">Sports & Extracurriculars</a></li>
+            <li><a href="#">Community Empowerment</a></li>
+            <li><a href="#">Girls & Boys Club</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Get In Touch</div>
+          <ul class="footer-links">
+            <li><a href="tel:+254710852444">+254 710 852 444</a></li>
+            <li><a href="https://wa.me/0771671502">WhatsApp Us</a></li>
+            <li><a href="#">Mathare, Nairobi, Kenya</a></li>
+            <li><a href="#">Mashimoni Community</a></li>
+          </ul>
+          <div style="margin-top:1.5rem;">
+            <button class="btn-gold" style="font-size:0.72rem;padding:0.65rem 1.4rem;" onclick="showPage('partner')">Sponsor a Child →</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-text">© 2026 Mashimoni Community Based Organization · All Rights Reserved</div>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: ABOUT US
+═══════════════════════════════════════════ -->
+<div id="page-about" class="page">
+
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <div class="page-hero-breadcrumb">Home <span>/</span> About Us</div>
+      <h1 class="page-hero-h1">Educate.<br><em>Empower.</em><br>Transform.</h1>
+      <p class="page-hero-desc">Building futures, one child at a time — in the heart of Mathare, Nairobi, since 2019.</p>
+    </div>
+  </section>
+
+  <!-- History -->
+  <section class="about-history" style="background:var(--cream);">
+    <div class="container">
+      <div class="about-history-grid">
+        <div class="about-history-visual">
+          <svg viewBox="0 0 400 530" xmlns="http://www.w3.org/2000/svg" style="width:80%;">
+            <defs>
+              <radialGradient id="ag" cx="50%" cy="40%" r="55%">
+                <stop offset="0%" stop-color="rgba(200,146,42,0.15)"/>
+                <stop offset="100%" stop-color="rgba(200,146,42,0)"/>
+              </radialGradient>
+            </defs>
+            <rect width="400" height="530" fill="url(#ag)"/>
+            <!-- Community building illustration -->
+            <rect x="80" y="240" width="240" height="180" rx="4" fill="rgba(200,146,42,0.12)" stroke="rgba(200,146,42,0.3)" stroke-width="1.5"/>
+            <!-- Roof triangle -->
+            <polygon points="60,240 200,140 340,240" fill="rgba(200,146,42,0.2)" stroke="rgba(200,146,42,0.4)" stroke-width="1.5"/>
+            <!-- Door -->
+            <rect x="170" y="340" width="60" height="80" rx="2" fill="rgba(200,146,42,0.25)" stroke="rgba(200,146,42,0.4)" stroke-width="1"/>
+            <!-- Windows -->
+            <rect x="100" y="270" width="55" height="50" rx="2" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <rect x="245" y="270" width="55" height="50" rx="2" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <!-- Sign -->
+            <rect x="130" y="180" width="140" height="32" rx="3" fill="rgba(200,146,42,0.2)" stroke="rgba(200,146,42,0.4)" stroke-width="1"/>
+            <text x="200" y="200" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="10" fill="rgba(245,217,138,0.8)" letter-spacing="1">MASHIMONI CBO</text>
+            <!-- Ground/grass -->
+            <rect x="0" y="420" width="400" height="110" fill="rgba(46,110,74,0.12)"/>
+            <!-- People dots -->
+            <circle cx="130" cy="450" r="14" fill="rgba(200,146,42,0.3)" stroke="rgba(200,146,42,0.5)" stroke-width="1"/>
+            <circle cx="175" cy="445" r="16" fill="rgba(245,217,138,0.25)" stroke="rgba(245,217,138,0.4)" stroke-width="1"/>
+            <circle cx="225" cy="450" r="14" fill="rgba(200,146,42,0.3)" stroke="rgba(200,146,42,0.5)" stroke-width="1"/>
+            <circle cx="270" cy="445" r="16" fill="rgba(245,217,138,0.25)" stroke="rgba(245,217,138,0.4)" stroke-width="1"/>
+            <!-- Stars above -->
+            <text x="200" y="100" text-anchor="middle" font-size="22" fill="rgba(200,146,42,0.4)">★ ★ ★</text>
+          </svg>
+          <div class="about-history-card">
+            <div class="about-history-card-year">2019</div>
+            <div class="about-history-card-label">Year Founded</div>
+          </div>
+        </div>
+        <div class="about-text">
+          <div class="eyebrow">From Small Beginnings</div>
+          <h2 class="section-title">Our <em>History</em></h2>
+          <div class="divider-gold"></div>
+          <p>Mashimoni CBO started with a simple vision: create a safe space for children to read, learn, and dream. A small library — a handful of books, a few children, one big belief that education changes everything.</p>
+          <p>Over the years, we've grown into a <strong>vibrant community hub</strong>, offering literacy programs, mentorship, extracurricular activities, sports programs, and digital learning opportunities that transform lives in Mathare.</p>
+          <p>From weekly shopping distributions and sanitary towels for girls, to the Girls and Boys Club, Mathare Got Talent, and interactive Zoom lessons — every program was born from a real need in our community.</p>
+          <p>Today, we proudly serve hundreds of children and families, proving that when a community invests in its young people — and when kind partners walk beside them — <strong>transformation follows.</strong></p>
+          <div style="margin-top:2rem;">
+            <button class="btn-primary" onclick="showPage('partner')">Partner With Us →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="mv-section">
+    <div class="container">
+      <div class="eyebrow" style="color:var(--gold-l);">Our Foundation</div>
+      <h2 class="section-title light">Mission & <em>Vision</em></h2>
+      <div class="mv-grid">
+        <div class="mv-card">
+          <div class="mv-card-label">Our Mission</div>
+          <div class="mv-card-title">Building Strong Children Through Education</div>
+          <div class="mv-card-text">Our mission is to support children in Mathare with the tools they need to succeed in school and in life. We focus on education, mentorship, wellbeing, and family involvement — because a child does not grow in isolation.<br><br>By working closely with parents, teachers, and community partners, we create safe spaces where children are supported, guided, and encouraged to stay in school. Our work helps learners build confidence, discipline, and direction — growing into responsible young people with purpose, self-belief, and a clear sense of possibility.</div>
+          <div class="mv-card-num">01</div>
+        </div>
+        <div class="mv-card">
+          <div class="mv-card-label">Our Vision</div>
+          <div class="mv-card-title">Raising Youth to Lead Generational Change</div>
+          <div class="mv-card-text">We envision a future where children from underserved communities grow into confident, capable young leaders who shape their own paths — and the paths of those who come after them.<br><br>Our aim is to build a community-led education model that can be adopted beyond Mathare — one that strengthens learning, character, and responsibility. By grounding our work in local ownership and shared values, we seek long-term impact that reaches families, communities, and future generations.</div>
+          <div class="mv-card-num">02</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values-section">
+    <div class="container">
+      <div class="eyebrow">What Guides Us</div>
+      <h2 class="section-title">Our Core <em>Values</em></h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-card-icon">🎯</div>
+          <div class="value-card-title">Access for All</div>
+          <div class="value-card-desc">Every child, regardless of background, deserves equal access to quality education, mentorship, and opportunity. We remove barriers, not create them.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon">💪</div>
+          <div class="value-card-title">Community Ownership</div>
+          <div class="value-card-desc">We believe lasting change comes from within. Our programs are built with — not for — the community of Mathare, ensuring local voices lead.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon">🌟</div>
+          <div class="value-card-title">Celebrating Potential</div>
+          <div class="value-card-desc">We see the full potential of every child. From debate to chess to football — we create platforms for every kind of genius to be recognized and celebrated.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon">🔍</div>
+          <div class="value-card-title">Radical Transparency</div>
+          <div class="value-card-desc">Our partners and supporters deserve to see the real impact of their investment. We share honestly — the wins, the challenges, and the ongoing work.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon">🤲</div>
+          <div class="value-card-title">Long-term Commitment</div>
+          <div class="value-card-desc">We're not here for short-term interventions. We walk with families and children through their journeys — year after year, season after season.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon">🌍</div>
+          <div class="value-card-title">Global Standards, Local Heart</div>
+          <div class="value-card-desc">We hold our programs to international quality standards while staying deeply rooted in the culture, languages, and lived realities of Mathare.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="impact-cta">
+    <div class="impact-cta-bg"></div>
+    <div class="impact-cta-inner">
+      <div>
+        <div class="impact-cta-h">Be Part of Our Story</div>
+        <p class="impact-cta-p">Every partnership — however big or small — adds another chapter to a story of transformation that Mathare is writing for the world.</p>
+      </div>
+      <div class="impact-cta-btns">
+        <button class="btn-white" onclick="showPage('partner')">Sponsor a Child</button>
+        <button class="btn-ink" onclick="showPage('partner')">Partner With Us</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">Mashimoni <span>CBO</span></div>
+          <div class="footer-brand-sub">Community Based Organization</div>
+          <p class="footer-brand-text">Dedicated to giving every child in Mathare equal access to education, mentorship, and safe learning spaces.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/groups/720879072797440" class="footer-social-btn">f</a>
+            <a href="https://wa.me/0771671502" class="footer-social-btn">w</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><button onclick="showPage('home')">Home</button></li>
+            <li><button onclick="showPage('about')">About Us</button></li>
+            <li><button onclick="showPage('blogs')">Stories & Blogs</button></li>
+            <li><button onclick="showPage('partner')">Partner With Us</button></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Programs</div>
+          <ul class="footer-links">
+            <li><a href="#">Library & Learning</a></li>
+            <li><a href="#">Mentorship</a></li>
+            <li><a href="#">Sports & Arts</a></li>
+            <li><a href="#">Community Empowerment</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <ul class="footer-links">
+            <li><a href="tel:+254710852444">+254 710 852 444</a></li>
+            <li><a href="https://wa.me/0771671502">WhatsApp</a></li>
+            <li><a href="#">Mathare, Nairobi</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-text">© 2026 Mashimoni Community Based Organization</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: BLOGS
+═══════════════════════════════════════════ -->
+<div id="page-blogs" class="page">
+
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <div class="page-hero-breadcrumb">Home <span>/</span> Stories</div>
+      <h1 class="page-hero-h1">Stories from<br><em>Mathare</em></h1>
+      <p class="page-hero-desc">Real stories from real children, families, and communities — proving that access to education transforms everything.</p>
+    </div>
+  </section>
+
+  <section class="blogs-page-section">
+    <div class="container">
+      <div class="blogs-filter">
+        <button class="filter-btn active">All Stories</button>
+        <button class="filter-btn">Youth Empowerment</button>
+        <button class="filter-btn">Education</button>
+        <button class="filter-btn">Chess & Talent</button>
+        <button class="filter-btn">Gender Equality</button>
+        <button class="filter-btn">Community</button>
+      </div>
+      <div class="blogs-full-grid">
+        <div class="blog-full-card">
+          <div class="blog-full-img">🏆</div>
+          <div class="blog-full-body">
+            <div class="blog-full-cat">Youth Empowerment</div>
+            <div class="blog-full-title">From Mathare to the Podium: YouthRise ChangeMakers Redefine What's Possible</div>
+            <div class="blog-full-excerpt">Out of 24 Schools of Hope across Nairobi's Mathare cluster, Mashimoni SOH showed up and stood out — fielding formidable squads of junior and senior debaters.</div>
+            <div class="blog-full-footer">
+              <div class="blog-full-date">April 2026</div>
+              <span class="blog-read-link">Read →</span>
+            </div>
+          </div>
+        </div>
+        <div class="blog-full-card">
+          <div class="blog-full-img">♟</div>
+          <div class="blog-full-body">
+            <div class="blog-full-cat">Chess & Talent</div>
+            <div class="blog-full-title">The Unlikely Birth of Boardlords Chess Club: A Story of Passion and Potential</div>
+            <div class="blog-full-excerpt">In the heart of Mashimoni, a vibrant community within Mathare, a game of strategy and skill was ignited by our founder's belief in young people.</div>
+            <div class="blog-full-footer">
+              <div class="blog-full-date">April 2026</div>
+              <span class="blog-read-link">Read →</span>
+            </div>
+          </div>
+        </div>
+        <div class="blog-full-card">
+          <div class="blog-full-img">♟</div>
+          <div class="blog-full-body">
+            <div class="blog-full-cat">Chess & Talent</div>
+            <div class="blog-full-title">Chess Players from Slums Make History in the Chess Community!</div>
+            <div class="blog-full-excerpt">In the informal settlements of Mathare, Kibera, Kawangware, Mukuru, Dandora, and beyond — young chess players made national history.</div>
+            <div class="blog-full-footer">
+              <div class="blog-full-date">April 2026</div>
+              <span class="blog-read-link">Read →</span>
+            </div>
+          </div>
+        </div>
+        <div class="blog-full-card">
+          <div class="blog-full-img">📚</div>
+          <div class="blog-full-body">
+            <div class="blog-full-cat">Education & Social Impact</div>
+            <div class="blog-full-title">Breaking Poverty with Books: Literacy Rates in Slums vs. Urban Averages</div>
+            <div class="blog-full-excerpt">Walk into our library on a sunny afternoon, and you'll hear it — pages turning, pencils scratching, quiet concentration that defies every stereotype.</div>
+            <div class="blog-full-footer">
+              <div class="blog-full-date">December 2025</div>
+              <span class="blog-read-link">Read →</span>
+            </div>
+          </div>
+        </div>
+        <div class="blog-full-card">
+          <div class="blog-full-img">🍽</div>
+          <div class="blog-full-body">
+            <div class="blog-full-cat">Education & Community</div>
+            <div class="blog-full-title">How School Feeding Programs Boost Attendance in Mathare — Hunger vs. Learning</div>
+            <div class="blog-full-excerpt">You've probably heard it before — "a hungry child can't learn." But have you ever seen what that actually looks like in Mathare? We have.</div>
+            <div class="blog-full-footer">
+              <div class="blog-full-date">December 2025</div>
+              <span class="blog-read-link">Read →</span>
+            </div>
+          </div>
+        </div>
+        <div class="blog-full-card">
+          <div class="blog-full-img">👧</div>
+          <div class="blog-full-body">
+            <div class="blog-full-cat">Gender Equality</div>
+            <div class="blog-full-title">Why Educating Girls in Mathare Doubles Impact</div>
+            <div class="blog-full-excerpt">In Mathare, 43% of girls don't attend school at all, compared to 29% of boys. Understanding why — and what we're doing about it.</div>
+            <div class="blog-full-footer">
+              <div class="blog-full-date">October 2025</div>
+              <span class="blog-read-link">Read →</span>
+            </div>
+          </div>
+        </div>
+        <div class="blog-full-card">
+          <div class="blog-full-img">🔓</div>
+          <div class="blog-full-body">
+            <div class="blog-full-cat">Education & Poverty</div>
+            <div class="blog-full-title">Education: The Breaker of Poverty in Our Communities</div>
+            <div class="blog-full-excerpt">"Education is the most powerful weapon which you can use to change the world." — How we're making that real in Mathare every day.</div>
+            <div class="blog-full-footer">
+              <div class="blog-full-date">December 2025</div>
+              <span class="blog-read-link">Read →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <div style="background:var(--forest-d);padding:6rem 0;">
+    <div class="container" style="text-align:center;">
+      <div class="eyebrow" style="justify-content:center;color:var(--gold-l);">Stay Informed</div>
+      <h2 class="section-title light" style="margin-bottom:1rem;">Stories that <em>move</em> you.</h2>
+      <p class="section-sub light" style="margin:0 auto 2.5rem;text-align:center;">Get real stories, program updates, and impact reports from Mathare delivered straight to your inbox.</p>
+      <div style="display:flex;gap:0.75rem;justify-content:center;max-width:420px;margin:0 auto;flex-wrap:wrap;">
+        <input type="email" placeholder="Your email address" class="form-input" style="flex:1;min-width:220px;background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:#fff;">
+        <button class="btn-gold">Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">Mashimoni <span>CBO</span></div>
+          <div class="footer-brand-sub">Community Based Organization</div>
+          <p class="footer-brand-text">Dedicated to giving every child equal access to education, mentorship, and safe learning spaces in Mathare, Nairobi.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/groups/720879072797440" class="footer-social-btn">f</a>
+            <a href="https://wa.me/0771671502" class="footer-social-btn">w</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigate</div>
+          <ul class="footer-links">
+            <li><button onclick="showPage('home')">Home</button></li>
+            <li><button onclick="showPage('about')">About Us</button></li>
+            <li><button onclick="showPage('blogs')">Stories</button></li>
+            <li><button onclick="showPage('partner')">Partner With Us</button></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Programs</div>
+          <ul class="footer-links">
+            <li><a href="#">Library & Learning</a></li>
+            <li><a href="#">Mentorship</a></li>
+            <li><a href="#">Sports & Arts</a></li>
+            <li><a href="#">Community</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <ul class="footer-links">
+            <li><a href="tel:+254710852444">+254 710 852 444</a></li>
+            <li><a href="https://wa.me/0771671502">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-text">© 2026 Mashimoni Community Based Organization</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: PARTNER WITH US
+═══════════════════════════════════════════ -->
+<div id="page-partner" class="page">
+
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <div class="page-hero-breadcrumb">Home <span>/</span> Partner With Us</div>
+      <h1 class="page-hero-h1">Grow With<br><em>Purpose.</em></h1>
+      <p class="page-hero-desc">Meaningful partnerships built on trust, transparency, and a shared commitment to transforming the lives of children in Mathare.</p>
+    </div>
+  </section>
+
+  <!-- Why Partner -->
+  <section class="partner-intro">
+    <div class="container">
+      <div class="partner-intro-grid">
+        <div class="partner-intro-text">
+          <div class="eyebrow">Why Partner With Us</div>
+          <h2 class="section-title">A model built for <em>measurable</em> change.</h2>
+          <div class="divider-gold"></div>
+          <p>Partnering with us means backing proven results, not promises. With measurable impact, radical transparency, and community-led execution, your support fuels sustainable change.</p>
+          <p>We focus on long-term partnerships that compound value — turning shared purpose into outcomes that endure. Every shilling invested is traced to a real child, a real family, a real transformation.</p>
+          <button class="btn-primary" style="margin-top:1rem;">Start a Conversation →</button>
+        </div>
+        <div>
+          <div class="partner-trust-items">
+            <div class="partner-trust-item">
+              <div class="partner-trust-dot"></div>
+              <div>
+                <div class="partner-trust-title">Proven Impact, Documented Results</div>
+                <div class="partner-trust-desc">Every program we run produces documented outcomes — from attendance rates to academic performance to competition results.</div>
+              </div>
+            </div>
+            <div class="partner-trust-item">
+              <div class="partner-trust-dot"></div>
+              <div>
+                <div class="partner-trust-title">Full Financial Transparency</div>
+                <div class="partner-trust-desc">Partners receive detailed reports on how every contribution is used — no ambiguity, no black boxes.</div>
+              </div>
+            </div>
+            <div class="partner-trust-item">
+              <div class="partner-trust-dot"></div>
+              <div>
+                <div class="partner-trust-title">Community-Led, Globally Supported</div>
+                <div class="partner-trust-desc">Our model is owned by the community of Mathare and supported by international partners who trust the local approach.</div>
+              </div>
+            </div>
+            <div class="partner-trust-item">
+              <div class="partner-trust-dot"></div>
+              <div>
+                <div class="partner-trust-title">Scalable & Replicable Model</div>
+                <div class="partner-trust-desc">What we've built in Mathare is designed to be replicated across other underserved communities in Kenya and beyond.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partnership Tiers -->
+  <section class="partner-tiers">
+    <div class="container">
+      <div class="eyebrow" style="color:var(--gold-l);">Partnership Pathways</div>
+      <h2 class="section-title light">How you can <em>contribute</em></h2>
+      <div class="partner-tiers-grid">
+        <div class="tier-card featured-tier">
+          <span class="tier-badge">Individual</span>
+          <div class="tier-icon">👤</div>
+          <div class="tier-title">Individual Partnership</div>
+          <div class="tier-sub">Make a personal impact through purposeful, flexible support. Your contribution goes directly to a real child's education and wellbeing.</div>
+          <ul class="tier-features">
+            <li>Monthly giving from any amount</li>
+            <li>Sponsor a specific child's education</li>
+            <li>Fund a program or club</li>
+            <li>Share your professional skills</li>
+            <li>Regular impact updates on your child</li>
+          </ul>
+          <button class="btn-gold" style="width:100%;justify-content:center;">Become an Individual Partner →</button>
+        </div>
+        <div class="tier-card">
+          <span class="tier-badge" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);">Corporate</span>
+          <div class="tier-icon">🏢</div>
+          <div class="tier-title">Corporate Partnership</div>
+          <div class="tier-sub">Transform corporate responsibility into community transformation. Align your brand values with measurable social impact at scale.</div>
+          <ul class="tier-features">
+            <li>Co-branded program sponsorship</li>
+            <li>Employee volunteering opportunities</li>
+            <li>Impact reporting for CSR disclosure</li>
+            <li>Community event participation</li>
+            <li>Named scholarship programs</li>
+          </ul>
+          <button class="btn-ghost" style="width:100%;justify-content:center;">Become a Corporate Partner →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="partner-form-section">
+    <div class="container">
+      <div class="partner-form-grid">
+        <div class="partner-form-info">
+          <div class="eyebrow">Get in Touch</div>
+          <h3>Start a conversation — no pressure, no commitment.</h3>
+          <p>If you're curious but need clarity, this is your next step. Share your details and we'll respond thoughtfully — with real information, real impact stories, and honest answers.</p>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📞</div>
+            <div class="contact-detail-text"><a href="tel:+254710852444">+254 710 852 444</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">💬</div>
+            <div class="contact-detail-text"><a href="https://wa.me/0771671502">WhatsApp: +254 771 671 502</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-text">Mashimoni Community, Mathare, Nairobi, Kenya</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">🌐</div>
+            <div class="contact-detail-text"><a href="https://www.facebook.com/groups/720879072797440">Facebook Community Group</a></div>
+          </div>
+          <div style="margin-top:2rem;padding:1.5rem;background:var(--gold-pale);border-left:3px solid var(--gold);border-radius:3px;">
+            <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Existing Partners</div>
+            <div style="font-size:0.88rem;font-weight:300;color:var(--ink-m);line-height:1.7;">ChallengeAid · Education in a Suitcase · RelibAfrica</div>
+          </div>
+        </div>
+        <div>
+          <div style="background:var(--white);border:1.5px solid var(--cream-dd);border-radius:6px;padding:2.5rem;">
+            <div style="font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--ink);margin-bottom:0.5rem;">Send Us a Message</div>
+            <p style="font-size:0.85rem;color:var(--ink-f);margin-bottom:2rem;">We'll get back to you within 48 hours with a personal response.</p>
+            <div class="partner-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">First Name</label>
+                  <input type="text" class="form-input" placeholder="Jane">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Last Name</label>
+                  <input type="text" class="form-input" placeholder="Doe">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" placeholder="you@example.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Organization (optional)</label>
+                <input type="text" class="form-input" placeholder="Your company or organization">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Partnership Type</label>
+                <select class="form-select form-input">
+                  <option>I'm interested in sponsoring a child</option>
+                  <option>Corporate partnership inquiry</option>
+                  <option>Individual monthly giving</option>
+                  <option>Program sponsorship</option>
+                  <option>Volunteering & skills sharing</option>
+                  <option>General inquiry</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Message</label>
+                <textarea class="form-textarea" placeholder="Tell us about yourself and how you'd like to contribute..."></textarea>
+              </div>
+              <button class="btn-primary" style="width:100%;justify-content:center;">Send Message →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">Mashimoni <span>CBO</span></div>
+          <div class="footer-brand-sub">Community Based Organization</div>
+          <p class="footer-brand-text">Dedicated to giving every child equal access to education, mentorship, and safe learning spaces in Mathare, Nairobi.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/groups/720879072797440" class="footer-social-btn">f</a>
+            <a href="https://wa.me/0771671502" class="footer-social-btn">w</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigate</div>
+          <ul class="footer-links">
+            <li><button onclick="showPage('home')">Home</button></li>
+            <li><button onclick="showPage('about')">About Us</button></li>
+            <li><button onclick="showPage('blogs')">Stories</button></li>
+            <li><button onclick="showPage('partner')">Partner</button></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Programs</div>
+          <ul class="footer-links">
+            <li><a href="#">Library & Learning</a></li>
+            <li><a href="#">Mentorship</a></li>
+            <li><a href="#">Sports & Arts</a></li>
+            <li><a href="#">Community</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <ul class="footer-links">
+            <li><a href="tel:+254710852444">+254 710 852 444</a></li>
+            <li><a href="https://wa.me/0771671502">WhatsApp</a></li>
+            <li><a href="#">Mathare, Nairobi</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-text">© 2026 Mashimoni Community Based Organization</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const map = {home:0, about:1, blogs:2, partner:3};
+  const links = document.querySelectorAll('.nav-link');
+  if(map[id] !== undefined && links[map[id]]) links[map[id]].classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  if(document.getElementById('mobileMenu').classList.contains('open')) toggleMobile();
+}
+
+function toggleMobile() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('mobileMenuBtn');
+  menu.classList.toggle('open');
+  const spans = btn.querySelectorAll('span');
+  if(menu.classList.contains('open')) {
+    spans[0].style.cssText = 'transform:rotate(45deg) translate(4px,4px)';
+    spans[1].style.cssText = 'opacity:0';
+    spans[2].style.cssText = 'transform:rotate(-45deg) translate(4px,-4px)';
+  } else {
+    spans.forEach(s => s.style.cssText = '');
+  }
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Filter buttons (blogs)
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
